@@ -32,8 +32,8 @@ Public match data must be enabled in Dota 2 settings.
 Any attempt to gain an unfair advantage (such as smurfing, account sharing, or outside assistance during matches) is strictly prohibited.
 4. Coaching Guidelines
 Coaches are an important part of the league and are expected to support, guide, and teach players.
-Coaching during official matches is limited to the drafting phase only.
-Outside official matches, coaching is encouraged, but should not compromise match balance.
+Coaching during official matches is limited to the drafting phase only. Once the game starts, no typing, messaging or other communication is allowed. Text produced during the strategy phase is allowed.
+Outside official matches, coaching is encouraged in all shapes and forms.
 5. Communication
 Players are expected to communicate constructively with their team.
 Feedback, suggestions, and discussion are encouraged, as long as they are delivered respectfully.
@@ -56,7 +56,7 @@ If you live in the same household as a significantly more experienced Dota playe
 
 Dota’s smurf detection can be unpredictable, and this may lead to very unbalanced and unenjoyable matches. 
 This also applies to party games – playing full stacks with coaches is discouraged, as it may negatively affect match quality.
-Always play on your own account and your own machine, INCLUDING FOR ANY EXPERIENCED PLAYERS JOINING YOU. A smurf account joining you WILL lead to unintended consequences due to Valve's smurf detection..
+Always play on your own account and your own machine, INCLUDING FOR ANY EXPERIENCED PLAYERS JOINING YOU. A smurf account joining you WILL lead to unintended consequences with to Valve's smurf detection..
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ Kaikki epäreilun edun tavoittelu (kuten smurffaus, account sharing tai ulkopuol
 4. Valmennus
 Valmentajat ovat tärkeä osa liigaa ja heidän tehtävänsä on tukea, opastaa ja auttaa pelaajia kehittymään.
 Virallisissa otteluissa valmennus on sallittua vain draftin aikana.
-Otteluiden ulkopuolella valmennus on suositeltavaa, kunhan se ei heikennä pelien tasapainoa.
+Otteluiden ulkopuolella valmennus on suositeltavaa sen kaikissa olomuodoissa. Vain taivas on rajana.
 5. Kommunikaatio
 Pelaajien odotetaan kommunikoivan rakentavasti tiiminsä kanssa.
 Palaute ja keskustelu ovat tervetulleita, kunhan ne esitetään kunnioittavasti.
@@ -118,4 +118,4 @@ Tilanteet, joita ei ole erikseen määritelty, ratkaistaan tapauskohtaisesti rei
 
 Mikäli asut selvästi kokeneemman Dota-pelaajan kanssa, varmista että et pelaa Dotaa samalla tietokoneella.
 Dotan smurf-tunnistus voi olla arvaamaton, ja tämä voi johtaa epätasapainoisiin ja epämiellyttäviin otteluihin. Pelaa aina omalla tililläsi ja omalla koneellasi.
-Tämä koskee myös party-pelejä – valmentajan kanssa pelaaminen täydessä ryhmässä ei ole suositeltavaa, sillä se voi heikentää pelien laatua, MUKAAN LUKIEN KOKENEEMMAT PELAAJAT - smurffitilien kanssa pelaaminen TULEE JOHTAMAAN seurauksiin Valven smurffitunnistuksen kanssa. 
+Tämä koskee myös party-pelejä – valmentajan kanssa pelaaminen täydessä ryhmässä ei ole suositeltavaa, sillä se voi heikentää pelien laatua, MUKAAN LUKIEN KOKENEEMMAT PELAAJAT - smurffitilien kanssa pelaaminen TULEE JOHTAMAAN seurauksiin Valven smurffialgoritmin kanssa. 
