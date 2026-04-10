@@ -1,0 +1,121 @@
+🇬🇧 Rules & Guidelines (Munaliiga)
+
+These rules are designed to ensure a fair, beginner-friendly, and enjoyable experience for all participants.
+
+1. Code of Conduct
+
+Munaliiga is built around a few core principles:
+
+Respect and good behavior are mandatory.
+The primary goal is to learn and enjoy the game.
+Players, coaches, and spectators are all expected to contribute to a positive environment.
+
+Friendly banter is a natural part of the game, but it should always remain respectful and in good spirit.
+
+Any disruptive, toxic, or inappropriate behavior should be reported to the organizer as soon as possible.
+Depending on severity, violations may result in warnings, match penalties, or removal from the league.
+
+2. Match Rules
+
+Official matches refer to scheduled league games that are part of the current season format (such as round-robin matches or playoff games).
+
+All official matches are played using Captain’s Mode.
+Coaches are responsible for drafting, guiding picks and strategy.
+A player from the team will act as the in-game captain and execute the draft in the client.
+Once drafting is complete, coaches must leave the team voice channel for the duration of the match.
+3. Competitive Integrity
+
+To ensure fair and balanced matches for all participants:
+
+Players must compete on their own accounts.
+Public match data must be enabled in Dota 2 settings.
+Any attempt to gain an unfair advantage (such as smurfing, account sharing, or outside assistance during matches) is strictly prohibited.
+4. Coaching Guidelines
+Coaches are an important part of the league and are expected to support, guide, and teach players.
+Coaching during official matches is limited to the drafting phase only.
+Outside official matches, coaching is encouraged, but should not compromise match balance.
+5. Communication
+Players are expected to communicate constructively with their team.
+Feedback, suggestions, and discussion are encouraged, as long as they are delivered respectfully.
+The goal is to create an environment where everyone feels comfortable participating and improving.
+6. Participation & Commitment
+
+Munaliiga aims to be accessible and low-threshold for everyone:
+
+Players are encouraged to show up to scheduled matches and communicate with their team.
+If you are unable to play, inform your team in advance whenever possible.
+
+The goal is not strict enforcement, but to ensure a smooth and enjoyable experience for everyone involved.
+
+7. Organizer Decisions
+The organizer reserves the right to make final decisions regarding rule enforcement, player eligibility, and conflict resolution.
+Situations not explicitly covered by these rules will be handled on a case-by-case basis, with fairness and player experience as the priority.
+8. General Tips
+
+If you live in the same household as a significantly more experienced Dota player, make sure that you do not play on the same computer.
+
+Dota’s smurf detection can be unpredictable, and this may lead to very unbalanced and unenjoyable matches. 
+This also applies to party games – playing full stacks with coaches is discouraged, as it may negatively affect match quality.
+Always play on your own account and your own machine, INCLUDING FOR ANY EXPERIENCED PLAYERS JOINING YOU. A smurf account joining you WILL lead to unintended consequences due to Valve's smurf detection..
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+🇫🇮 Säännöt & Ohjeet (Munaliiga)
+
+Näiden sääntöjen tarkoituksena on varmistaa reilu, aloittelijaystävällinen ja miellyttävä pelikokemus kaikille osallistujille.
+
+1. Käytöskoodi
+
+Munaliiga perustuu muutamaan keskeiseen periaatteeseen:
+
+Kunnioittava käytös on pakollista.
+Tärkein tavoite on oppia ja pitää hauskaa.
+Pelaajien, valmentajien ja katsojien odotetaan kaikki edistävän positiivista ilmapiiriä.
+
+Kevyt banter kuuluu peliin, mutta sen tulee aina pysyä hyvän maun ja kunnioituksen rajoissa.
+
+Kaikesta häiritsevästä tai epäasiallisesta käytöksestä tulee ilmoittaa järjestäjälle mahdollisimman nopeasti.
+Rikkomuksista voidaan tilanteesta riippuen antaa varoituksia, ottelurangaistuksia tai poistaa liigasta.
+
+2. Ottelusäännöt
+
+Viralliset ottelut tarkoittavat liigan aikatauluun kuuluvia pelejä (esimerkiksi runkosarjan tai pudotuspelien otteluita).
+
+Kaikki viralliset ottelut pelataan Captain’s Mode -pelimuodolla.
+Valmentajat vastaavat draftista ja ohjaavat valintoja sekä strategiaa.
+Joukkueesta yksi pelaaja toimii kapteenina ja tekee valinnat peliclientissä.
+Draftin päätyttyä valmentajien tulee poistua voice-kanavalta ottelun ajaksi.
+3. Kilpailullinen reiluus
+
+Reilujen ja tasapainoisten otteluiden varmistamiseksi:
+
+Pelaajien tulee pelata omilla tileillään.
+Public match data tulee olla päällä Dota 2:n asetuksissa.
+Kaikki epäreilun edun tavoittelu (kuten smurffaus, account sharing tai ulkopuolinen apu otteluiden aikana) on kielletty.
+4. Valmennus
+Valmentajat ovat tärkeä osa liigaa ja heidän tehtävänsä on tukea, opastaa ja auttaa pelaajia kehittymään.
+Virallisissa otteluissa valmennus on sallittua vain draftin aikana.
+Otteluiden ulkopuolella valmennus on suositeltavaa, kunhan se ei heikennä pelien tasapainoa.
+5. Kommunikaatio
+Pelaajien odotetaan kommunikoivan rakentavasti tiiminsä kanssa.
+Palaute ja keskustelu ovat tervetulleita, kunhan ne esitetään kunnioittavasti.
+Tavoitteena on luoda ympäristö, jossa kaikkien on mukava osallistua ja kehittyä.
+6. Osallistuminen
+
+Munaliiga pyrkii olemaan matalan kynnyksen liiga kaikille:
+
+Pelaajia kannustetaan osallistumaan sovittuihin otteluihin ja pitämään yhteyttä joukkueeseensa.
+Mikäli et pääse pelaamaan, ilmoita siitä tiimillesi mahdollisimman ajoissa.
+
+Tarkoituksena ei ole tiukka velvoittaminen, vaan sujuvan ja mukavan pelikokemuksen varmistaminen kaikille.
+
+7. Järjestäjän päätökset
+Järjestäjä pidättää oikeuden tehdä lopulliset päätökset sääntöihin, pelaajiin ja ristiriitatilanteisiin liittyen.
+Tilanteet, joita ei ole erikseen määritelty, ratkaistaan tapauskohtaisesti reiluus ja pelaajakokemus edellä.
+8. Yleiset vinkit
+
+Mikäli asut selvästi kokeneemman Dota-pelaajan kanssa, varmista että et pelaa Dotaa samalla tietokoneella.
+Dotan smurf-tunnistus voi olla arvaamaton, ja tämä voi johtaa epätasapainoisiin ja epämiellyttäviin otteluihin. Pelaa aina omalla tililläsi ja omalla koneellasi.
+Tämä koskee myös party-pelejä – valmentajan kanssa pelaaminen täydessä ryhmässä ei ole suositeltavaa, sillä se voi heikentää pelien laatua, MUKAAN LUKIEN KOKENEEMMAT PELAAJAT - smurffitilien kanssa pelaaminen TULEE JOHTAMAAN seurauksiin Valven smurffitunnistuksen kanssa. 
