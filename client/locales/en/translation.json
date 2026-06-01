@@ -1,3 +1,6 @@
 {
-  "helloWorld": "Hello world!"
+  "helloWorld": "Hello world!",
+  "menu": "Menu",
+  "munaliiga": "Munaliiga",
+  "wardImageAltText": "Image of a Dota 2 observer ward"
 }

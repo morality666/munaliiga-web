@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@theme {
+    --color-background: oklch(84.57% 0.002 67.80);
+    --color-background-dark: oklch(25.99% 0.002 106.53);
+
+    --color-midground: oklch(90.75% 0.001 17.18);
+    --color-midground-dark: oklch(30.18% 0.002 67.74);
+
+    --color-foreground: oklch(97.02% 0.000 0);
+    --color-foreground-dark: oklch(34.13% 0.002 67.75);
+
+    --color-accent: oklch(84.24% 0.132 84.63);
+    --color-accent-dark: oklch(84.24% 0.132 84.63);
+
+    --color-bodytext: oklch(23.93% 0.000 0);
+    --color-bodytext-dark: oklch(86.07% 0.000 0);
+
+    --color-headingtext: oklch(26.86% 0.000 0);
+    --color-headingtext-dark: oklch(94.61% 0.000 0);
+
+    --color-interactive: oklch(28.16% 0.002 67.73);
+    --color-interactive-dark: oklch(79.65% 0.003 48.71);
+
+    --color-hovered: oklch(50.92% 0.004 39.46);
+    --color-hovered-dark: oklch(90.75% 0.001 17.18);
+
+    --spacing-card-height: 46px;
+
+    --font-logo: "Bagel Fat One", system-ui;
+}

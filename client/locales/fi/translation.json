@@ -1,3 +1,6 @@
 {
-  "helloWorld": "Terve maailma!"
+  "helloWorld": "Terve maailma!",
+  "menu": "Valikko",
+  "munaliiga": "Munaliiga",
+  "wardImageAltText": "Kuva Dota 2 -pelin 'Observer Ward' -esineestä"
 }
