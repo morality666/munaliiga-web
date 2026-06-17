@@ -3,6 +3,7 @@ Dota 2 on julma peli. Munaliigassa se on hauskaa.
 Munaliiga on suomalainen, täysin aloittelijaystävällinen yhteisöliiga, jossa opit pelin salat turvallisessa tiimissä ja kokeneen valmentajan opastuksella. Unohda synkkä solo queue ja toksiset tiimikaverit, Munaliigassa pääset pelamaan hyvässä seurassa, hyvää seuraa vastaan ilman, että jäät oppimiskokemuksesi kanssa yksin.
 
 Kausi 3 käynnistyy syksyllä 2026, pelaajahaku käynnistyy kesällä!
+
 [ Ilmoita mielenkiintosi (Lomake) ]
 
 ----
