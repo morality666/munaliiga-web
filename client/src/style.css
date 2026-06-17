@@ -29,3 +29,19 @@
 
     --font-logo: "Bagel Fat One", system-ui;
 }
+
+@theme {
+    --animate-page-enter: page-enter 180ms ease-out both;
+
+    @keyframes page-enter {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

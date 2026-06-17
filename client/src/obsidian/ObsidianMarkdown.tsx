@@ -7,10 +7,6 @@ type ObsidianMarkdownProps = {
   content: string;
 };
 
-// If anyone wants to add more callout types, just add them to these records and add an icon in calloutIcons
-// These should be similar enough to the ones Obsidian uses for consistency, but feel free to customize
-// Regular unicode emojis work fine too
-
 const calloutNames: Record<string, string> = {
   info: "Info",
   note: "Note",
@@ -19,10 +15,10 @@ const calloutNames: Record<string, string> = {
 };
 
 const calloutStyles: Record<string, string> = {
-  info: "border-sky-500 bg-sky-500/10 text-sky-950 dark:text-sky-100",
-  note: "border-blue-500 bg-blue-500/10 text-blue-950 dark:text-blue-100",
-  tip: "border-emerald-500 bg-emerald-500/10 text-emerald-950 dark:text-emerald-100",
-  warning: "border-amber-500 bg-amber-500/10 text-amber-950 dark:text-amber-100",
+  info: "bg-sky-500/10 text-sky-950 ring-sky-500/20 dark:text-sky-100",
+  note: "bg-blue-500/10 text-blue-950 ring-blue-500/20 dark:text-blue-100",
+  tip: "bg-emerald-500/10 text-emerald-950 ring-emerald-500/20 dark:text-emerald-100",
+  warning: "bg-amber-500/10 text-amber-950 ring-amber-500/20 dark:text-amber-100",
 };
 
 const calloutIcons = {
@@ -39,13 +35,13 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-const image = (src: string, alt: string, key: React.Key, size = "") => {
+const renderImage = (src: string, alt: string, key: React.Key, size = "") => {
   const [width, height] = size.split("x");
 
   return (
     <img
       key={key}
-      className="my-4 max-h-[32rem] w-auto max-w-full rounded-sm object-contain"
+      className="mx-auto my-6 max-h-[32rem] w-auto max-w-full rounded-sm object-contain shadow-sm"
       src={getObsidianAssetUrl(src)}
       alt={alt}
       width={width || undefined}
@@ -63,12 +59,12 @@ const inline = (text: string): React.ReactNode[] => {
   return parts.filter(Boolean).map((part, index) => {
     if (part.startsWith("![[") && part.endsWith("]]")) {
       const [src = "", size = ""] = part.slice(3, -2).split("|");
-      return image(src, src, index, size);
+      return renderImage(src, src, index, size);
     }
 
     if (part.startsWith("![")) {
       const match = part.match(/^!\[([^\]]*)]\(([^)]+)\)$/);
-      return image(match?.[2] ?? "", match?.[1] ?? "", index);
+      return renderImage(match?.[2] ?? "", match?.[1] ?? "", index);
     }
 
     if (part.startsWith("[[")) {
@@ -122,8 +118,14 @@ const inline = (text: string): React.ReactNode[] => {
   });
 };
 
-const paragraph = (lines: string[], key: React.Key) => (
-  <p key={key} className="leading-7 text-bodytext dark:text-bodytext-dark">
+const paragraph = (lines: string[], key: React.Key, lead = false) => (
+  <p
+    key={key}
+    className={clsx(
+      "leading-8 text-bodytext dark:text-bodytext-dark",
+      lead && "text-lg font-medium text-headingtext/80 dark:text-headingtext-dark/80",
+    )}
+  >
     {inline(lines.join(" "))}
   </p>
 );
@@ -136,7 +138,7 @@ const list = (lines: string[], key: React.Key) => {
     <Tag
       key={key}
       className={clsx(
-        "space-y-2 pl-6 leading-7 text-bodytext dark:text-bodytext-dark",
+        "space-y-2 pl-7 leading-8 text-bodytext dark:text-bodytext-dark",
         ordered ? "list-decimal" : "list-disc",
       )}
     >
@@ -158,15 +160,18 @@ const callout = (lines: string[], key: React.Key) => {
     <aside
       key={key}
       className={clsx(
-        "border-l-4 px-4 py-3",
-        calloutStyles[kind] ?? "border-accent bg-midground text-bodytext dark:bg-midground-dark dark:text-bodytext-dark",
+        "rounded-md px-4 py-3 shadow-sm ring-1",
+        calloutStyles[kind] ??
+          "bg-midground text-bodytext ring-accent/20 dark:bg-midground-dark dark:text-bodytext-dark",
       )}
     >
       <p className="mb-2 flex items-center gap-2 text-sm font-bold uppercase">
         <Icon aria-hidden className="h-4 w-4" />
         {title}
       </p>
-      <MarkdownLines lines={body} />
+      <div className="space-y-3">
+        <MarkdownLines lines={body} />
+      </div>
     </aside>
   );
 };
@@ -174,7 +179,7 @@ const callout = (lines: string[], key: React.Key) => {
 const blockquote = (lines: string[], key: React.Key) => (
   <blockquote
     key={key}
-    className="border-l-4 border-hovered pl-4 italic text-bodytext dark:border-hovered-dark dark:text-bodytext-dark"
+    className="border-l-4 border-hovered/60 pl-4 italic leading-8 text-bodytext dark:border-hovered-dark/60 dark:text-bodytext-dark"
   >
     <MarkdownLines lines={lines.map((line) => line.replace(/^>\s?/, ""))} />
   </blockquote>
@@ -196,7 +201,11 @@ const startsNewBlock = (line: string) =>
 
 function MarkdownLines({ lines }: { lines: string[] }) {
   const blocks: React.ReactNode[] = [];
-  let index = 0;
+  const frontmatterEnd = lines.findIndex(
+    (line, lineIndex) => lineIndex > 0 && line === "---",
+  );
+  let index = lines[0] === "---" && frontmatterEnd > 0 ? frontmatterEnd + 1 : 0;
+  let previousBlockWasTitle = false;
 
   while (index < lines.length) {
     const line = lines[index] ?? "";
@@ -224,6 +233,7 @@ function MarkdownLines({ lines }: { lines: string[] }) {
         </pre>,
       );
       index += 1;
+      previousBlockWasTitle = false;
       continue;
     }
 
@@ -237,7 +247,7 @@ function MarkdownLines({ lines }: { lines: string[] }) {
           key={index}
           className={clsx(
             "font-bold text-headingtext dark:text-headingtext-dark",
-            depth === 1 && "mt-2 text-3xl",
+            depth === 1 && "mt-2 text-4xl",
             depth === 2 && "mt-10 text-2xl",
             depth > 2 && "mt-8 text-xl",
           )}
@@ -246,12 +256,19 @@ function MarkdownLines({ lines }: { lines: string[] }) {
         </Tag>,
       );
       index += 1;
+      previousBlockWasTitle = depth === 1;
       continue;
     }
 
     if (isRuleLine(line)) {
-      blocks.push(<hr key={index} className="border-hovered/30 dark:border-hovered-dark/30" />);
+      blocks.push(
+        <hr
+          key={index}
+          className="my-4 border-hovered/30 dark:border-hovered-dark/30"
+        />,
+      );
       index += 1;
+      previousBlockWasTitle = false;
       continue;
     }
 
@@ -271,8 +288,15 @@ function MarkdownLines({ lines }: { lines: string[] }) {
     } else if (isListLine(line)) {
       blocks.push(list(collect(isListLine), start));
     } else {
-      blocks.push(paragraph(collect((value) => !startsNewBlock(value)), start));
+      blocks.push(
+        paragraph(
+          collect((value) => !startsNewBlock(value)),
+          start,
+          previousBlockWasTitle,
+        ),
+      );
     }
+    previousBlockWasTitle = false;
   }
 
   return <>{blocks}</>;
@@ -280,7 +304,7 @@ function MarkdownLines({ lines }: { lines: string[] }) {
 
 export function ObsidianMarkdown({ content }: ObsidianMarkdownProps) {
   return (
-    <article className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-5 py-8">
+    <article className="mx-auto flex w-full max-w-3xl animate-page-enter flex-col gap-6 px-5 py-10 motion-reduce:animate-none">
       <MarkdownLines lines={content.replace(/\r\n/g, "\n").split("\n")} />
     </article>
   );

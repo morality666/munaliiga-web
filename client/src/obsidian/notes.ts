@@ -1,8 +1,11 @@
-const markdownFiles = import.meta.glob<string>("../../notes/**/*.md", {
-  eager: true,
-  import: "default",
-  query: "?raw",
-});
+const markdownFiles = import.meta.glob<string>(
+  ["../../notes/en/**/*.md", "../../notes/fi/**/*.md"],
+  {
+    eager: true,
+    import: "default",
+    query: "?raw",
+  },
+);
 
 const imageFiles = import.meta.glob<string>(
   "../../notes/**/*.{avif,gif,jpeg,jpg,png,svg,webp}",
@@ -15,6 +18,8 @@ const imageFiles = import.meta.glob<string>(
 
 export type ObsidianNote = {
   content: string;
+  language: "en" | "fi";
+  order: number;
   path: string;
   slug: string;
   title: string;
@@ -32,20 +37,66 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+const slugFor = (path: string) => {
+  const name = fileName(path);
+
+  return name === "index" ? "" : slugify(name);
+};
+
 const titleFor = (content: string, path: string) =>
   content.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? fileName(path);
+
+const orderFor = (content: string) => {
+  const order = content.match(/^order:\s*(\d+)$/m)?.[1];
+
+  return order ? Number(order) : 999;
+};
+
+const languageFor = (path: string) => {
+  const language = normalize(path)
+    .split("/")
+    .find((part) => part === "en" || part === "fi");
+
+  return language ?? "en";
+};
 
 export const obsidianNotes = Object.entries(markdownFiles)
   .map(([path, content]) => ({
     content,
+    language: languageFor(path),
+    order: orderFor(content),
     path,
-    slug: slugify(fileName(path)),
+    slug: slugFor(path),
     title: titleFor(content, path),
   }))
-  .sort((a, b) => a.title.localeCompare(b.title));
+  .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 
-export const getObsidianNote = (slug: string) =>
-  obsidianNotes.find((note) => note.slug === slug);
+const cleanLanguage = (language: string) =>
+  language.toLowerCase().startsWith("fi") ? "fi" : "en";
+
+export const hasObsidianNote = (slug: string) =>
+  obsidianNotes.some((note) => note.slug === slug);
+
+export const getObsidianNote = (slug: string, language: string) => {
+  const pageLanguage = cleanLanguage(language);
+  const localizedNote = obsidianNotes.find(
+    (note) => note.slug === slug && note.language === pageLanguage,
+  );
+  const englishNote = obsidianNotes.find(
+    (note) => note.slug === slug && note.language === "en",
+  );
+
+  return localizedNote ?? englishNote ?? obsidianNotes.find((note) => note.slug === slug);
+};
+
+export const getObsidianNotes = (language: string) => {
+  const slugs = [...new Set(obsidianNotes.map((note) => note.slug))];
+
+  return slugs
+    .map((slug) => getObsidianNote(slug, language))
+    .filter((note) => note !== undefined)
+    .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+};
 
 export const getObsidianAssetUrl = (reference: string) => {
   const cleanReference = normalize(reference).trim();
@@ -54,7 +105,6 @@ export const getObsidianAssetUrl = (reference: string) => {
     return cleanReference;
   }
 
-  // Just add images to notes/attachments folder and reference them like ![[image.png]]
   const image = Object.entries(imageFiles).find(([path]) =>
     normalize(path).endsWith(`/attachments/${cleanReference}`),
   );

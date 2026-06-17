@@ -1,23 +1,24 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { ObsidianMarkdown } from "../obsidian/ObsidianMarkdown.tsx";
-import { getObsidianNote } from "../obsidian/notes.ts";
+import { getObsidianNote, hasObsidianNote } from "../obsidian/notes.ts";
 
 export const Route = createFileRoute("/$slug")({
   component: NotePage,
   loader: ({ params }) => {
-    const note = getObsidianNote(params.slug);
-
-    if (!note) {
+    if (!hasObsidianNote(params.slug)) {
       throw notFound();
     }
-
-    return note;
   },
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
 function NotePage() {
-  const note = Route.useLoaderData();
+  const { i18n } = useTranslation();
+  const { slug } = Route.useParams();
+  const note = getObsidianNote(slug, i18n.resolvedLanguage ?? i18n.language);
 
-  return <ObsidianMarkdown content={note.content} />;
+  return note ? (
+    <ObsidianMarkdown key={`${note.language}-${note.slug}`} content={note.content} />
+  ) : null;
 }
