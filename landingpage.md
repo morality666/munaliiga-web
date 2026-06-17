@@ -1,7 +1,6 @@
-Dota 2 on vaikea peli. Munaliigassa se on hauskaa.
+Dota 2 on julma peli. Munaliigassa se on hauskaa.
 
-Oletko katsonut kavereidesi pelejä ja miettinyt, ettei sinulla ole saumaa oppia sitä kaikkea? Unohda synkkä solo queue ja toksiset peliaulat. Munaliiga on suomalainen, täysin aloittelijaystävällinen yhteisöliiga, jossa opit pelin salat turvallisessa tiimissä ja kokeneen valmentajan opastuksella.
-Lähde mukaan matalan kynnyksen seikkailuun.
+Munaliiga on suomalainen, täysin aloittelijaystävällinen yhteisöliiga, jossa opit pelin salat turvallisessa tiimissä ja kokeneen valmentajan opastuksella. Unohda synkkä solo queue ja toksiset tiimikaverit, Munaliigassa pääset pelamaan hyvässä seurassa, hyvää seuraa vastaan ilman, että jäät oppimiskokemuksesi kanssa yksin.
 [ Ilmoita mielenkiintosi (Lomake) ]
 
 ----
