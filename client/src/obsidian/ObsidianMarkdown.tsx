@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Link } from "@tanstack/react-router";
 import { Info, Lightbulb, NotebookText, TriangleAlert } from "lucide-react";
 import React from "react";
 import { getObsidianAssetUrl } from "./notes.ts";
@@ -15,10 +16,10 @@ const calloutNames: Record<string, string> = {
 };
 
 const calloutStyles: Record<string, string> = {
-  info: "bg-sky-500/10 text-sky-950 ring-sky-500/20 dark:text-sky-100",
-  note: "bg-blue-500/10 text-blue-950 ring-blue-500/20 dark:text-blue-100",
-  tip: "bg-emerald-500/10 text-emerald-950 ring-emerald-500/20 dark:text-emerald-100",
-  warning: "bg-amber-500/10 text-amber-950 ring-amber-500/20 dark:text-amber-100",
+  info: "bg-[#d8d5c7] text-stone-900 ring-stone-500/20",
+  note: "bg-[#d8d5c7] text-stone-900 ring-stone-500/20",
+  tip: "bg-[#d8dfc8] text-stone-900 ring-[#789469]/30",
+  warning: "bg-[#ead6b3] text-stone-900 ring-[#dcae47]/30",
 };
 
 const calloutIcons = {
@@ -41,7 +42,7 @@ const renderImage = (src: string, alt: string, key: React.Key, size = "") => {
   return (
     <img
       key={key}
-      className="mx-auto my-6 max-h-[32rem] w-auto max-w-full rounded-sm object-contain shadow-sm"
+      className="mx-auto my-6 max-h-128 w-auto max-w-full rounded-sm object-contain shadow-sm"
       src={getObsidianAssetUrl(src)}
       alt={alt}
       width={width || undefined}
@@ -68,16 +69,34 @@ const inline = (text: string): React.ReactNode[] => {
     }
 
     if (part.startsWith("[[")) {
-      const [target = "", label = target] = part.slice(2, -2).split("|");
+      const [reference = "", label = reference] = part.slice(2, -2).split("|");
+      const [target = "", heading = ""] = reference.split("#");
+      const slug = slugify(target);
+      const hash = heading ? slugify(heading) : undefined;
+
+      if (!slug) {
+        return (
+          <Link
+            key={index}
+            className="font-semibold text-[#1c1d19] underline underline-offset-4 hover:text-[#a95747]"
+            hash={hash}
+            to="/"
+          >
+            {label}
+          </Link>
+        );
+      }
 
       return (
-        <a
+        <Link
           key={index}
-          className="font-semibold text-interactive underline underline-offset-4 hover:text-hovered dark:text-interactive-dark dark:hover:text-hovered-dark"
-          href={`/${slugify(target)}`}
+          className="font-semibold text-[#1c1d19] underline underline-offset-4 hover:text-[#a95747]"
+          hash={hash}
+          params={{ slug }}
+          to="/$slug"
         >
           {label}
-        </a>
+        </Link>
       );
     }
 
@@ -87,7 +106,7 @@ const inline = (text: string): React.ReactNode[] => {
       return (
         <a
           key={index}
-          className="font-semibold text-interactive underline underline-offset-4 hover:text-hovered dark:text-interactive-dark dark:hover:text-hovered-dark"
+          className="font-semibold text-[#1c1d19] underline underline-offset-4 hover:text-[#a95747]"
           href={match?.[2] ?? ""}
         >
           {match?.[1] ?? part}
@@ -107,7 +126,7 @@ const inline = (text: string): React.ReactNode[] => {
       return (
         <code
           key={index}
-          className="rounded-sm bg-midground px-1.5 py-0.5 text-sm dark:bg-midground-dark"
+          className="rounded-sm bg-[#dcd3c0] px-1.5 py-0.5 text-sm"
         >
           {part.slice(1, -1)}
         </code>
@@ -122,8 +141,8 @@ const paragraph = (lines: string[], key: React.Key, lead = false) => (
   <p
     key={key}
     className={clsx(
-      "leading-8 text-bodytext dark:text-bodytext-dark",
-      lead && "text-lg font-medium text-headingtext/80 dark:text-headingtext-dark/80",
+      "leading-8 text-stone-700",
+      lead && "text-lg font-medium text-stone-800",
     )}
   >
     {inline(lines.join(" "))}
@@ -138,7 +157,7 @@ const list = (lines: string[], key: React.Key) => {
     <Tag
       key={key}
       className={clsx(
-        "space-y-2 pl-7 leading-8 text-bodytext dark:text-bodytext-dark",
+        "space-y-2 pl-7 leading-8 text-stone-700",
         ordered ? "list-decimal" : "list-disc",
       )}
     >
@@ -160,9 +179,9 @@ const callout = (lines: string[], key: React.Key) => {
     <aside
       key={key}
       className={clsx(
-        "rounded-md px-4 py-3 shadow-sm ring-1",
+        "rounded-sm px-4 py-3 ring-1",
         calloutStyles[kind] ??
-          "bg-midground text-bodytext ring-accent/20 dark:bg-midground-dark dark:text-bodytext-dark",
+          "bg-[#d8d5c7] text-stone-900 ring-stone-500/20",
       )}
     >
       <p className="mb-2 flex items-center gap-2 text-sm font-bold uppercase">
@@ -179,7 +198,7 @@ const callout = (lines: string[], key: React.Key) => {
 const blockquote = (lines: string[], key: React.Key) => (
   <blockquote
     key={key}
-    className="border-l-4 border-hovered/60 pl-4 italic leading-8 text-bodytext dark:border-hovered-dark/60 dark:text-bodytext-dark"
+    className="border-l-4 border-[#a95747]/70 pl-4 italic leading-8 text-stone-700"
   >
     <MarkdownLines lines={lines.map((line) => line.replace(/^>\s?/, ""))} />
   </blockquote>
@@ -227,7 +246,7 @@ function MarkdownLines({ lines }: { lines: string[] }) {
       blocks.push(
         <pre
           key={index}
-          className="overflow-x-auto bg-foreground p-4 text-sm text-bodytext dark:bg-foreground-dark dark:text-bodytext-dark"
+          className="overflow-x-auto bg-[#dcd3c0] p-4 text-sm text-stone-800"
         >
           <code>{code.join("\n")}</code>
         </pre>,
@@ -245,8 +264,9 @@ function MarkdownLines({ lines }: { lines: string[] }) {
       blocks.push(
         <Tag
           key={index}
+          id={slugify(heading[2] ?? "")}
           className={clsx(
-            "font-bold text-headingtext dark:text-headingtext-dark",
+            "font-bold text-[#1c1d19]",
             depth === 1 && "mt-2 text-4xl",
             depth === 2 && "mt-10 text-2xl",
             depth > 2 && "mt-8 text-xl",
@@ -264,7 +284,7 @@ function MarkdownLines({ lines }: { lines: string[] }) {
       blocks.push(
         <hr
           key={index}
-          className="my-4 border-hovered/30 dark:border-hovered-dark/30"
+          className="my-4 border-stone-500/30"
         />,
       );
       index += 1;
@@ -304,8 +324,10 @@ function MarkdownLines({ lines }: { lines: string[] }) {
 
 export function ObsidianMarkdown({ content }: ObsidianMarkdownProps) {
   return (
-    <article className="mx-auto flex w-full max-w-3xl animate-page-enter flex-col gap-6 px-5 py-10 motion-reduce:animate-none">
-      <MarkdownLines lines={content.replace(/\r\n/g, "\n").split("\n")} />
-    </article>
+    <main className="obsidian-page paper-field min-h-[calc(100svh-var(--spacing-card-height))] bg-[#e8e0ce]">
+      <article className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-5 py-12">
+        <MarkdownLines lines={content.replace(/\r\n/g, "\n").split("\n")} />
+      </article>
+    </main>
   );
 }

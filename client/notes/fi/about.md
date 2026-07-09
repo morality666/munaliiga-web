@@ -2,7 +2,7 @@
 order: 1
 ---
 
-# Tietoa Munaliigasta
+# Tietoa liigasta
 
 Munaliiga on aloittelijaystävällinen Dota 2 -liiga, joka rakentuu oppimisen, joukkuepelaamisen ja matalan kynnyksen kilpailullisen kokemuksen ympärille.
 

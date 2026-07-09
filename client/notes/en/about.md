@@ -2,7 +2,7 @@
 order: 1
 ---
 
-# About Munaliiga
+# About the league
 
 Munaliiga is a beginner-friendly Dota 2 league built around learning, teamwork, and a low-pressure competitive experience.
 

@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Munaliigan säännöt ja ohjeet
+# Säännöt ja ohjeet
 
 Säännöt on tehty varmistamaan **reilu, aloittelijaystävällinen ja mukava kokemus** kaikille osallistujille.
 

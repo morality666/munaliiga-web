@@ -17,10 +17,13 @@ const imageFiles = import.meta.glob<string>(
 );
 
 export type ObsidianNote = {
+  category: string | null;
   content: string;
+  isIndex: boolean;
   language: "en" | "fi";
   order: number;
   path: string;
+  section: string | null;
   slug: string;
   title: string;
 };
@@ -37,10 +40,24 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+const directoriesFor = (path: string) => {
+  const parts = normalize(path).split("/");
+  const languageIndex = parts.findIndex(
+    (part) => part === "en" || part === "fi",
+  );
+
+  return parts.slice(languageIndex + 1, -1).map(slugify).filter(Boolean);
+};
+
 const slugFor = (path: string) => {
   const name = fileName(path);
+  const directories = directoriesFor(path);
 
-  return name === "index" ? "" : slugify(name);
+  if (name === "index") {
+    return directories.join("-");
+  }
+
+  return [...directories, slugify(name)].join("-");
 };
 
 const titleFor = (content: string, path: string) =>
@@ -61,14 +78,21 @@ const languageFor = (path: string) => {
 };
 
 export const obsidianNotes = Object.entries(markdownFiles)
-  .map(([path, content]) => ({
-    content,
-    language: languageFor(path),
-    order: orderFor(content),
-    path,
-    slug: slugFor(path),
-    title: titleFor(content, path),
-  }))
+  .map(([path, content]) => {
+    const directories = directoriesFor(path);
+
+    return {
+      category: directories[1] ?? null,
+      content,
+      isIndex: fileName(path) === "index",
+      language: languageFor(path),
+      order: orderFor(content),
+      path,
+      section: directories[0] ?? null,
+      slug: slugFor(path),
+      title: titleFor(content, path),
+    };
+  })
   .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 
 const cleanLanguage = (language: string) =>
