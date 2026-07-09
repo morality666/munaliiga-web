@@ -1,75 +1,43 @@
-# React + TypeScript + Vite
+# Munaliiga website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Local setup
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Site configuration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The committed production configuration lives in `.env.production`. Vite loads
+it automatically for production builds, including the GitHub Pages build.
+Local development uses the fallback values from `src/config.ts`; create an
+uncommitted `.env.local` only when you need local overrides.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Variable | Purpose |
+| --- | --- |
+| `VITE_DISCORD_URL` | Discord invite used across the landing page and sidebar |
+| `VITE_YOUTUBE_URL` | Community YouTube channel |
+| `VITE_SEASON_NUMBER` | Season shown beside the language controls |
+| `VITE_SIGNUPS_OPEN` | Optional `true`/`false` override for registration status |
+| `VITE_SIGNUP_OPENS_AT` | ISO date and time for automatic opening when no override is set |
+| `VITE_SIGNUP_URL` | Registration form |
+| `VITE_TWITCH_CHANNELS` | Comma-separated caster channels; `morality666` is always checked first |
+
+The application reads these values through `src/config.ts`. All `VITE_`
+variables are bundled into the public site, so they must never contain secrets.
+
+## Markdown notes
+
+Main navigation notes live in:
+
+- `notes/en/`
+- `notes/fi/`
+
+Community content is grouped into three folders:
+
+- `notes/<language>/community/articles/`
+- `notes/<language>/community/guides/`
+- `notes/<language>/community/other/`
+
+Each category’s `index.md` is its landing page and contribution guide. Other Markdown files in that folder automatically become children of the category. The first heading is used as the navigation title and the optional frontmatter `order` value controls its position.

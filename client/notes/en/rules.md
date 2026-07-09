@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Munaliiga Rules & Guidelines
+# Rules & Guidelines
 
 These rules are designed to ensure a **fair, beginner-friendly, and enjoyable experience** for all participants.
 

@@ -19,6 +19,6 @@ function NotePage() {
   const note = getObsidianNote(slug, i18n.resolvedLanguage ?? i18n.language);
 
   return note ? (
-    <ObsidianMarkdown key={`${note.language}-${note.slug}`} content={note.content} />
+    <ObsidianMarkdown content={note.content} />
   ) : null;
 }

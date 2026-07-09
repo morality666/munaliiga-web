@@ -1,1 +1,12 @@
+# Package-manager caches
+.pnpm-store/
+
+# IDE and local agent state
 .idea/
+.agents/
+.codex/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini

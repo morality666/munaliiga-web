@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+html {
+    scrollbar-gutter: stable;
+    scrollbar-color: #756b55 transparent;
+    scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+    width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    min-height: 48px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background: #756b55;
+    background-clip: content-box;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: #82765c;
+    background-clip: content-box;
+}
+
 @theme {
     --color-background: oklch(84.57% 0.002 67.80);
     --color-background-dark: oklch(25.99% 0.002 106.53);
@@ -30,18 +57,208 @@
     --font-logo: "Bagel Fat One", system-ui;
 }
 
-@theme {
-    --animate-page-enter: page-enter 180ms ease-out both;
+body {
+    background: #e8e0ce;
+}
 
-    @keyframes page-enter {
-        from {
-            opacity: 0;
-            transform: translateY(6px);
-        }
+.route-surface {
+    min-height: calc(100svh - var(--spacing-card-height));
+}
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.obsidian-page {
+    animation: route-reveal 130ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+@keyframes route-reveal {
+    from {
+        opacity: 0.72;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .obsidian-page {
+        animation: none;
+    }
+}
+
+.paper-field {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.055'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+}
+
+.community-note {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(1.75rem - 1px),
+        rgba(73, 66, 49, 0.14) calc(1.75rem - 1px),
+        rgba(73, 66, 49, 0.14) 1.75rem
+    );
+    background-size: 100% 1.75rem;
+    /* Phase the ruling so the join copy sits between two lines, like handwriting. */
+    background-position: 0 0.75rem;
+}
+
+.note-tape {
+    opacity: 0.96;
+    background:
+        linear-gradient(
+            180deg,
+            rgb(232, 220, 184),
+            rgb(244, 232, 197) 50%,
+            rgb(219, 205, 166)
+        );
+    box-shadow:
+        0 2px 3px rgba(0, 0, 0, 0.18),
+        inset 0 1px rgba(255, 255, 255, 0.3);
+    clip-path: polygon(
+        2% 0,
+        98% 0,
+        100% 15%,
+        98% 32%,
+        100% 50%,
+        98% 68%,
+        100% 85%,
+        98% 100%,
+        2% 100%,
+        0 84%,
+        2% 66%,
+        0 48%,
+        2% 30%,
+        0 14%
+    );
+}
+
+.dota-lanes {
+    background:
+        radial-gradient(circle at 18% 78%, rgba(117, 151, 87, 0.7) 0 3px, transparent 4px),
+        radial-gradient(circle at 82% 22%, rgba(166, 67, 52, 0.75) 0 3px, transparent 4px),
+        linear-gradient(135deg, transparent 49.82%, rgba(226, 218, 183, 0.28) 49.9% 50.1%, transparent 50.18%),
+        linear-gradient(151deg, transparent 49.86%, rgba(117, 151, 87, 0.22) 49.94% 50.06%, transparent 50.14%),
+        linear-gradient(119deg, transparent 49.86%, rgba(166, 67, 52, 0.22) 49.94% 50.06%, transparent 50.14%);
+    mask-image: linear-gradient(90deg, black, transparent 78%);
+}
+
+.dota-mark {
+    position: relative;
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.9rem;
+    flex: 0 0 auto;
+    border: 2px solid #a94435;
+    transform: rotate(3deg);
+}
+
+.dota-mark::after {
+    position: absolute;
+    inset: 1px 4px;
+    content: "";
+    background: #a94435;
+    transform: rotate(-38deg);
+}
+
+.landing-poster {
+    clip-path: polygon(
+        0.5% 1.5%,
+        12% 0,
+        25% 1.1%,
+        39% 0.3%,
+        54% 1.4%,
+        69% 0,
+        83% 1%,
+        99% 0.2%,
+        98.5% 18%,
+        100% 34%,
+        98.7% 52%,
+        100% 69%,
+        99% 85%,
+        99.5% 99%,
+        82% 98.8%,
+        67% 100%,
+        49% 98.7%,
+        31% 100%,
+        15% 98.6%,
+        0.5% 99.5%,
+        1.4% 80%,
+        0% 63%,
+        1% 47%,
+        0% 28%
+    );
+}
+
+.poster-tape {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    width: 6.5rem;
+    height: 2rem;
+    opacity: 0.96;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.06) 0,
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px,
+            transparent 9px
+        ),
+        linear-gradient(
+            180deg,
+            rgb(225, 213, 179),
+            rgb(242, 230, 194) 48%,
+            rgb(213, 198, 159)
+        );
+    border-block: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.24),
+        inset 0 1px rgba(255, 255, 255, 0.35);
+    clip-path: polygon(
+        2% 0,
+        98% 0,
+        100% 8%,
+        98.5% 18%,
+        100% 29%,
+        98.5% 41%,
+        100% 53%,
+        98% 66%,
+        100% 78%,
+        98% 89%,
+        99% 100%,
+        2% 100%,
+        0 91%,
+        1.5% 79%,
+        0 68%,
+        1.5% 56%,
+        0 44%,
+        1.5% 31%,
+        0 19%,
+        1.5% 9%
+    );
+    backdrop-filter: blur(0.5px) saturate(0.8);
+}
+
+.poster-tape-left {
+    left: -2.4rem;
+    top: 17%;
+    transform: rotate(-6deg);
+}
+
+.poster-tape-right {
+    right: -2.3rem;
+    bottom: 16%;
+    transform: rotate(5deg);
+}
+
+@media (max-width: 639px) {
+    .poster-tape {
+        width: 5.25rem;
+        height: 1.65rem;
+    }
+
+    .poster-tape-left {
+        left: -1.8rem;
+    }
+
+    .poster-tape-right {
+        right: -1.7rem;
     }
 }

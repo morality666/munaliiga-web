@@ -10,7 +10,18 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.tanstack
+coverage
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
 *.local
+
+# Local environment overrides. Production values are intentionally committed.
+.env
+.env.*
+!.env.production
+!.env.example
 
 # Editor directories and files
 .vscode/*
