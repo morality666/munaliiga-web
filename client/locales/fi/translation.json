@@ -20,6 +20,8 @@
     "heroTitle": "Dotaa porukalla.",
     "heroDescription": "Munaliiga on ystävällinen Dota 2 -liiga uusille ja palaaville pelaajille.",
     "signUp": "Ilmoittaudu",
+    "playerSignUp": "Ilmoittaudu pelaajaksi",
+    "coachSignUp": "Ilmoittaudu valmentajaksi",
     "heroImageAlt": "Munaliigan observer- ja sentry ward -kuvitus",
     "aboutKicker": "Liiga",
     "aboutTitle": "Mikä on Munaliiga?",

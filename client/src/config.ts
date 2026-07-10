@@ -30,12 +30,19 @@ const signupOpensAt =
   import.meta.env.VITE_SIGNUP_OPENS_AT?.trim() || null;
 const signupOpenOverride =
   import.meta.env.VITE_SIGNUPS_OPEN?.trim().toLowerCase() || null;
+const playerSignupUrl =
+  import.meta.env.VITE_PLAYER_SIGNUP_URL?.trim() ||
+  import.meta.env.VITE_SIGNUP_URL?.trim() ||
+  "";
+const coachSignupUrl = import.meta.env.VITE_COACH_SIGNUP_URL?.trim() || "";
 
 export const siteConfig = {
   discordUrl:
     import.meta.env.VITE_DISCORD_URL ?? "https://discord.gg/Nd75KFMAQt",
   signup: {
+    coachUrl: coachSignupUrl,
     opensAt: signupOpensAt,
+    playerUrl: playerSignupUrl,
     season: import.meta.env.VITE_SEASON_NUMBER?.trim() || "3",
     url: import.meta.env.VITE_SIGNUP_URL ?? "https://forms.google.com",
   },
