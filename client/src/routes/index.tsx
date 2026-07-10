@@ -15,6 +15,16 @@ const TWITCH_CHANNEL =
 // eslint-disable-next-line react-refresh/only-export-components
 function MainView() {
   const { t } = useTranslation();
+  const signupLinks = [
+    {
+      href: siteConfig.signup.playerUrl,
+      label: t("landing.playerSignUp"),
+    },
+    {
+      href: siteConfig.signup.coachUrl,
+      label: t("landing.coachSignUp"),
+    },
+  ].filter((link) => link.href);
 
   return (
     <main className="paper-field overflow-hidden bg-[#e8e0ce] text-[#1c1d19]">
@@ -38,14 +48,17 @@ function MainView() {
 
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm font-bold">
               {signupsAreLive ? (
-                <a
-                  className="border-b border-[#dcae47] pb-1 text-[#f1eadc] hover:text-[#dcae47]"
-                  href={siteConfig.signup.url}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {t("landing.signUp")} →
-                </a>
+                signupLinks.map((link) => (
+                  <a
+                    className="border-b border-[#dcae47] pb-1 text-[#f1eadc] hover:text-[#dcae47]"
+                    href={link.href}
+                    key={link.label}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {link.label} →
+                  </a>
+                ))
               ) : (
                 <span className="border-b border-stone-700 pb-1 text-stone-500">
                   {t("signupsSoon")}
@@ -62,7 +75,7 @@ function MainView() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[31rem] lg:mr-1">
+          <div className="relative mx-auto w-full max-w-124 lg:mr-1">
             <div className="landing-poster relative rotate-[1.2deg] bg-[#e4ad37] px-5 pb-6 pt-3 shadow-[12px_14px_0_#0d0e0c] sm:px-7">
               <div className="mb-1 flex items-center justify-between border-b-2 border-stone-900/40 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-stone-900/70">
                 <span>Munaliiga</span>
@@ -114,14 +127,17 @@ function MainView() {
             </p>
             <div className="mt-5 flex flex-wrap gap-5 text-sm font-bold">
               {signupsAreLive ? (
-                <a
-                  className="border-b border-stone-700 pb-0.5"
-                  href={siteConfig.signup.url}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {t("landing.signUp")} →
-                </a>
+                signupLinks.map((link) => (
+                  <a
+                    className="border-b border-stone-700 pb-0.5"
+                    href={link.href}
+                    key={link.label}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {link.label} →
+                  </a>
+                ))
               ) : (
                 <span className="border-b border-stone-500 pb-0.5 text-stone-500">
                   {t("signupsSoon")}
