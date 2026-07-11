@@ -60,4 +60,4 @@ If this sparked your interest, you are warmly welcome to join!
 
 If player registration for the next season is not yet open, you can leave your expression of interest via the form below [TBA], and we will contact you once applications open.
 
-[Off-season form](https://forms.gle/u685j2xiLFVrnKSQA)
+[Off-season form](https://forms.gle/aTknBWqr18thD4hW8)
