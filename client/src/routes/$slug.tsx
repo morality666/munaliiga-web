@@ -1,5 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
+import { ObsidianHtml } from "../obsidian/ObsidianHtml.tsx";
 import { ObsidianMarkdown } from "../obsidian/ObsidianMarkdown.tsx";
 import { getObsidianNote, hasObsidianNote } from "../obsidian/notes.ts";
 
@@ -18,7 +19,13 @@ function NotePage() {
   const { slug } = Route.useParams();
   const note = getObsidianNote(slug, i18n.resolvedLanguage ?? i18n.language);
 
-  return note ? (
+  if (!note) {
+    return null;
+  }
+
+  return note.format === "html" ? (
+    <ObsidianHtml content={note.content} />
+  ) : (
     <ObsidianMarkdown content={note.content} />
-  ) : null;
+  );
 }
