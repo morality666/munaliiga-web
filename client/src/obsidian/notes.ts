@@ -7,6 +7,15 @@ const markdownFiles = import.meta.glob<string>(
   },
 );
 
+const htmlFiles = import.meta.glob<string>(
+  ["../../notes/en/**/*.html", "../../notes/fi/**/*.html"],
+  {
+    eager: true,
+    import: "default",
+    query: "?raw",
+  },
+);
+
 const imageFiles = import.meta.glob<string>(
   "../../notes/**/*.{avif,gif,jpeg,jpg,png,svg,webp}",
   {
@@ -16,9 +25,12 @@ const imageFiles = import.meta.glob<string>(
   },
 );
 
+export type ObsidianNoteFormat = "html" | "markdown";
+
 export type ObsidianNote = {
   category: string | null;
   content: string;
+  format: ObsidianNoteFormat;
   isIndex: boolean;
   language: "en" | "fi";
   order: number;
@@ -40,6 +52,22 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+const stripHtml = (value: string) =>
+  value
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const decodeHtml = (value: string) =>
+  value
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#39;/g, "'");
+
 const directoriesFor = (path: string) => {
   const parts = normalize(path).split("/");
   const languageIndex = parts.findIndex(
@@ -60,11 +88,23 @@ const slugFor = (path: string) => {
   return [...directories, slugify(name)].join("-");
 };
 
-const titleFor = (content: string, path: string) =>
-  content.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? fileName(path);
+const htmlTitleFor = (content: string) => {
+  const heading = content.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
+  const title = content.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1];
+  const rawTitle = heading ?? title;
+
+  return rawTitle ? decodeHtml(stripHtml(rawTitle)) : undefined;
+};
+
+const titleFor = (content: string, path: string, format: ObsidianNoteFormat) =>
+  format === "html"
+    ? htmlTitleFor(content) ?? fileName(path)
+    : content.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? fileName(path);
 
 const orderFor = (content: string) => {
-  const order = content.match(/^order:\s*(\d+)$/m)?.[1];
+  const order =
+    content.match(/^order:\s*(\d+)$/m)?.[1] ??
+    content.match(/<meta\s+name=["']order["']\s+content=["'](\d+)["']\s*\/?>/i)?.[1];
 
   return order ? Number(order) : 999;
 };
@@ -77,20 +117,38 @@ const languageFor = (path: string) => {
   return language ?? "en";
 };
 
-export const obsidianNotes = Object.entries(markdownFiles)
-  .map(([path, content]) => {
+const noteFiles: Array<[string, string, ObsidianNoteFormat]> = [
+  ...Object.entries(markdownFiles).map(
+    ([path, content]): [string, string, ObsidianNoteFormat] => [
+      path,
+      content,
+      "markdown",
+    ],
+  ),
+  ...Object.entries(htmlFiles).map(
+    ([path, content]): [string, string, ObsidianNoteFormat] => [
+      path,
+      content,
+      "html",
+    ],
+  ),
+];
+
+export const obsidianNotes = noteFiles
+  .map(([path, content, format]) => {
     const directories = directoriesFor(path);
 
     return {
       category: directories[1] ?? null,
       content,
+      format,
       isIndex: fileName(path) === "index",
       language: languageFor(path),
       order: orderFor(content),
       path,
       section: directories[0] ?? null,
       slug: slugFor(path),
-      title: titleFor(content, path),
+      title: titleFor(content, path, format),
     };
   })
   .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));

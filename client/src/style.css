@@ -262,3 +262,525 @@ body {
         right: -1.7rem;
     }
 }
+
+.season-archive {
+    min-height: calc(100svh - var(--spacing-card-height));
+    overflow: hidden;
+    background:
+        linear-gradient(132deg, transparent 0 18%, rgba(117, 151, 87, 0.1) 18.08% 18.18%, transparent 18.26% 100%),
+        linear-gradient(114deg, transparent 0 46%, rgba(169, 87, 71, 0.09) 46.06% 46.16%, transparent 46.24% 100%),
+        linear-gradient(151deg, transparent 0 71%, rgba(220, 174, 71, 0.08) 71.05% 71.15%, transparent 71.24% 100%),
+        linear-gradient(27deg, transparent 0 36%, rgba(28, 29, 25, 0.08) 36.08% 36.18%, transparent 36.26% 100%),
+        linear-gradient(180deg, #191b16 0 25rem, #e8e0ce 25rem);
+    background-size:
+        77rem 61rem,
+        53rem 69rem,
+        89rem 47rem,
+        41rem 83rem,
+        auto;
+    background-position:
+        -13rem 17rem,
+        31rem 4rem,
+        -22rem 42rem,
+        45rem 27rem,
+        0 0;
+    color: #1c1d19;
+}
+
+.season-shell {
+    width: min(100% - 2.5rem, 72rem);
+    margin-inline: auto;
+}
+
+.season-hero {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    box-sizing: border-box;
+    min-height: 40.5rem;
+    padding: 2.5rem 0 3rem;
+    border-bottom: 1px solid rgba(241, 234, 220, 0.12);
+    color: #f1eadc;
+}
+
+.season-hero::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background:
+        radial-gradient(circle at 20% 70%, rgba(117, 151, 87, 0.68) 0 3px, transparent 4px),
+        radial-gradient(circle at 82% 25%, rgba(166, 67, 52, 0.75) 0 3px, transparent 4px),
+        linear-gradient(135deg, transparent 49.82%, rgba(226, 218, 183, 0.2) 49.9% 50.1%, transparent 50.18%),
+        linear-gradient(151deg, transparent 49.86%, rgba(117, 151, 87, 0.16) 49.94% 50.06%, transparent 50.14%),
+        linear-gradient(119deg, transparent 49.86%, rgba(166, 67, 52, 0.18) 49.94% 50.06%, transparent 50.14%);
+    opacity: 0.44;
+}
+
+.season-hero-grid {
+    position: relative;
+    display: grid;
+    gap: 2rem;
+    min-height: 100%;
+}
+
+.season-hero-grid > :first-child {
+    align-self: center;
+}
+
+.season-kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    color: #dcae47;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.season-hero h1 {
+    max-width: 44rem;
+    font-size: clamp(3rem, 8vw, 5.75rem);
+    font-weight: 950;
+    line-height: 0.9;
+    text-shadow: 0.08em 0.08em 0 #0d0e0c;
+}
+
+.season-hero-copy {
+    max-width: 39rem;
+    margin-top: 1.35rem;
+    color: #d9d1c2;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.season-champion-board {
+    align-self: center;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 12.9rem;
+    border: 2px solid rgba(241, 234, 220, 0.22);
+    border-radius: 6px;
+    background: rgba(13, 14, 12, 0.74);
+    box-shadow: 8px 8px 0 rgba(169, 87, 71, 0.7);
+    transform: rotate(1deg);
+}
+
+.season-champion-board h2 {
+    border-bottom: 1px solid rgba(241, 234, 220, 0.18);
+    padding: 0.9rem 1rem;
+    color: #dcae47;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.season-champion-list {
+    display: grid;
+    align-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.season-champion-list strong {
+    display: block;
+    color: #f1eadc;
+    font-size: 1.35rem;
+    line-height: 1.15;
+}
+
+.season-champion-list span {
+    display: block;
+    margin-top: 0.25rem;
+    color: #bdb4a5;
+    font-size: 0.88rem;
+}
+
+.season-stats-shell {
+    position: relative;
+    padding-top: 2.85rem;
+}
+
+.season-stats-shell::before {
+    position: absolute;
+    top: 0.85rem;
+    right: 0;
+    left: 0;
+    height: 2.1rem;
+    content: "";
+    background:
+        radial-gradient(circle at 10% 50%, #a95747 0 0.18rem, transparent 0.2rem),
+        radial-gradient(circle at 28% 50%, #789469 0 0.16rem, transparent 0.18rem),
+        radial-gradient(circle at 53% 50%, #dcae47 0 0.2rem, transparent 0.22rem),
+        radial-gradient(circle at 77% 50%, #a95747 0 0.15rem, transparent 0.17rem),
+        linear-gradient(90deg, transparent, rgba(220, 174, 71, 0.34) 18%, rgba(169, 87, 71, 0.32) 48%, rgba(120, 148, 105, 0.3) 78%, transparent);
+    box-shadow: 0 9px 0 rgba(28, 29, 25, 0.12);
+    clip-path: polygon(0 40%, 12% 38%, 24% 57%, 39% 35%, 52% 54%, 68% 36%, 82% 58%, 100% 42%, 100% 80%, 0 80%);
+    pointer-events: none;
+}
+
+.season-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid rgba(28, 29, 25, 0.24);
+    border-radius: 6px;
+    background: rgba(28, 29, 25, 0.24);
+    box-shadow: 5px 6px 0 rgba(28, 29, 25, 0.1);
+}
+
+.season-stat {
+    min-width: 0;
+    min-height: 5.65rem;
+    padding: 1rem;
+    background: #dcd3c0;
+}
+
+.season-stat strong {
+    display: block;
+    font-size: 1.85rem;
+    line-height: 1;
+}
+
+.season-stat span {
+    display: block;
+    margin-top: 0.35rem;
+    color: #5f5747;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.season-section {
+    position: relative;
+    padding: 4.25rem 0;
+}
+
+.season-section::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background:
+        linear-gradient(139deg, transparent 0 24%, rgba(117, 151, 87, 0.12) 24.05% 24.16%, transparent 24.24% 100%),
+        linear-gradient(116deg, transparent 0 63%, rgba(169, 87, 71, 0.11) 63.06% 63.16%, transparent 63.25% 100%),
+        linear-gradient(31deg, transparent 0 41%, rgba(220, 174, 71, 0.08) 41.05% 41.15%, transparent 41.22% 100%);
+    background-size: 57rem 43rem, 71rem 59rem, 46rem 67rem;
+    background-position: -8rem 3rem, 29rem -7rem, 7rem 24rem;
+    opacity: 0.54;
+    pointer-events: none;
+}
+
+.season-section > .season-shell {
+    position: relative;
+}
+
+.season-section + .season-section {
+    border-top: 1px solid rgba(28, 29, 25, 0.18);
+}
+
+.season-header {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 1.75rem;
+    border: 1px solid rgba(28, 29, 25, 0.22);
+    border-left: 0.35rem solid #a95747;
+    border-radius: 6px;
+    background:
+        linear-gradient(90deg, rgba(220, 174, 71, 0.2), transparent 38%),
+        #dcd3c0;
+    box-shadow: 6px 7px 0 rgba(28, 29, 25, 0.12);
+}
+
+.season-header > div {
+    padding: 1.1rem 1.15rem;
+}
+
+.season-header > p {
+    max-width: 39rem;
+    margin: 0;
+    padding: 1.15rem;
+    border-top: 1px solid rgba(28, 29, 25, 0.13);
+    color: #645b4b;
+    line-height: 1.75;
+}
+
+.season-header .season-kicker {
+    margin-bottom: 0.55rem;
+    color: #7f473d;
+}
+
+.season-victory {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.season-victory-label {
+    width: fit-content;
+    border: 1px solid rgba(28, 29, 25, 0.26);
+    background: #191b16;
+    padding: 0.26rem 0.45rem;
+    color: #dcae47;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.season-victory-name {
+    max-width: 100%;
+    color: #1c1d19;
+    font-size: clamp(2.35rem, 6vw, 4.25rem);
+    font-weight: 950;
+    line-height: 0.88;
+    text-shadow: 0.045em 0.045em 0 rgba(169, 87, 71, 0.22);
+    word-break: break-word;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.15rem;
+}
+
+.team-card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    overflow: hidden;
+    border: 1px solid rgba(28, 29, 25, 0.22);
+    border-radius: 6px;
+    background:
+        linear-gradient(180deg, rgba(255, 252, 244, 0.7), rgba(255, 252, 244, 0)),
+        #eee7d7;
+    box-shadow: 4px 5px 0 rgba(28, 29, 25, 0.11);
+}
+
+.team-card.is-winner {
+    border-color: rgba(169, 87, 71, 0.58);
+    background:
+        linear-gradient(135deg, rgba(220, 174, 71, 0.24), transparent 46%),
+        #f1eadc;
+    box-shadow: 6px 7px 0 rgba(169, 87, 71, 0.32);
+}
+
+.team-card.is-winner::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0.35rem;
+    content: "";
+    background: linear-gradient(90deg, #a95747, #dcae47, #789469);
+}
+
+.team-card-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem 1rem 0.85rem;
+    border-bottom: 1px solid rgba(28, 29, 25, 0.13);
+}
+
+.team-card h3 {
+    font-size: 1.35rem;
+    font-weight: 900;
+    line-height: 1.08;
+    padding-right: 1.1rem;
+}
+
+.team-coach {
+    margin-top: 0.45rem;
+    color: #645b4b;
+    font-size: 0.92rem;
+}
+
+.team-placement {
+    position: relative;
+    display: grid;
+    width: 3.85rem;
+    height: 4.25rem;
+    place-items: center;
+    border: 2px solid #11110f;
+    border-radius: 49% 51% 50% 50% / 58% 60% 42% 40%;
+    background: #f3c75f;
+    color: #1c1d19;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.74rem;
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 1px rgba(255, 246, 210, 0.26);
+    box-shadow:
+        inset 0 -0.28rem 0 rgba(28, 29, 25, 0.08),
+        0 0 0 1px rgba(255, 246, 210, 0.22);
+    transform: rotate(4deg);
+}
+
+.team-placement::before {
+    content: "";
+    display: none;
+}
+
+.team-placement::after {
+    content: "";
+    display: none;
+}
+
+.team-placement span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    white-space: nowrap;
+    transform: rotate(-4deg);
+}
+
+.placement-gold {
+    background:
+        linear-gradient(180deg, rgba(255, 228, 118, 0.28), rgba(180, 128, 38, 0.08)),
+        #f3c75f;
+}
+
+.placement-silver {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 248, 0.35), rgba(97, 102, 94, 0.08)),
+        #d8d8c8;
+}
+
+.placement-bronze {
+    background:
+        linear-gradient(180deg, rgba(232, 158, 91, 0.24), rgba(82, 43, 29, 0.08)),
+        #bd7650;
+    color: #1c1d19;
+}
+
+.placement-default {
+    background:
+        linear-gradient(180deg, rgba(245, 224, 163, 0.28), rgba(99, 78, 36, 0.07)),
+        #d8bf77;
+}
+
+.roster-list {
+    display: grid;
+    grid-template-rows: repeat(5, minmax(2.55rem, 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    background: rgba(28, 29, 25, 0.12);
+    list-style: none;
+}
+
+.roster-list li {
+    display: grid;
+    grid-template-columns: 3.4rem minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    min-width: 0;
+    padding: 0.62rem 0.8rem 0.62rem 1rem;
+    background: rgba(255, 252, 244, 0.52);
+}
+
+.player-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.hero-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.18rem;
+    min-width: max-content;
+}
+
+.hero-icon {
+    display: block;
+    width: 1.45rem;
+    height: 1.45rem;
+    border: 1px solid rgba(28, 29, 25, 0.36);
+    border-radius: 3px;
+    background: #191b16;
+    object-fit: cover;
+    box-shadow: 1px 1px 0 rgba(28, 29, 25, 0.18);
+}
+
+.hero-icons-split {
+    flex-direction: column;
+    gap: 0.14rem;
+}
+
+.hero-icon-set {
+    display: flex;
+    gap: 0.14rem;
+}
+
+.hero-icons-split .hero-icon {
+    width: 1.08rem;
+    height: 1.08rem;
+}
+
+.roster-position {
+    color: #7a6f5a;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.season-note {
+    margin-top: 1rem;
+    color: #6b624f;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+@media (min-width: 820px) {
+    .season-hero {
+        min-height: 27.5rem;
+    }
+
+    .season-hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+        align-items: end;
+    }
+
+    .season-header {
+        grid-template-columns: minmax(0, 0.72fr) minmax(18rem, 0.72fr);
+        align-items: stretch;
+    }
+
+    .season-header > p {
+        display: flex;
+        align-items: center;
+        border-top: 0;
+        border-left: 1px solid rgba(28, 29, 25, 0.13);
+    }
+}
+
+@media (max-width: 639px) {
+    .season-shell {
+        width: min(100% - 1.5rem, 72rem);
+    }
+
+    .season-hero {
+        min-height: 40.5rem;
+        padding: 2rem 0 2.25rem;
+    }
+
+    .season-stats {
+        grid-template-columns: 1fr;
+    }
+}

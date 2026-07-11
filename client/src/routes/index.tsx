@@ -106,13 +106,22 @@ function MainView() {
             <p className="mt-5 text-lg leading-8 text-stone-700">
               {t("landing.aboutBody")}
             </p>
-            <Link
-              className="mt-6 inline-block border-b border-stone-500 pb-1 text-sm font-bold hover:border-stone-950"
-              params={{ slug: "about" }}
-              to="/$slug"
-            >
-              {t("landing.aboutLink")} →
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-5 text-sm font-bold">
+              <Link
+                className="border-b border-stone-500 pb-1 hover:border-stone-950"
+                params={{ slug: "about" }}
+                to="/$slug"
+              >
+                {t("landing.aboutLink")} →
+              </Link>
+              <Link
+                className="border-b border-stone-500 pb-1 hover:border-stone-950"
+                params={{ slug: "hall-of-fame" }}
+                to="/$slug"
+              >
+                {t("landing.previousSeasonsLink")} →
+              </Link>
+            </div>
           </article>
 
           <aside className="community-note relative self-start border border-stone-900/30 bg-[#d5c7a6] px-6 py-6 shadow-[5px_6px_0_rgba(28,29,25,0.18)] lg:mt-8 lg:rotate-1">
