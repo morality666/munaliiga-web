@@ -60,4 +60,4 @@ Mikäli kiinnostuksesi heräsi, tervetuloa mukaan!
 
 Jos pelaajarekrytointi ei ole vielä seuraavalle kaudelle käynnissä, ilmoita mielenkiinnostasi alla olevalla lomakkeella [TBA], niin olemme sinuun yhteydessä pelaajahaun alkaessa.
 
-Nimi / Sähköposti / Valinnainen viesti
+[Off-season lomake](https://forms.gle/u685j2xiLFVrnKSQA)
