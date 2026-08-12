@@ -1,0 +1,278 @@
+{
+  "_comment": "Real Kanaliiga Season 15 data (league_id 19368) fetched via Steam Web API, use for testing purposes",
+  "leagueId": 19368,
+  "leagueName": "Kanaliiga Season 15",
+  "matches": [
+    {
+      "direName": "Visma Tormentor",
+      "direPicks": [
+        {
+          "localizedName": "Night Stalker",
+          "name": "night_stalker"
+        },
+        {
+          "localizedName": "Faceless Void",
+          "name": "faceless_void"
+        },
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Brewmaster",
+          "name": "brewmaster"
+        },
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        }
+      ],
+      "direScore": 36,
+      "durationSeconds": 2916,
+      "matchId": 8813824412,
+      "radiantName": "OP Platinum",
+      "radiantPicks": [
+        {
+          "localizedName": "Phoenix",
+          "name": "phoenix"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        },
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Invoker",
+          "name": "invoker"
+        }
+      ],
+      "radiantScore": 33,
+      "radiantWin": true,
+      "startTime": 1778964000
+    },
+    {
+      "direName": "Visma Tormentor",
+      "direPicks": [
+        {
+          "localizedName": "Night Stalker",
+          "name": "night_stalker"
+        },
+        {
+          "localizedName": "Slark",
+          "name": "slark"
+        },
+        {
+          "localizedName": "Grimstroke",
+          "name": "grimstroke"
+        },
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        },
+        {
+          "localizedName": "Enigma",
+          "name": "enigma"
+        }
+      ],
+      "direScore": 61,
+      "durationSeconds": 3754,
+      "matchId": 8813718513,
+      "radiantName": "OP Platinum",
+      "radiantPicks": [
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        },
+        {
+          "localizedName": "Tusk",
+          "name": "tusk"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        }
+      ],
+      "radiantScore": 24,
+      "radiantWin": false,
+      "startTime": 1778958694
+    },
+    {
+      "direName": "OP Platinum",
+      "direPicks": [
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Slark",
+          "name": "slark"
+        },
+        {
+          "localizedName": "Pangolier",
+          "name": "pangolier"
+        },
+        {
+          "localizedName": "Phoenix",
+          "name": "phoenix"
+        }
+      ],
+      "direScore": 35,
+      "durationSeconds": 2579,
+      "matchId": 8813628780,
+      "radiantName": "Visma Tormentor",
+      "radiantPicks": [
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Drow Ranger",
+          "name": "drow_ranger"
+        },
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        },
+        {
+          "localizedName": "Earthshaker",
+          "name": "earthshaker"
+        }
+      ],
+      "radiantScore": 8,
+      "radiantWin": false,
+      "startTime": 1778954288
+    },
+    {
+      "direName": "Elisa Oyj",
+      "direPicks": [
+        {
+          "localizedName": "Invoker",
+          "name": "invoker"
+        },
+        {
+          "localizedName": "Earth Spirit",
+          "name": "earth_spirit"
+        },
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Chen",
+          "name": "chen"
+        },
+        {
+          "localizedName": "Meepo",
+          "name": "meepo"
+        }
+      ],
+      "direScore": 40,
+      "durationSeconds": 1925,
+      "matchId": 8813524147,
+      "radiantName": "Reaktor",
+      "radiantPicks": [
+        {
+          "localizedName": "Pudge",
+          "name": "pudge"
+        },
+        {
+          "localizedName": "Marci",
+          "name": "marci"
+        },
+        {
+          "localizedName": "Io",
+          "name": "wisp"
+        },
+        {
+          "localizedName": "Clinkz",
+          "name": "clinkz"
+        },
+        {
+          "localizedName": "Ancient Apparition",
+          "name": "ancient_apparition"
+        }
+      ],
+      "radiantScore": 18,
+      "radiantWin": false,
+      "startTime": 1778949451
+    },
+    {
+      "direName": "OP Platinum",
+      "direPicks": [
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Clockwerk",
+          "name": "rattletrap"
+        },
+        {
+          "localizedName": "Queen of Pain",
+          "name": "queenofpain"
+        },
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        },
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        }
+      ],
+      "direScore": 36,
+      "durationSeconds": 2161,
+      "matchId": 8813404318,
+      "radiantName": "Elisa Oyj",
+      "radiantPicks": [
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        },
+        {
+          "localizedName": "Ember Spirit",
+          "name": "ember_spirit"
+        },
+        {
+          "localizedName": "Mars",
+          "name": "mars"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        }
+      ],
+      "radiantScore": 20,
+      "radiantWin": false,
+      "startTime": 1778944700
+    }
+  ],
+  "updatedAt": "2026-08-12T12:00:00Z"
+}

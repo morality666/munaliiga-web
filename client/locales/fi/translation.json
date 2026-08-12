@@ -38,5 +38,18 @@
     "casters": "Selostajat",
     "mainCaster": "Pääkanava",
     "rulesLink": "Säännöt"
+  },
+  "matches": {
+    "kicker": "Tulokset",
+    "title": "Viimeisimmät ottelut",
+    "body": "Tuoreimmat pelatut ottelut: {{league}}.",
+    "duration": "Ottelun kesto",
+    "empty": "Otteluita ei ole vielä pelattu. Tsekkaa uudestaan kun kausi on startannut!",
+    "link": "Ottelun tiedot",
+    "linkLabel": "Ottelun {{radiant}} – {{dire}} tiedot Dotabuffissa",
+    "picksLabel": "Joukkueen {{team}} valinnat: {{heroes}}",
+    "score": "Tapot",
+    "updated": "Päivitetty {{date}}",
+    "win": "Voitto"
   }
 }

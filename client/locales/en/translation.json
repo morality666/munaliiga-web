@@ -38,5 +38,18 @@
     "casters": "Casters",
     "mainCaster": "Main",
     "rulesLink": "Rules"
+  },
+  "matches": {
+    "kicker": "Results",
+    "title": "Recent matches",
+    "body": "The latest games played in {{league}}.",
+    "duration": "Match duration",
+    "empty": "No matches played yet. Check back once the season is under way.",
+    "link": "Match details",
+    "linkLabel": "Match details for {{radiant}} vs {{dire}} on Dotabuff",
+    "picksLabel": "{{team}} picks: {{heroes}}",
+    "score": "Kills",
+    "updated": "Updated {{date}}",
+    "win": "Win"
   }
 }

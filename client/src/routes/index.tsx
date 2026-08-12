@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { signupsAreLive, siteConfig } from "../config.ts";
 import { STREAMERS } from "../streaming/streamers.ts";
 import { TwitchStream } from "../streaming/TwitchStream.tsx";
+import { RecentMatches } from "../matches/RecentMatches.tsx";
 
 export const Route = createFileRoute("/")({
   component: MainView,
@@ -196,6 +197,8 @@ function MainView() {
           </div>
         </div>
       </section>
+
+      <RecentMatches />
 
       <footer className="px-5 py-7 md:px-8">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 font-mono text-[10px] font-bold uppercase tracking-wider text-stone-600 sm:flex-row sm:items-center sm:justify-between">
