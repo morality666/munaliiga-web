@@ -54,7 +54,15 @@ html::-webkit-scrollbar-thumb:hover {
 
     --spacing-card-height: 46px;
 
+    --color-paper: #e8e0ce;
+    --color-paper-tint: #dcd3c0;
+
     --font-logo: "Bagel Fat One", system-ui;
+}
+
+:root {
+    /* Fallback for band-aware components rendered outside a .paper-bands page. */
+    --band-raised: var(--color-paper-tint);
 }
 
 body {
@@ -84,6 +92,16 @@ body {
 .paper-field {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.055'/%3E%3C/svg%3E");
     background-size: 160px 160px;
+}
+
+.paper-bands > * {
+    --band-raised: var(--color-paper-tint);
+}
+
+.paper-bands > :nth-child(even of :not(.band-skip)) {
+    --band-raised: var(--color-paper);
+    background-color: var(--color-paper-tint);
+    border-block: 1px solid --alpha(var(--color-stone-900) / 25%);
 }
 
 .community-note {

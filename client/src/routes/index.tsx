@@ -27,8 +27,8 @@ function MainView() {
   ].filter((link) => link.href);
 
   return (
-    <main className="paper-field overflow-hidden bg-[#e8e0ce] text-[#1c1d19]">
-      <section className="relative bg-[#191b16] text-stone-100">
+    <main className="paper-bands paper-field overflow-hidden bg-[#e8e0ce] text-[#1c1d19]">
+      <section className="band-skip relative bg-[#191b16] text-stone-100">
         <div className="dota-lanes pointer-events-none absolute inset-0 opacity-30" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pb-10 pt-12 md:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:pb-12 lg:pt-14">
@@ -169,7 +169,7 @@ function MainView() {
         </div>
       </section>
 
-      <section className="border-y border-stone-900/25 bg-[#dcd3c0] px-5 py-14 md:px-8 md:py-16">
+      <section className="px-5 py-14 md:px-8 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-9 lg:grid-cols-[0.48fr_1fr] lg:items-center">
           <div>
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500">
