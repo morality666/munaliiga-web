@@ -2,6 +2,7 @@
 name: Perhanan Perunat
 tag: PER
 color: "#b5883c"
+logo: perhanan-perunat.jpg
 season: 3
 coach: RXKIM
 captain:

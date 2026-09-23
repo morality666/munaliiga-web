@@ -60,6 +60,8 @@
     "coach": "Coach",
     "captain": "Captain",
     "roster": "Roster",
+    "logo": "Logo",
+    "logoAlt": "{{team}} logo",
     "roles": {
       "carry": "Carry",
       "mid": "Mid",

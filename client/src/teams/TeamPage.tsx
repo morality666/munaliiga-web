@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import { siteConfig } from "../config.ts";
 import { TeamBadge } from "./TeamBadge.tsx";
@@ -26,11 +27,14 @@ export function TeamPage({ team }: TeamPageProps) {
           </Link>
 
           <div className="flex flex-wrap items-end gap-6">
-            <TeamBadge
-              className="-rotate-[1.5deg] shadow-[6px_7px_0_rgba(169,87,71,0.45)]"
-              size="large"
-              team={team}
-            />
+            {/* A logo gets its own card beside the roster instead. */}
+            {team.logoUrl ? null : (
+              <TeamBadge
+                className="-rotate-[1.5deg] shadow-[6px_7px_0_rgba(169,87,71,0.45)]"
+                size="large"
+                team={team}
+              />
+            )}
 
             <div className="min-w-0 flex-grow">
               <p className="mb-2.5 flex items-center gap-2 font-mono text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-[#dcae47]">
@@ -57,7 +61,29 @@ export function TeamPage({ team }: TeamPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-2xl px-5 py-8 md:px-8">
+      <section
+        className={clsx(
+          "mx-auto px-5 py-8 md:px-8",
+          team.logoUrl
+            ? "grid max-w-4xl items-start gap-6 md:grid-cols-[18rem_minmax(0,1fr)]"
+            : "max-w-2xl",
+        )}
+      >
+        {team.logoUrl ? (
+          <figure className="w-full max-w-72 overflow-hidden rounded-md border border-stone-900/22 bg-[#eee7d7] shadow-[5px_6px_0_rgba(28,29,25,0.11)]">
+            <figcaption className="border-b border-stone-900/16 bg-stone-900/5 px-4 py-3">
+              <span className="font-mono text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-[#5f5747]">
+                {t("teams.logo")}
+              </span>
+            </figcaption>
+            <img
+              alt={t("teams.logoAlt", { team: team.name })}
+              className="block h-auto w-full"
+              src={team.logoUrl}
+            />
+          </figure>
+        ) : null}
+
         <div className="overflow-hidden rounded-md border border-stone-900/22 bg-[#eee7d7] shadow-[5px_6px_0_rgba(28,29,25,0.11)]">
           <div className="border-b border-stone-900/16 bg-stone-900/5 px-4 py-3">
             <span className="font-mono text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-[#5f5747]">

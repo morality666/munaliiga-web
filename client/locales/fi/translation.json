@@ -60,6 +60,8 @@
     "coach": "Valmentaja",
     "captain": "Kapteeni",
     "roster": "Kokoonpano",
+    "logo": "Logo",
+    "logoAlt": "Joukkueen {{team}} logo",
     "roles": {
       "carry": "Carry",
       "mid": "Mid",
