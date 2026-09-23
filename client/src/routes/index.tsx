@@ -4,6 +4,7 @@ import { signupsAreLive, siteConfig } from "../config.ts";
 import { STREAMERS } from "../streaming/streamers.ts";
 import { TwitchStream } from "../streaming/TwitchStream.tsx";
 import { RecentMatches } from "../matches/RecentMatches.tsx";
+import { NextUp } from "../schedule/NextUp.tsx";
 
 export const Route = createFileRoute("/")({
   component: MainView,
@@ -197,6 +198,8 @@ function MainView() {
           </div>
         </div>
       </section>
+
+      <NextUp />
 
       <RecentMatches />
 

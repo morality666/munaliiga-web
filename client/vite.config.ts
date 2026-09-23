@@ -68,6 +68,19 @@ const collectNoteRoutes = (directory: string): string[] => {
   });
 };
 
+const collectTeamRoutes = (directory: string): string[] => {
+  if (!existsSync(directory)) {
+    return [];
+  }
+
+  return [
+    "teams",
+    ...readdirSync(directory)
+      .filter((entry) => entry.endsWith(".md") && entry !== "README.md")
+      .map((entry) => `teams/${fileName(entry)}`),
+  ];
+};
+
 const githubPagesStaticRoutes = (): Plugin => ({
   name: "github-pages-static-routes",
   closeBundle() {
@@ -80,7 +93,13 @@ const githubPagesStaticRoutes = (): Plugin => ({
 
     copyFileSync(indexPath, fallbackPath);
 
-    const routes = new Set(collectNoteRoutes(resolve("notes")).filter(Boolean));
+    const routes = new Set(
+      [
+        ...collectNoteRoutes(resolve("notes")),
+        ...collectTeamRoutes(resolve("notes", "teams")),
+        "schedule",
+      ].filter(Boolean),
+    );
 
     for (const route of routes) {
       const routeDirectory = resolve("dist", route);
