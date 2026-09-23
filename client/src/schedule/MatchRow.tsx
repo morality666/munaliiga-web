@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { matchUrl } from "../matches/matches.ts";
 import { TeamBadge } from "../teams/TeamBadge.tsx";
 import { formatDay, type ScheduledMatch, type TeamRef } from "./schedule.ts";
+import { TwitchMark } from "./TwitchMark.tsx";
 
 type SideProps = {
   align?: "end";
@@ -146,10 +147,12 @@ export function MatchRow({ match }: MatchRowProps) {
             </a>
           ) : match.casters[0] ? (
             <a
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#a95747]"
               href={`https://www.twitch.tv/${match.casters[0]}`}
               rel="noreferrer"
               target="_blank"
             >
+              <TwitchMark />
               {match.casters.join(", ")}
             </a>
           ) : null}
