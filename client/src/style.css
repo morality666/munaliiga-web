@@ -568,7 +568,9 @@ body {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    /* auto-fill, not auto-fit: empty tracks are kept, so one or two teams stay
+       card-sized instead of stretching across the whole row. */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
     gap: 1.15rem;
 }
 
@@ -601,6 +603,39 @@ body {
     height: 0.35rem;
     content: "";
     background: linear-gradient(90deg, #a95747, #dcae47, #789469);
+}
+
+/* Only the cards that are links. Hall of fame renders the same card as a plain
+   article, which must not look clickable. */
+.team-card-link {
+    transition:
+        border-color 130ms cubic-bezier(0.2, 0.7, 0.3, 1),
+        box-shadow 130ms cubic-bezier(0.2, 0.7, 0.3, 1),
+        transform 130ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.team-card-link:hover,
+.team-card-link:focus-visible {
+    border-color: rgba(169, 87, 71, 0.5);
+    /* Deepens as the card shifts, so it lifts off the page rather than sliding. */
+    box-shadow: 6px 7px 0 rgba(169, 87, 71, 0.26);
+    transform: translate(-2px, -2px);
+}
+
+.team-card-link:focus-visible {
+    outline: 2px solid #a94435;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .team-card-link {
+        transition: none;
+    }
+
+    .team-card-link:hover,
+    .team-card-link:focus-visible {
+        transform: none;
+    }
 }
 
 .team-card-header {
@@ -708,6 +743,12 @@ body {
     min-width: 0;
     padding: 0.62rem 0.8rem 0.62rem 1rem;
     background: rgba(255, 252, 244, 0.52);
+}
+
+/* A roster where nobody has a position yet: drop the empty position column so
+   names line up with the team name instead of sitting behind a blank gutter. */
+.roster-list li.roster-row-plain {
+    grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .player-name {

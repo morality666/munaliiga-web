@@ -51,5 +51,22 @@
     "score": "Tapot",
     "updated": "Päivitetty {{date}}",
     "win": "Voitto"
+  },
+  "teams": {
+    "title": "Joukkueet",
+    "intro": "Joukkueet rakennetaan mahdollisimman tasaväkisiksi. Jokaisella on oma valmentaja, jonka opastuksella kausi pelataan.",
+    "empty": "Kauden joukkueet julkaistaan pian.",
+    "allTeams": "Kaikki joukkueet",
+    "coach": "Valmentaja",
+    "captain": "Kapteeni",
+    "roster": "Kokoonpano",
+    "roles": {
+      "carry": "Carry",
+      "mid": "Mid",
+      "offlane": "Off",
+      "softSupport": "Sup 4",
+      "hardSupport": "Sup 5"
+    },
+    "rosterPending": "Kokoonpano julkaistaan pian."
   }
 }

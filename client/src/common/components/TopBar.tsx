@@ -403,6 +403,13 @@ export const TopBar = () => {
             >
               {t("home")}
             </Link>
+            <Link
+              className={pageLinkClass}
+              onClick={closeMenu}
+              to="/teams"
+            >
+              {t("teams.title")}
+            </Link>
             {pages.map(renderPageLink)}
             {communityPages.length > 0 ? (
               <div>

@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SlugRouteImport } from './routes/$slug'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TeamsIndexRouteImport } from './routes/teams.index'
+import { Route as TeamsSlugRouteImport } from './routes/teams.$slug'
 
 const SlugRoute = SlugRouteImport.update({
   id: '/$slug',
@@ -22,31 +24,49 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamsIndexRoute = TeamsIndexRouteImport.update({
+  id: '/teams/',
+  path: '/teams/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamsSlugRoute = TeamsSlugRouteImport.update({
+  id: '/teams/$slug',
+  path: '/teams/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
+  '/teams/$slug': typeof TeamsSlugRoute
+  '/teams/': typeof TeamsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
+  '/teams/$slug': typeof TeamsSlugRoute
+  '/teams': typeof TeamsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
+  '/teams/$slug': typeof TeamsSlugRoute
+  '/teams/': typeof TeamsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$slug'
+  fullPaths: '/' | '/$slug' | '/teams/$slug' | '/teams/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$slug'
-  id: '__root__' | '/' | '/$slug'
+  to: '/' | '/$slug' | '/teams/$slug' | '/teams'
+  id: '__root__' | '/' | '/$slug' | '/teams/$slug' | '/teams/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SlugRoute: typeof SlugRoute
+  TeamsSlugRoute: typeof TeamsSlugRoute
+  TeamsIndexRoute: typeof TeamsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/teams/': {
+      id: '/teams/'
+      path: '/teams'
+      fullPath: '/teams/'
+      preLoaderRoute: typeof TeamsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teams/$slug': {
+      id: '/teams/$slug'
+      path: '/teams/$slug'
+      fullPath: '/teams/$slug'
+      preLoaderRoute: typeof TeamsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SlugRoute: SlugRoute,
+  TeamsSlugRoute: TeamsSlugRoute,
+  TeamsIndexRoute: TeamsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

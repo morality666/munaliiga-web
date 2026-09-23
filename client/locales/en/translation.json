@@ -51,5 +51,22 @@
     "score": "Kills",
     "updated": "Updated {{date}}",
     "win": "Win"
+  },
+  "teams": {
+    "title": "Teams",
+    "intro": "Teams are built to be as evenly matched as possible. Each one has its own coach to guide them through the season.",
+    "empty": "This season's teams will be published soon.",
+    "allTeams": "All teams",
+    "coach": "Coach",
+    "captain": "Captain",
+    "roster": "Roster",
+    "roles": {
+      "carry": "Carry",
+      "mid": "Mid",
+      "offlane": "Off",
+      "softSupport": "Sup 4",
+      "hardSupport": "Sup 5"
+    },
+    "rosterPending": "The roster will be published soon."
   }
 }
