@@ -68,5 +68,19 @@
       "hardSupport": "Sup 5"
     },
     "rosterPending": "The roster will be published soon."
+  },
+  "schedule": {
+    "title": "Match calendar",
+    "navTitle": "Matches",
+    "empty": "No matches have been published for the season yet.",
+    "roundPlayed": "Played",
+    "live": "Live",
+    "versus": "vs",
+    "bestOf": "BO{{count}}",
+    "week": "Week {{week}}",
+    "weekCurrent": "On now",
+    "timeOpen": "Time TBA",
+    "bye": "Bye week",
+    "intro": "Matches are played within their week. The exact time is agreed between the teams, sometimes only on the day."
   }
 }

@@ -406,6 +406,13 @@ export const TopBar = () => {
             <Link
               className={pageLinkClass}
               onClick={closeMenu}
+              to="/schedule"
+            >
+              {t("schedule.navTitle")}
+            </Link>
+            <Link
+              className={pageLinkClass}
+              onClick={closeMenu}
               to="/teams"
             >
               {t("teams.title")}

@@ -68,5 +68,19 @@
       "hardSupport": "Sup 5"
     },
     "rosterPending": "Kokoonpano julkaistaan pian."
+  },
+  "schedule": {
+    "title": "Ottelukalenteri",
+    "navTitle": "Ottelut",
+    "empty": "Kauden otteluita ei ole vielä julkaistu.",
+    "roundPlayed": "Pelattu",
+    "live": "Käynnissä",
+    "versus": "vs",
+    "bestOf": "BO{{count}}",
+    "week": "Viikko {{week}}",
+    "weekCurrent": "Menossa nyt",
+    "timeOpen": "Ajankohta auki",
+    "bye": "Vapaaviikko",
+    "intro": "Ottelut pelataan viikon sisällä. Tarkka ajankohta sovitaan joukkueiden kesken, joskus vasta pelipäivänä."
   }
 }

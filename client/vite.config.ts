@@ -97,6 +97,7 @@ const githubPagesStaticRoutes = (): Plugin => ({
       [
         ...collectNoteRoutes(resolve("notes")),
         ...collectTeamRoutes(resolve("notes", "teams")),
+        "schedule",
       ].filter(Boolean),
     );
 
