@@ -5,6 +5,7 @@
 .idea/
 .agents/
 .codex/
+.claude/
 
 # Operating-system files
 .DS_Store
