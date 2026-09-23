@@ -2,6 +2,7 @@
 name: Asiakaspalautukset
 tag: ASI
 color: "#7a5f8c"
+logo: asiakaspalautukset.png
 season: 3
 coach: Telias
 captain:

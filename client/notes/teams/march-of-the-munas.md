@@ -2,6 +2,7 @@
 name: March of the Munas
 tag: MOM
 color: "#a95747"
+logo: march-of-the-munas.jpg
 season: 3
 coach: HKNST
 captain:

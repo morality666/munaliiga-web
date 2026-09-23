@@ -2,6 +2,7 @@
 name: Red Mango Devils
 tag: RMD
 color: "#a03a3a"
+logo: red-mango-devils.jpg
 season: 3
 coach: Lukkio
 captain:
