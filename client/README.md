@@ -21,7 +21,9 @@ uncommitted `.env.local` only when you need local overrides.
 | `VITE_SEASON_NUMBER` | Season shown beside the language controls |
 | `VITE_SIGNUPS_OPEN` | Optional `true`/`false` override for registration status |
 | `VITE_SIGNUP_OPENS_AT` | ISO date and time for automatic opening when no override is set |
+| `VITE_SIGNUP_CLOSES_AT` | ISO date and time the season gets underway; after it the off-season form replaces the signup links |
 | `VITE_SIGNUP_URL` | Registration form |
+| `VITE_OFFSEASON_FORM_URL_FI` / `VITE_OFFSEASON_FORM_URL_EN` | Off-season interest forms for the next season, per language |
 | `VITE_TWITCH_CHANNELS` | Comma-separated caster channels; `morality666` is always checked first |
 
 The application reads these values through `src/config.ts`. All `VITE_`

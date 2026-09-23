@@ -3,7 +3,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { signupsAreLive, siteConfig } from "../../config.ts";
+import { getOffseasonUrl, signupStatus, siteConfig } from "../../config.ts";
 import { getObsidianNotes } from "../../obsidian/notes.ts";
 import { useStreamStatus } from "../../streaming/StreamStatus.tsx";
 
@@ -276,7 +276,17 @@ export const TopBar = () => {
     </Link>
   );
 
-  const signupStatus = (
+  const signupStatusText = {
+    closed: { full: "signupsClosed", short: "signupsClosedShort" },
+    open: { full: "signupsLive", short: "signupsLiveShort" },
+    soon: { full: "signupsSoon", short: "signupsSoonShort" },
+  }[signupStatus];
+  const signupStatusHref = {
+    closed: getOffseasonUrl(activeLanguage),
+    open: siteConfig.signup.url,
+    soon: "",
+  }[signupStatus];
+  const signupStatusBadge = (
     <span
       aria-hidden
       className="flex flex-col items-end text-right font-mono text-[8px] font-bold uppercase leading-[9px] tracking-wide"
@@ -289,19 +299,23 @@ export const TopBar = () => {
           {t("seasonShort", { season: siteConfig.signup.season })}
         </span>
       </span>
-      <span className={signupsAreLive ? "text-[#dcae47]" : "text-stone-400"}>
-        <span className="hidden sm:inline">
-          {t(signupsAreLive ? "signupsLive" : "signupsSoon")}
-        </span>
-        <span className="sm:hidden">
-          {t(signupsAreLive ? "signupsLiveShort" : "signupsSoonShort")}
-        </span>
+      <span
+        className={
+          signupStatus === "soon" ? "text-stone-400" : "text-[#dcae47]"
+        }
+      >
+        <span className="hidden sm:inline">{t(signupStatusText.full)}</span>
+        <span className="sm:hidden">{t(signupStatusText.short)}</span>
       </span>
     </span>
   );
+  const signupStatusTitle =
+    signupStatus === "closed"
+      ? t("landing.joinBodyClosed")
+      : t(signupStatusText.full);
   const signupStatusLabel = `${t("season", {
     season: siteConfig.signup.season,
-  })}. ${t(signupsAreLive ? "signupsLive" : "signupsSoon")}`;
+  })}. ${signupStatusTitle}`;
   const signupStatusWrapperClass =
     "hidden min-[340px]:inline-flex shrink-0 items-center text-right leading-none";
 
@@ -335,25 +349,29 @@ export const TopBar = () => {
         </div>
         <div className="flex min-w-0 items-center justify-self-end">
           <div className="mr-1 flex shrink-0 items-center justify-end gap-1 sm:mr-2 sm:gap-1.5">
-            {signupsAreLive ? (
+            {signupStatusHref ? (
               <a
                 aria-label={signupStatusLabel}
                 className={signupStatusWrapperClass}
-                href={siteConfig.signup.url}
+                href={signupStatusHref}
                 rel="noreferrer"
                 target="_blank"
-                title={t("signupsLive")}
+                title={signupStatusTitle}
               >
-                {signupStatus}
+                {signupStatusBadge}
               </a>
             ) : (
               <span
                 aria-label={signupStatusLabel}
                 className={signupStatusWrapperClass}
                 role="status"
-                title={siteConfig.signup.opensAt ?? undefined}
+                title={
+                  signupStatus === "soon"
+                    ? (siteConfig.signup.opensAt ?? undefined)
+                    : signupStatusTitle
+                }
               >
-                {signupStatus}
+                {signupStatusBadge}
               </span>
             )}
             <div className={languageToggleClass}>
