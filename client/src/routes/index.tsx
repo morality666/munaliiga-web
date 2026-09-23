@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { signupsAreLive, siteConfig } from "../config.ts";
+import { getOffseasonUrl, signupStatus, siteConfig } from "../config.ts";
 import { STREAMERS } from "../streaming/streamers.ts";
 import { TwitchStream } from "../streaming/TwitchStream.tsx";
 import { RecentMatches } from "../matches/RecentMatches.tsx";
@@ -16,17 +16,26 @@ const TWITCH_CHANNEL =
 
 // eslint-disable-next-line react-refresh/only-export-components
 function MainView() {
-  const { t } = useTranslation();
-  const signupLinks = [
-    {
-      href: siteConfig.signup.playerUrl,
-      label: t("landing.playerSignUp"),
-    },
-    {
-      href: siteConfig.signup.coachUrl,
-      label: t("landing.coachSignUp"),
-    },
-  ].filter((link) => link.href);
+  const { i18n, t } = useTranslation();
+  const signupLinks = (
+    signupStatus === "closed"
+      ? [
+          {
+            href: getOffseasonUrl(i18n.resolvedLanguage ?? i18n.language),
+            label: t("landing.offseasonSignUp"),
+          },
+        ]
+      : [
+          {
+            href: siteConfig.signup.playerUrl,
+            label: t("landing.playerSignUp"),
+          },
+          {
+            href: siteConfig.signup.coachUrl,
+            label: t("landing.coachSignUp"),
+          },
+        ]
+  ).filter((link) => link.href);
 
   return (
     <main className="paper-bands paper-field overflow-hidden bg-[#e8e0ce] text-[#1c1d19]">
@@ -49,7 +58,7 @@ function MainView() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm font-bold">
-              {signupsAreLive ? (
+              {signupStatus !== "soon" ? (
                 signupLinks.map((link) => (
                   <a
                     className="border-b border-[#dcae47] pb-1 text-[#f1eadc] hover:text-[#dcae47]"
@@ -134,10 +143,14 @@ function MainView() {
               {t("landing.joinTitle")}
             </h2>
             <p className="mt-3 leading-7 text-stone-700">
-              {t("landing.joinBody")}
+              {t(
+                signupStatus === "closed"
+                  ? "landing.joinBodyClosed"
+                  : "landing.joinBody",
+              )}
             </p>
             <div className="mt-5 flex flex-wrap gap-5 text-sm font-bold">
-              {signupsAreLive ? (
+              {signupStatus !== "soon" ? (
                 signupLinks.map((link) => (
                   <a
                     className="border-b border-stone-700 pb-0.5"
