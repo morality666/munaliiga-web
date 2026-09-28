@@ -89,6 +89,8 @@
     "week": "Viikko {{week}}",
     "weekCurrent": "Menossa nyt",
     "timeOpen": "Ajankohta auki",
+    "postponed": "Siirretty",
+    "cancelled": "Peruttu",
     "bye": "Vapaaviikko",
     "intro": "Ottelut pelataan viikon sisällä. Tarkka ajankohta sovitaan joukkueiden kesken, joskus vasta pelipäivänä."
   }

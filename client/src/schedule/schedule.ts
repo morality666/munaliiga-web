@@ -185,6 +185,7 @@ const WEEKS: Map<string, { bye: TeamRef[]; ends: string; starts: string }> =
 /**
  * A fixture whose time is not agreed yet is past once its week has ended —
  * there is no kickoff to compare against, only the window it belonged to.
+ * A postponed one is never past: it is still to be played, whenever that is.
  */
 const toMatch = (
   row: Record<string, string | undefined>,
@@ -216,9 +217,11 @@ const toMatch = (
     date,
     home: homeRef,
     isDated,
-    isPast: isDated
-      ? `${date} ${time || "23:59"}` < NOW
-      : Boolean(weekEnd) && weekEnd < TODAY,
+    isPast:
+      status !== "postponed" &&
+      (isDated
+        ? `${date} ${time || "23:59"}` < NOW
+        : Boolean(weekEnd) && weekEnd < TODAY),
     key: `${week}-${home}-${away}-${date}`,
     note: cell(row, "note"),
     result: resultFor(matchIds, homeRef, awayRef),
@@ -264,7 +267,11 @@ const buildWeek = (week: string): ScheduleWeek => {
     bye: meta?.bye ?? [],
     ends,
     isCurrent: Boolean(starts && ends) && starts <= TODAY && TODAY <= ends,
-    isPast: ends ? ends < TODAY : matches.every((match) => match.isPast),
+    // Only past once nothing is left to play, so a postponed match keeps its
+    // week open until it has been played.
+    isPast:
+      (!ends || ends < TODAY) &&
+      matches.every((match) => match.isPast || match.status === "cancelled"),
     matches,
     starts,
     week,
@@ -272,8 +279,9 @@ const buildWeek = (week: string): ScheduleWeek => {
 };
 
 /**
- * Current and upcoming weeks in playing order, then finished weeks newest
- * first — so the week being played sits at the top of the page.
+ * Weeks with matches still to come in playing order, then finished weeks
+ * newest first — so the week being played sits at the top of the page, after
+ * any earlier week still waiting on a postponed match.
  */
 export const SCHEDULE_WEEKS: ScheduleWeek[] = [
   ...new Set([...WEEKS.keys(), ...ALL_MATCHES.map((match) => match.week)]),
