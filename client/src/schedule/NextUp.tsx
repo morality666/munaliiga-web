@@ -56,7 +56,7 @@ function NextUpCard({ match }: { match: ScheduledMatch }) {
   return (
     <article
       className={clsx(
-        "overflow-hidden rounded-md border",
+        "flex flex-col overflow-hidden rounded-md border",
         isLive
           ? "border-[#a95747]/60 bg-[linear-gradient(135deg,rgba(220,174,71,0.22),transparent_46%)] bg-[#f1eadc] shadow-[6px_7px_0_rgba(169,87,71,0.32)]"
           : "border-stone-900/22 bg-[linear-gradient(180deg,rgba(255,252,244,0.7),rgba(255,252,244,0))] bg-[#eee7d7] shadow-[4px_5px_0_rgba(28,29,25,0.11)]",
@@ -110,7 +110,7 @@ function NextUpCard({ match }: { match: ScheduledMatch }) {
         <CardSide side={match.away} />
       </div>
 
-      <div className="border-t border-stone-900/13 bg-stone-900/4 px-3.5 py-2.5">
+      <div className="mt-auto border-t border-stone-900/13 bg-stone-900/4 px-3.5 py-2.5">
         {match.casters[0] ? (
           <a
             className={clsx(
@@ -125,7 +125,7 @@ function NextUpCard({ match }: { match: ScheduledMatch }) {
             {match.casters.join(", ")}
           </a>
         ) : (
-          <span className="font-mono text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#7a6f5a]">
+          <span className="flex items-center font-mono text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#7a6f5a]">
             {t("schedule.casterOpen")}
           </span>
         )}
