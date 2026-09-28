@@ -34,8 +34,8 @@ Add a row to `season-3.csv`:
 
 ```
 week,home,away,date,time,bestOf,casters,status,matchIds,note
-1,where-halo-lobby,perhanan-perunat,,,,morality666,,,
-1,march-of-the-munas,muffalonit,2026-10-02,19:00,3,morality666,,,
+1,where-halo-lobby,perhanan-perunat,,,2,morality666,,,
+1,march-of-the-munas,muffalonit,2026-10-02,19:00,2,morality666,,,
 ```
 
 | Column | Required | Meaning |
@@ -45,7 +45,7 @@ week,home,away,date,time,bestOf,casters,status,matchIds,note
 | `away` | yes | The same for the other team. |
 | `date` | no | `2026-10-02`. While empty, the calendar says "Time TBA" and the homepage shows the week's dates. |
 | `time` | no | Finnish local time, `19:00`. Daylight saving is handled for you. |
-| `bestOf` | no | `1`, `3` or `5`. |
+| `bestOf` | no | `2` — league matches are best of two. Another number, such as `3`, only for a match played differently. |
 | `casters` | no | Casters' Twitch names, several separated by a semicolon: `morality666;niumi`. |
 | `status` | no | Empty means upcoming. Otherwise `live`, `postponed` or `cancelled`. |
 | `matchIds` | no | Dota match ids once played, several separated by a semicolon. These pull in the result. |
