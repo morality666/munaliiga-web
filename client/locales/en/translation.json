@@ -89,6 +89,8 @@
     "week": "Week {{week}}",
     "weekCurrent": "On now",
     "timeOpen": "Time TBA",
+    "postponed": "Postponed",
+    "cancelled": "Cancelled",
     "bye": "Bye week",
     "intro": "Matches are played within their week. The exact time is agreed between the teams, sometimes only on the day."
   }

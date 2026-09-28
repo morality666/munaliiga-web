@@ -31,7 +31,7 @@ function Side({ align, dimmed, side, won }: SideProps) {
     <span
       className={clsx(
         "min-w-0 truncate text-[0.95rem] font-extrabold",
-        dimmed && "text-[#6b624f] line-through decoration-stone-900/35",
+        dimmed && "text-[#6b624f]",
       )}
     >
       {side.team ? (
@@ -102,6 +102,12 @@ export function MatchRow({ match }: MatchRowProps) {
               <span className="h-[7px] w-[7px] rounded-full bg-[#a94435]" />
               {t("schedule.live")}
             </>
+          ) : isOff ? (
+            t(
+              match.status === "postponed"
+                ? "schedule.postponed"
+                : "schedule.cancelled",
+            )
           ) : match.isDated ? (
             `${formatDay(match.date, language)} ${match.time}`.trim()
           ) : (

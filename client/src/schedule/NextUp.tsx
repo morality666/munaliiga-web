@@ -49,6 +49,7 @@ function NextUpCard({ match }: { match: ScheduledMatch }) {
   const { i18n, t } = useTranslation();
   const language = i18n.resolvedLanguage ?? i18n.language;
   const isLive = match.status === "live";
+  const isPostponed = match.status === "postponed";
   const week = SCHEDULE_WEEKS.find((entry) => entry.week === match.week);
   // Until a kickoff is agreed, the week's date range is the best "when" there is.
   const weekSpan = week ? formatWeekSpan(week, language) : "";
@@ -59,7 +60,9 @@ function NextUpCard({ match }: { match: ScheduledMatch }) {
         "flex flex-col overflow-hidden rounded-md border",
         isLive
           ? "border-[#a95747]/60 bg-[linear-gradient(135deg,rgba(220,174,71,0.22),transparent_46%)] bg-[#f1eadc] shadow-[6px_7px_0_rgba(169,87,71,0.32)]"
-          : "border-stone-900/22 bg-[linear-gradient(180deg,rgba(255,252,244,0.7),rgba(255,252,244,0))] bg-[#eee7d7] shadow-[4px_5px_0_rgba(28,29,25,0.11)]",
+          : isPostponed
+            ? "border-stone-900/22 bg-[repeating-linear-gradient(135deg,rgba(28,29,25,0.05)_0_8px,transparent_8px_16px)] bg-[#eae2d0] shadow-[3px_4px_0_rgba(28,29,25,0.09)]"
+            : "border-stone-900/22 bg-[linear-gradient(180deg,rgba(255,252,244,0.7),rgba(255,252,244,0))] bg-[#eee7d7] shadow-[4px_5px_0_rgba(28,29,25,0.11)]",
       )}
     >
       {isLive ? (
@@ -78,6 +81,8 @@ function NextUpCard({ match }: { match: ScheduledMatch }) {
               <span className="h-[7px] w-[7px] rounded-full bg-[#a94435]" />
               {t("schedule.live")}
             </>
+          ) : isPostponed ? (
+            t("schedule.postponed")
           ) : match.isDated ? (
             [formatDay(match.date, language), match.time]
               .filter(Boolean)

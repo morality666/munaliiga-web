@@ -55,6 +55,15 @@ week,home,away,date,time,bestOf,casters,status,matchIds,note
 
 Fill in `date` and `time` on that row. Nothing else changes.
 
+## When a match is postponed
+
+Set `status` to `postponed`, even if the new time is not known yet. The
+calendar and the homepage mark the match as postponed, and its week stays at
+the top of the calendar until the match has been played.
+
+When the new time is agreed, fill in `date` and `time` and empty `status`.
+Leave `week` as it is, even if the new date falls in a later week.
+
 ## When the match has been played
 
 Paste the Dota match ids into `matchIds`. The series score is worked out for
