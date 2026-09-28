@@ -137,15 +137,7 @@ export function MatchRow({ match }: MatchRowProps) {
             </span>
           ) : null}
 
-          {result?.games[0] ? (
-            <a
-              href={matchUrl(result.games[0].matchId)}
-              rel="noreferrer"
-              target="_blank"
-            >
-              Dotabuff →
-            </a>
-          ) : match.casters[0] ? (
+          {match.casters[0] ? (
             <a
               className="inline-flex items-center gap-1.5 transition-colors hover:text-[#a95747]"
               href={`https://www.twitch.tv/${match.casters[0]}`}
@@ -154,6 +146,18 @@ export function MatchRow({ match }: MatchRowProps) {
             >
               <TwitchMark />
               {match.casters.join(", ")}
+            </a>
+          ) : (
+            <span className="text-[#8a8071]">{t("schedule.casterOpen")}</span>
+          )}
+
+          {result?.games[0] ? (
+            <a
+              href={matchUrl(result.games[0].matchId)}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Dotabuff →
             </a>
           ) : null}
         </span>
