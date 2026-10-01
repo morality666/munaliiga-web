@@ -6,13 +6,15 @@ import {
   useMemo,
   useState,
 } from "react";
-import { STREAMERS, STREAMER_CHECK_ORDER } from "./streamers.ts";
 
 type StreamStatusContextValue = {
+  /** The channel in the homepage player, or null until the player has picked one. */
+  activeChannel: string | null;
   featuredChannel: string | null;
   isLive: boolean;
   liveChannels: string[];
   reportChannelStatus: (channel: string, isLive: boolean) => void;
+  setActiveChannel: (channel: string) => void;
 };
 
 const StreamStatusContext = createContext<StreamStatusContextValue | null>(null);
@@ -21,6 +23,7 @@ export function StreamStatusProvider({ children }: { children: ReactNode }) {
   const [channelStatus, setChannelStatus] = useState<Record<string, boolean>>(
     {},
   );
+  const [activeChannel, setActiveChannel] = useState<string | null>(null);
 
   const reportChannelStatus = useCallback(
     (channel: string, isLive: boolean) => {
@@ -35,27 +38,27 @@ export function StreamStatusProvider({ children }: { children: ReactNode }) {
     [],
   );
 
-  const liveChannels = useMemo(
-    () =>
-      STREAMERS.filter((streamer) => channelStatus[streamer.channel]).map(
-        (streamer) => streamer.channel,
-      ),
-    [channelStatus],
-  );
+  // The player's channel leads, so the top bar names the stream being shown.
+  const liveChannels = useMemo(() => {
+    const live = Object.keys(channelStatus).filter(
+      (channel) => channelStatus[channel],
+    );
 
-  const featuredChannel =
-    STREAMER_CHECK_ORDER.find((streamer) =>
-      liveChannels.includes(streamer.channel),
-    )?.channel ?? null;
+    return activeChannel && live.includes(activeChannel)
+      ? [activeChannel, ...live.filter((channel) => channel !== activeChannel)]
+      : live;
+  }, [activeChannel, channelStatus]);
 
   const value = useMemo(
     () => ({
-      featuredChannel,
+      activeChannel,
+      featuredChannel: liveChannels[0] ?? null,
       isLive: liveChannels.length > 0,
       liveChannels,
       reportChannelStatus,
+      setActiveChannel,
     }),
-    [featuredChannel, liveChannels, reportChannelStatus],
+    [activeChannel, liveChannels, reportChannelStatus],
   );
 
   return (
