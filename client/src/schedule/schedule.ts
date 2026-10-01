@@ -64,27 +64,25 @@ export type ScheduleWeek = {
 
 const TIME_ZONE = "Europe/Helsinki";
 
+const helsinkiFormat = new Intl.DateTimeFormat("sv-SE", {
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  month: "2-digit",
+  timeZone: TIME_ZONE,
+  year: "numeric",
+});
+
 /**
- * "now" and "today" as Helsinki wall clock, in the same shape the CSV uses.
- * Comparing those as strings avoids turning stored local times into instants,
- * and so avoids getting the October clock change wrong.
+ * A moment as Helsinki wall clock, in the same shape the CSV uses. Comparing
+ * those as strings avoids turning stored local times into instants, and so
+ * avoids getting the October clock change wrong.
  */
-const helsinkiNow = () => {
-  const stamp = new Intl.DateTimeFormat("sv-SE", {
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    month: "2-digit",
-    timeZone: TIME_ZONE,
-    year: "numeric",
-  })
-    .format(new Date())
-    .replace(",", "");
+const helsinkiClock = (moment: number) =>
+  helsinkiFormat.format(new Date(moment)).replace(",", "");
 
-  return { now: stamp, today: stamp.slice(0, 10) };
-};
-
-const { now: NOW, today: TODAY } = helsinkiNow();
+const NOW = helsinkiClock(Date.now());
+const TODAY = NOW.slice(0, 10);
 
 const cell = (row: Record<string, string | undefined>, key: string) =>
   (row[key] ?? "").trim();
@@ -314,6 +312,50 @@ export const UPCOMING = SCHEDULE_WEEKS.filter((week) => !week.isPast)
   });
 
 export const CURRENT_WEEK = SCHEDULE_WEEKS.find((week) => week.isCurrent);
+
+const MINUTE = 60_000;
+
+/**
+ * Casters of the match being played now, for the homepage stream. A match is
+ * on air from half an hour before kickoff until an hour per game plus one
+ * more after it, and for as long as it is marked live. Read on every call
+ * rather than at load, so a page left open moves on to the next match.
+ * Shifting now, not the kickoff, keeps the comparison in wall clock.
+ */
+export const onAirCasters = () => {
+  const moment = Date.now();
+  const opensBy = helsinkiClock(moment + 30 * MINUTE);
+  const isOnAir = (match: ScheduledMatch) => {
+    if (match.status === "live") {
+      return true;
+    }
+
+    if (match.status !== "scheduled" || !match.date || !match.time) {
+      return false;
+    }
+
+    const kickoff = `${match.date} ${match.time}`;
+    const hours = (match.bestOf ?? 2) + 1;
+
+    return (
+      kickoff <= opensBy &&
+      helsinkiClock(moment - hours * 60 * MINUTE) <= kickoff
+    );
+  };
+
+  return [
+    ...new Set(
+      SCHEDULE.filter(isOnAir)
+        .sort(
+          (first, second) =>
+            Number(second.status === "live") - Number(first.status === "live"),
+        )
+        .flatMap((match) =>
+          match.casters.map((caster) => caster.toLowerCase()),
+        ),
+    ),
+  ];
+};
 
 export const formatDay = (date: string, language: string) => {
   const [year, month, day] = date.split("-").map(Number);

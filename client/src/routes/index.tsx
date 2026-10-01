@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { getOffseasonUrl, signupStatus, siteConfig } from "../config.ts";
+import { useStreamStatus } from "../streaming/StreamStatus.tsx";
 import { STREAMERS } from "../streaming/streamers.ts";
 import { TwitchStream } from "../streaming/TwitchStream.tsx";
 import { RecentMatches } from "../matches/RecentMatches.tsx";
@@ -17,6 +18,7 @@ const TWITCH_CHANNEL =
 // eslint-disable-next-line react-refresh/only-export-components
 function MainView() {
   const { i18n, t } = useTranslation();
+  const twitchChannel = useStreamStatus().activeChannel ?? TWITCH_CHANNEL;
   const signupLinks = (
     signupStatus === "closed"
       ? [
@@ -194,11 +196,11 @@ function MainView() {
               {t("landing.liveTitle")}
             </h2>
             <p className="mt-4 max-w-sm leading-7 text-stone-700">
-              {t("landing.liveBody", { channel: TWITCH_CHANNEL })}
+              {t("landing.liveBody", { channel: twitchChannel })}
             </p>
             <a
               className="mt-5 inline-block border-b border-stone-500 pb-1 text-sm font-bold hover:border-stone-950"
-              href={`https://www.twitch.tv/${TWITCH_CHANNEL}`}
+              href={`https://www.twitch.tv/${twitchChannel}`}
               rel="noreferrer"
               target="_blank"
             >

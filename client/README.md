@@ -24,7 +24,7 @@ uncommitted `.env.local` only when you need local overrides.
 | `VITE_SIGNUP_CLOSES_AT` | ISO date and time the season gets underway; after it the off-season form replaces the signup links |
 | `VITE_SIGNUP_URL` | Registration form |
 | `VITE_OFFSEASON_FORM_URL_FI` / `VITE_OFFSEASON_FORM_URL_EN` | Off-season interest forms for the next season, per language |
-| `VITE_TWITCH_CHANNELS` | Comma-separated caster channels; `morality666` is always checked first |
+| `VITE_TWITCH_CHANNELS` | Comma-separated caster channels the homepage stream always offers; `morality666` is checked first, except while a match is on and its casters from the schedule come first |
 
 The application reads these values through `src/config.ts`. All `VITE_`
 variables are bundled into the public site, so they must never contain secrets.

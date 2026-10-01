@@ -55,6 +55,21 @@ week,home,away,date,time,bestOf,casters,status,matchIds,note
 
 Fill in `date` and `time` on that row. Nothing else changes.
 
+## Casters and the homepage stream
+
+The homepage stream follows the `casters` column. While a match is on, its
+casters are tried first, in the order written, and they get their own buttons
+under the stream. A match counts as on from 30 minutes before `time` until
+an hour per game plus one more after it — three hours for a best of two — and
+for as long as `status` is `live`.
+
+So a match needs `date`, `time` and `casters` for the stream to switch by
+itself. If the time is not filled in, or the match runs late, set `status` to
+`live` while it is played and empty it afterwards.
+
+When no match is on, the stream shows `morality666`, then the channels listed
+in `VITE_TWITCH_CHANNELS` in `client/.env.production`.
+
 ## When a match is postponed
 
 Set `status` to `postponed`, even if the new time is not known yet. The
