@@ -297,11 +297,16 @@ export const SCHEDULE_WEEKS: ScheduleWeek[] = [
 
 export const SCHEDULE = [...ALL_MATCHES].sort(byKickoff);
 
+/**
+ * The homepage's next matches. Postponed and cancelled ones are left to the
+ * calendar: a postponed match returns here once its status is emptied.
+ */
 export const UPCOMING = SCHEDULE_WEEKS.filter((week) => !week.isPast)
   .flatMap((week) => week.matches)
   .filter(
     (match) =>
-      match.status !== "cancelled" && (!match.isPast || match.status === "live"),
+      match.status === "live" ||
+      (match.status === "scheduled" && !match.isPast),
   )
   .sort((first, second) => {
     if ((first.status === "live") !== (second.status === "live")) {
