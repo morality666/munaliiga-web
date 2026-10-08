@@ -109,6 +109,114 @@
       "radiantScore": 8,
       "radiantWin": false,
       "startTime": 1791386968
+    },
+    {
+      "direName": "March of the Munas",
+      "direPicks": [
+        {
+          "localizedName": "Sand King",
+          "name": "sand_king"
+        },
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        }
+      ],
+      "direScore": 43,
+      "durationSeconds": 2829,
+      "matchId": 9024725644,
+      "radiantName": "Muffalonit",
+      "radiantPicks": [
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Ursa",
+          "name": "ursa"
+        }
+      ],
+      "radiantScore": 18,
+      "radiantWin": false,
+      "startTime": 1790872200
+    },
+    {
+      "direName": "Muffalonit",
+      "direPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Night Stalker",
+          "name": "night_stalker"
+        },
+        {
+          "localizedName": "Drow Ranger",
+          "name": "drow_ranger"
+        }
+      ],
+      "direScore": 16,
+      "durationSeconds": 2637,
+      "matchId": 9024616967,
+      "radiantName": "March of the Munas",
+      "radiantPicks": [
+        {
+          "localizedName": "Techies",
+          "name": "techies"
+        },
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        },
+        {
+          "localizedName": "Clinkz",
+          "name": "clinkz"
+        }
+      ],
+      "radiantScore": 34,
+      "radiantWin": true,
+      "startTime": 1790868600
     }
   ],
   "updatedAt": "2026-10-08T09:09:33Z"
