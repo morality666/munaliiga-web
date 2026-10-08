@@ -1,6 +1,115 @@
 {
-  "leagueId": 666,
+  "leagueId": 20078,
   "leagueName": "Munaliiga Season 3",
-  "matches": [],
-  "updatedAt": ""
+  "matches": [
+    {
+      "direName": "Asiakaspalautukset",
+      "direPicks": [
+        {
+          "localizedName": "Winter Wyvern",
+          "name": "winter_wyvern"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Luna",
+          "name": "luna"
+        },
+        {
+          "localizedName": "Shadow Fiend",
+          "name": "nevermore"
+        }
+      ],
+      "direScore": 25,
+      "durationSeconds": 2079,
+      "matchId": 9033765098,
+      "radiantName": "March of the Munas",
+      "radiantPicks": [
+        {
+          "localizedName": "Ogre Magi",
+          "name": "ogre_magi"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Bloodseeker",
+          "name": "bloodseeker"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        }
+      ],
+      "radiantScore": 38,
+      "radiantWin": true,
+      "startTime": 1791390334
+    },
+    {
+      "direName": "March of the Munas",
+      "direPicks": [
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        }
+      ],
+      "direScore": 33,
+      "durationSeconds": 1806,
+      "matchId": 9033673951,
+      "radiantName": "Asiakaspalautukset",
+      "radiantPicks": [
+        {
+          "localizedName": "Shadow Fiend",
+          "name": "nevermore"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Juggernaut",
+          "name": "juggernaut"
+        }
+      ],
+      "radiantScore": 8,
+      "radiantWin": false,
+      "startTime": 1791386968
+    }
+  ],
+  "updatedAt": "2026-10-08T09:09:33Z"
 }
