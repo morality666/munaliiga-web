@@ -79,7 +79,6 @@
     "title": "Match calendar",
     "navTitle": "Matches",
     "empty": "No matches have been published for the season yet.",
-    "roundPlayed": "Played",
     "live": "Live",
     "versus": "vs",
     "bestOf": "BO{{count}}",
