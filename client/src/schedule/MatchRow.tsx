@@ -1,7 +1,8 @@
 import clsx from "clsx";
+import { useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { matchUrl } from "../matches/matches.ts";
+import { MatchCard } from "../matches/MatchCard.tsx";
 import { TeamBadge } from "../teams/TeamBadge.tsx";
 import { formatDay, type ScheduledMatch, type TeamRef } from "./schedule.ts";
 import { TwitchMark } from "./TwitchMark.tsx";
@@ -36,7 +37,7 @@ function Side({ align, dimmed, side, won }: SideProps) {
     >
       {side.team ? (
         <Link
-          className="underline-offset-2 hover:underline"
+          className="relative z-[1] underline-offset-2 hover:underline"
           params={{ slug: side.slug }}
           to="/teams/$slug"
         >
@@ -77,11 +78,19 @@ export function MatchRow({ match }: MatchRowProps) {
   const isLive = match.status === "live";
   const isOff = match.status === "postponed" || match.status === "cancelled";
   const { result } = match;
+  const [isOpen, setIsOpen] = useState(false);
+  const panelId = useId();
+  // Game 1 first, whatever order matches.json keeps them in.
+  const games = [...(result?.games ?? [])].sort(
+    (first, second) => first.startTime - second.startTime,
+  );
+  const hasGames = games.length > 0;
 
   return (
     <div
       className={clsx(
-        "rounded-md border px-4 py-3",
+        "rounded-md border transition-colors",
+        hasGames && "focus-within:border-[#a95747] hover:border-[#a95747]",
         isLive &&
           "border-[#a95747]/60 border-l-[5px] border-l-[#a94435] bg-[linear-gradient(135deg,rgba(220,174,71,0.2),transparent_40%)] bg-[#f1eadc] shadow-[6px_7px_0_rgba(169,87,71,0.3)]",
         isOff &&
@@ -90,7 +99,7 @@ export function MatchRow({ match }: MatchRowProps) {
         !isLive && !isOff && !result && "border-stone-900/22 bg-[#eee7d7] shadow-[4px_5px_0_rgba(28,29,25,0.11)]",
       )}
     >
-      <div className="flex flex-col gap-2.5 md:grid md:grid-cols-[6.5rem_minmax(0,1fr)_auto_minmax(0,1fr)_6.5rem] md:items-center md:gap-3.5 lg:grid-cols-[11rem_minmax(0,1fr)_auto_minmax(0,1fr)_11rem]">
+      <div className="group relative flex flex-col gap-2.5 px-4 py-3 md:grid md:grid-cols-[6.5rem_minmax(0,1fr)_auto_minmax(0,1fr)_6.5rem] md:items-center md:gap-3.5 lg:grid-cols-[11rem_minmax(0,1fr)_auto_minmax(0,1fr)_11rem]">
         <span
           className={clsx(
             "flex shrink-0 items-center gap-1.5 font-mono text-[0.68rem] font-black uppercase tracking-[0.14em]",
@@ -145,7 +154,7 @@ export function MatchRow({ match }: MatchRowProps) {
 
           {match.casters[0] ? (
             <a
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-[#a95747]"
+              className="relative z-[1] inline-flex items-center gap-1.5 transition-colors hover:text-[#a95747]"
               href={`https://www.twitch.tv/${match.casters[0]}`}
               rel="noreferrer"
               target="_blank"
@@ -157,17 +166,46 @@ export function MatchRow({ match }: MatchRowProps) {
             <span className="text-[#8a8071]">{t("schedule.casterOpen")}</span>
           )}
 
-          {result?.games[0] ? (
-            <a
-              href={matchUrl(result.games[0].matchId)}
-              rel="noreferrer"
-              target="_blank"
+          {hasGames ? (
+            // Stretched over the whole row, so clicking anywhere on it opens the games.
+            <button
+              aria-controls={panelId}
+              aria-expanded={isOpen}
+              aria-label={t("schedule.gamesLabel", {
+                away: match.away.name,
+                home: match.home.name,
+              })}
+              className="inline-flex cursor-pointer items-center gap-1 uppercase transition-colors after:absolute after:inset-0 group-hover:text-[#a95747]"
+              onClick={() => setIsOpen((open) => !open)}
+              type="button"
             >
-              Dotabuff →
-            </a>
+              {t("schedule.games")}
+              <span
+                aria-hidden
+                className={clsx("transition-transform", isOpen && "rotate-180")}
+              >
+                ▾
+              </span>
+            </button>
           ) : null}
         </span>
       </div>
+
+      {hasGames ? (
+        <div
+          className="border-t border-stone-900/15 px-4 pb-4 pt-3"
+          hidden={!isOpen}
+          id={panelId}
+        >
+          <ol className="grid gap-3">
+            {games.map((game) => (
+              <li key={game.matchId}>
+                <MatchCard language={language} match={game} />
+              </li>
+            ))}
+          </ol>
+        </div>
+      ) : null}
     </div>
   );
 }

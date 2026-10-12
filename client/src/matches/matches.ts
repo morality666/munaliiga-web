@@ -33,12 +33,15 @@ export const RECENT_MATCHES = [...LEAGUE_MATCH_DATA.matches]
   .sort((first, second) => second.startTime - first.startTime)
   .slice(0, RECENT_MATCH_LIMIT);
 
+/** Finnish time for every viewer, matching the kickoff times on the schedule. */
+const TIME_ZONE = "Europe/Helsinki";
+
 export const formatMatchDate = (startTime: number, language: string) => {
   const locale = language.startsWith("fi") ? "fi" : "en-GB";
   const playedAt = new Date(startTime * 1000);
 
-  const date = playedAt.toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric" });
-  const time = playedAt.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
+  const date = playedAt.toLocaleDateString(locale, { day: "numeric", month: "short", timeZone: TIME_ZONE, year: "numeric" });
+  const time = playedAt.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit", timeZone: TIME_ZONE });
 
   return `${date}, ${time}`;
 };

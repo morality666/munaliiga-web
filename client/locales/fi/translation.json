@@ -88,6 +88,8 @@
     "week": "Viikko {{week}}",
     "weekCurrent": "Menossa nyt",
     "timeOpen": "Ajankohta auki",
+    "games": "Pelit",
+    "gamesLabel": "Ottelun {{home}} – {{away}} pelit",
     "postponed": "Siirretty",
     "cancelled": "Peruttu",
     "bye": "Vapaaviikko",
