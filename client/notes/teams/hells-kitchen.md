@@ -9,6 +9,7 @@ captain:
 aliases:
   - "Hell's Kitchen"
   - Minion Fxxers
+  - Hells kitchen
 players:
   - name: Voitelija
   - name: Seiralyn

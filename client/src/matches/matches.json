@@ -3,6 +3,222 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Muffalonit",
+      "direPicks": [
+        {
+          "localizedName": "Viper",
+          "name": "viper"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Luna",
+          "name": "luna"
+        }
+      ],
+      "direScore": 41,
+      "durationSeconds": 3998,
+      "matchId": 9040327119,
+      "radiantName": "Where Halo Lobby",
+      "radiantPicks": [
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Mars",
+          "name": "mars"
+        },
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        },
+        {
+          "localizedName": "Earthshaker",
+          "name": "earthshaker"
+        },
+        {
+          "localizedName": "Muerta",
+          "name": "muerta"
+        }
+      ],
+      "radiantScore": 35,
+      "radiantWin": false,
+      "startTime": 1791733615
+    },
+    {
+      "direName": "Where Halo Lobby",
+      "direPicks": [
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Bristleback",
+          "name": "bristleback"
+        },
+        {
+          "localizedName": "Jakiro",
+          "name": "jakiro"
+        },
+        {
+          "localizedName": "Anti-Mage",
+          "name": "antimage"
+        }
+      ],
+      "direScore": 45,
+      "durationSeconds": 4062,
+      "matchId": 9040131104,
+      "radiantName": "Muffalonit",
+      "radiantPicks": [
+        {
+          "localizedName": "Underlord",
+          "name": "abyssal_underlord"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Lina",
+          "name": "lina"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Phantom Assassin",
+          "name": "phantom_assassin"
+        }
+      ],
+      "radiantScore": 58,
+      "radiantWin": true,
+      "startTime": 1791727750
+    },
+    {
+      "direName": "Hells kitchen",
+      "direPicks": [
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Mirana",
+          "name": "mirana"
+        },
+        {
+          "localizedName": "Viper",
+          "name": "viper"
+        },
+        {
+          "localizedName": "Clinkz",
+          "name": "clinkz"
+        }
+      ],
+      "direScore": 41,
+      "durationSeconds": 2710,
+      "matchId": 9038834613,
+      "radiantName": "Red Mango Devils",
+      "radiantPicks": [
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Ogre Magi",
+          "name": "ogre_magi"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Drow Ranger",
+          "name": "drow_ranger"
+        }
+      ],
+      "radiantScore": 29,
+      "radiantWin": false,
+      "startTime": 1791661381
+    },
+    {
+      "direName": "Red Mango Devils",
+      "direPicks": [
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Phantom Assassin",
+          "name": "phantom_assassin"
+        },
+        {
+          "localizedName": "Zeus",
+          "name": "zuus"
+        }
+      ],
+      "direScore": 23,
+      "durationSeconds": 2176,
+      "matchId": 9038730879,
+      "radiantName": "Hell's Kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Mirana",
+          "name": "mirana"
+        },
+        {
+          "localizedName": "Clinkz",
+          "name": "clinkz"
+        },
+        {
+          "localizedName": "Faceless Void",
+          "name": "faceless_void"
+        }
+      ],
+      "radiantScore": 46,
+      "radiantWin": true,
+      "startTime": 1791657000
+    },
+    {
       "direName": "Asiakaspalautukset",
       "direPicks": [
         {
@@ -219,5 +435,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-10-08T09:09:33Z"
+  "updatedAt": "2026-10-12T08:35:16Z"
 }
