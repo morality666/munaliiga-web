@@ -25,7 +25,7 @@ week,starts,ends,bye
 | --- | --- | --- |
 | `week` | yes | Week number. Matches refer to it. |
 | `starts` | yes | First day of the week, `2026-09-28`. |
-| `ends` | yes | Last day of the week. Once it has passed, the week moves to the played section. |
+| `ends` | yes | Last day of the week. |
 | `bye` | no | File name of the team sitting the week out. Several are separated by a semicolon. |
 
 ## Adding a match
@@ -73,8 +73,7 @@ in `VITE_TWITCH_CHANNELS` in `client/.env.production`.
 ## When a match is postponed
 
 Set `status` to `postponed`, even if the new time is not known yet. The
-calendar marks the match as postponed, and its week stays at the top of the
-calendar until the match has been played. The homepage leaves the match out.
+calendar marks the match as postponed, and the homepage leaves it out.
 
 When the new time is agreed, fill in `date` and `time` and empty `status`.
 The match then shows on the homepage again. Leave `week` as it is, even if

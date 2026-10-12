@@ -12,6 +12,11 @@ import {
   LEAGUE_MATCH_DATA,
   RECENT_MATCHES,
 } from "./matches.ts";
+import { teamByReportedName } from "../teams/teams.ts";
+
+/** Valve reports names as typed into the ticket, so prefer the site's own name when an alias matches. */
+const displayName = (reportedName: string) =>
+  teamByReportedName(reportedName)?.name ?? reportedName;
 
 type HeroPicksProps = {
   isDire: boolean;
@@ -103,6 +108,8 @@ function TeamSide({ isDire, isWinner, name, picks }: TeamSideProps) {
 
 function MatchCard({ language, match }: MatchCardProps) {
   const { t } = useTranslation();
+  const radiantName = displayName(match.radiantName);
+  const direName = displayName(match.direName);
 
   return (
     <article className="group relative border border-stone-900/25 bg-(--band-raised) shadow-[4px_5px_0_rgba(28,29,25,0.14)] transition-colors focus-within:border-[#a95747] hover:border-[#a95747]">
@@ -110,7 +117,7 @@ function MatchCard({ language, match }: MatchCardProps) {
         <TeamSide
           isDire={false}
           isWinner={match.radiantWin}
-          name={match.radiantName}
+          name={radiantName}
           picks={match.radiantPicks}
         />
 
@@ -135,8 +142,8 @@ function MatchCard({ language, match }: MatchCardProps) {
 
             <a
               aria-label={t("matches.linkLabel", {
-                dire: match.direName,
-                radiant: match.radiantName,
+                dire: direName,
+                radiant: radiantName,
               })}
               className="text-sm leading-none transition-colors after:absolute after:inset-0 group-hover:text-[#a95747]"
               href={matchUrl(match.matchId)}
@@ -152,7 +159,7 @@ function MatchCard({ language, match }: MatchCardProps) {
         <TeamSide
           isDire
           isWinner={!match.radiantWin}
-          name={match.direName}
+          name={direName}
           picks={match.direPicks}
         />
       </div>

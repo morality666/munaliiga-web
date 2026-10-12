@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { siteConfig } from "../config.ts";
@@ -71,12 +70,7 @@ export function SchedulePage() {
               <div key={week.week}>
                 <div className="mb-3.5 border-b-2 border-stone-900/28 pb-2.5">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h2
-                      className={clsx(
-                        "text-2xl font-black tracking-[-0.03em]",
-                        week.isPast && "text-[#5f5747]",
-                      )}
-                    >
+                    <h2 className="text-2xl font-black tracking-[-0.03em]">
                       {t("schedule.week", { week: week.week })}
                     </h2>
 
@@ -89,10 +83,6 @@ export function SchedulePage() {
                     {week.isCurrent ? (
                       <span className="font-mono text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#8e2f22]">
                         {t("schedule.weekCurrent")}
-                      </span>
-                    ) : week.isPast ? (
-                      <span className="font-mono text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#7a6f5a]">
-                        {t("schedule.roundPlayed")}
                       </span>
                     ) : null}
                   </div>

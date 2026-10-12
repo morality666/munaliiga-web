@@ -79,7 +79,6 @@
     "title": "Ottelukalenteri",
     "navTitle": "Ottelut",
     "empty": "Kauden otteluita ei ole vielä julkaistu.",
-    "roundPlayed": "Pelattu",
     "live": "Käynnissä",
     "versus": "vs",
     "bestOf": "BO{{count}}",
