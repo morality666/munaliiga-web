@@ -88,6 +88,8 @@
     "week": "Week {{week}}",
     "weekCurrent": "On now",
     "timeOpen": "Time TBA",
+    "games": "Games",
+    "gamesLabel": "Games of {{home}} vs {{away}}",
     "postponed": "Postponed",
     "cancelled": "Cancelled",
     "bye": "Bye week",
