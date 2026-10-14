@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "March of the Munas",
+      "direPicks": [
+        {
+          "localizedName": "Sand King",
+          "name": "sand_king"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        },
+        {
+          "localizedName": "Skywrath Mage",
+          "name": "skywrath_mage"
+        },
+        {
+          "localizedName": "Bloodseeker",
+          "name": "bloodseeker"
+        },
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        }
+      ],
+      "direScore": 40,
+      "durationSeconds": 2561,
+      "matchId": 9043466017,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Mirana",
+          "name": "mirana"
+        },
+        {
+          "localizedName": "Lina",
+          "name": "lina"
+        },
+        {
+          "localizedName": "Sven",
+          "name": "sven"
+        }
+      ],
+      "radiantScore": 48,
+      "radiantWin": true,
+      "startTime": 1791909680
+    },
+    {
+      "direName": "March of the Munas",
+      "direPicks": [
+        {
+          "localizedName": "Sand King",
+          "name": "sand_king"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        },
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Mirana",
+          "name": "mirana"
+        }
+      ],
+      "direScore": 31,
+      "durationSeconds": 2367,
+      "matchId": 9043349567,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Outworld Devourer",
+          "name": "obsidian_destroyer"
+        },
+        {
+          "localizedName": "Troll Warlord",
+          "name": "troll_warlord"
+        }
+      ],
+      "radiantScore": 48,
+      "radiantWin": true,
+      "startTime": 1791905581
+    },
+    {
       "direName": "Muffalonit",
       "direPicks": [
         {
@@ -435,5 +543,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-10-12T08:35:16Z"
+  "updatedAt": "2026-10-14T05:56:02Z"
 }
