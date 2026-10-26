@@ -9,6 +9,7 @@ import {
   heroIconUrl,
   matchUrl,
 } from "./matches.ts";
+import { useSpoilersHidden } from "../spoilers/spoilers.ts";
 import { teamByReportedName } from "../teams/teams.ts";
 
 /** Valve reports names as typed into the ticket, so prefer the site's own name when an alias matches. */
@@ -17,6 +18,7 @@ const displayName = (reportedName: string) =>
 
 type HeroPicksProps = {
   isDire: boolean;
+  isHidden: boolean;
   picks: HeroPick[];
   teamName: string;
 };
@@ -28,7 +30,8 @@ type MatchCardProps = {
 
 type TeamSideProps = {
   isDire: boolean;
-  isWinner: boolean;
+  /** Null while the result is hidden, so neither side reads as the winner. */
+  isWinner: boolean | null;
   name: string;
   picks: HeroPick[];
 };
@@ -43,8 +46,27 @@ function WinBadge() {
   );
 }
 
-function HeroPicks({ isDire, picks, teamName }: HeroPicksProps) {
+const heroTileClass =
+  "block size-[1.12rem] rounded-[3px] border border-[rgba(28,29,25,0.36)] bg-[#191b16] object-cover shadow-[1px_1px_0_rgba(28,29,25,0.18)] sm:size-[1.45rem]";
+
+function HeroPicks({ isDire, isHidden, picks, teamName }: HeroPicksProps) {
   const { t } = useTranslation();
+
+  if (isHidden) {
+    return (
+      <span
+        aria-hidden
+        className={clsx(
+          "flex min-w-0 shrink-0 flex-wrap items-center gap-[0.18rem]",
+          isDire ? "justify-end" : "justify-start",
+        )}
+      >
+        {picks.map((pick) => (
+          <span key={pick.name} className={clsx(heroTileClass, "opacity-40")} />
+        ))}
+      </span>
+    );
+  }
 
   return (
     <span
@@ -61,7 +83,7 @@ function HeroPicks({ isDire, picks, teamName }: HeroPicksProps) {
         <img
           key={pick.name}
           alt={pick.localizedName}
-          className="block size-[1.12rem] rounded-[3px] border border-[rgba(28,29,25,0.36)] bg-[#191b16] object-cover shadow-[1px_1px_0_rgba(28,29,25,0.18)] sm:size-[1.45rem]"
+          className={heroTileClass}
           loading="lazy"
           src={heroIconUrl(pick.name)}
           title={pick.localizedName}
@@ -89,7 +111,11 @@ function TeamSide({ isDire, isWinner, name, picks }: TeamSideProps) {
           className={clsx(
             "min-w-0 break-words text-base",
             isDire ? "sm:text-right" : null,
-            isWinner ? "font-black text-[#1c1d19]" : "font-bold text-stone-500",
+            isWinner === null
+              ? "font-bold text-[#1c1d19]"
+              : isWinner
+                ? "font-black text-[#1c1d19]"
+                : "font-bold text-stone-500",
           )}
         >
           {name}
@@ -98,7 +124,12 @@ function TeamSide({ isDire, isWinner, name, picks }: TeamSideProps) {
         {isWinner ? <WinBadge /> : null}
       </span>
 
-      <HeroPicks isDire={isDire} picks={picks} teamName={name} />
+      <HeroPicks
+        isDire={isDire}
+        isHidden={isWinner === null}
+        picks={picks}
+        teamName={name}
+      />
     </span>
   );
 }
@@ -107,13 +138,14 @@ export function MatchCard({ language, match }: MatchCardProps) {
   const { t } = useTranslation();
   const radiantName = displayName(match.radiantName);
   const direName = displayName(match.direName);
+  const resultHidden = useSpoilersHidden();
 
   return (
     <article className="group relative border border-stone-900/25 bg-(--band-raised) shadow-[4px_5px_0_rgba(28,29,25,0.14)] transition-colors focus-within:border-[#a95747] hover:border-[#a95747]">
       <div className="flex flex-col gap-2 px-4 py-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center sm:gap-x-4">
         <TeamSide
           isDire={false}
-          isWinner={match.radiantWin}
+          isWinner={resultHidden ? null : match.radiantWin}
           name={radiantName}
           picks={match.radiantPicks}
         />
@@ -123,39 +155,56 @@ export function MatchCard({ language, match }: MatchCardProps) {
             {formatMatchDate(match.startTime, language)}
           </span>
 
-          <span
-            className="font-mono text-xl font-black tabular-nums text-[#1c1d19]"
-            title={t("matches.score")}
-          >
-            {match.radiantScore}
-            <span className="px-1.5 text-stone-500">–</span>
-            {match.direScore}
-          </span>
+          {resultHidden ? (
+            <>
+              <span
+                aria-hidden
+                className="font-mono text-xl font-black tabular-nums text-stone-400"
+              >
+                ?<span className="px-1.5">–</span>?
+              </span>
 
-          <span className="flex items-center gap-1.5 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-stone-600 sm:text-[10px]">
-            <span title={t("matches.duration")}>
-              {formatMatchDuration(match.durationSeconds)}
-            </span>
+              <span className="whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-stone-600 sm:text-[10px]">
+                {t("spoilers.resultHidden")}
+              </span>
+            </>
+          ) : (
+            <>
+              <span
+                className="font-mono text-xl font-black tabular-nums text-[#1c1d19]"
+                title={t("matches.score")}
+              >
+                {match.radiantScore}
+                <span className="px-1.5 text-stone-500">–</span>
+                {match.direScore}
+              </span>
 
-            <a
-              aria-label={t("matches.linkLabel", {
-                dire: direName,
-                radiant: radiantName,
-              })}
-              className="text-sm leading-none transition-colors after:absolute after:inset-0 group-hover:text-[#a95747]"
-              href={matchUrl(match.matchId)}
-              rel="noreferrer"
-              target="_blank"
-              title={t("matches.link")}
-            >
-              →
-            </a>
-          </span>
+              <span className="flex items-center gap-1.5 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-stone-600 sm:text-[10px]">
+                <span title={t("matches.duration")}>
+                  {formatMatchDuration(match.durationSeconds)}
+                </span>
+
+                <a
+                  aria-label={t("matches.linkLabel", {
+                    dire: direName,
+                    radiant: radiantName,
+                  })}
+                  className="text-sm leading-none transition-colors after:absolute after:inset-0 group-hover:text-[#a95747]"
+                  href={matchUrl(match.matchId)}
+                  rel="noreferrer"
+                  target="_blank"
+                  title={t("matches.link")}
+                >
+                  →
+                </a>
+              </span>
+            </>
+          )}
         </span>
 
         <TeamSide
           isDire
-          isWinner={!match.radiantWin}
+          isWinner={resultHidden ? null : !match.radiantWin}
           name={direName}
           picks={match.direPicks}
         />

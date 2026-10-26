@@ -56,6 +56,11 @@
     "updated": "Päivitetty {{date}}",
     "win": "Voitto"
   },
+  "spoilers": {
+    "visible": "Spoilerit: näkyvissä",
+    "hidden": "Spoilerit: piilossa",
+    "resultHidden": "Tulos piilotettu"
+  },
   "teams": {
     "title": "Joukkueet",
     "intro": "Joukkueet rakennetaan mahdollisimman tasaväkisiksi. Jokaisella on oma valmentaja, jonka opastuksella kausi pelataan.",
