@@ -56,6 +56,11 @@
     "updated": "Updated {{date}}",
     "win": "Win"
   },
+  "spoilers": {
+    "visible": "Spoilers: visible",
+    "hidden": "Spoilers: hidden",
+    "resultHidden": "Result hidden"
+  },
   "teams": {
     "title": "Teams",
     "intro": "Teams are built to be as evenly matched as possible. Each one has its own coach to guide them through the season.",

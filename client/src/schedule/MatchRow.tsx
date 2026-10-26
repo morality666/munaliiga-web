@@ -3,6 +3,7 @@ import { useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { MatchCard } from "../matches/MatchCard.tsx";
+import { useSpoilersHidden } from "../spoilers/spoilers.ts";
 import { TeamBadge } from "../teams/TeamBadge.tsx";
 import { formatDay, type ScheduledMatch, type TeamRef } from "./schedule.ts";
 import { TwitchMark } from "./TwitchMark.tsx";
@@ -84,13 +85,15 @@ export function MatchRow({ match }: MatchRowProps) {
   const games = [...(result?.games ?? [])].sort(
     (first, second) => first.startTime - second.startTime,
   );
-  const hasGames = games.length > 0;
+  const spoilersHidden = useSpoilersHidden();
+  const shownResult = spoilersHidden ? null : result;
+  const canShowGames = !spoilersHidden && games.length > 0;
 
   return (
     <div
       className={clsx(
         "rounded-md border transition-colors",
-        hasGames && "focus-within:border-[#a95747] hover:border-[#a95747]",
+        canShowGames && "focus-within:border-[#a95747] hover:border-[#a95747]",
         isLive &&
           "border-[#a95747]/60 border-l-[5px] border-l-[#a94435] bg-[linear-gradient(135deg,rgba(220,174,71,0.2),transparent_40%)] bg-[#f1eadc] shadow-[6px_7px_0_rgba(169,87,71,0.3)]",
         isOff &&
@@ -124,12 +127,12 @@ export function MatchRow({ match }: MatchRowProps) {
           )}
         </span>
 
-        <Side dimmed={isOff} side={match.home} won={result?.homeWon === true} />
+        <Side dimmed={isOff} side={match.home} won={shownResult?.homeWon === true} />
 
         <span className="shrink-0 self-start font-mono text-[0.95rem] font-black text-[#7a6f5a] md:self-auto md:justify-self-center">
-          {result ? (
+          {shownResult ? (
             <span className="text-[1.05rem] text-[#1c1d19]">
-              {result.homeScore} — {result.awayScore}
+              {shownResult.homeScore} — {shownResult.awayScore}
             </span>
           ) : (
             t("schedule.versus")
@@ -140,7 +143,7 @@ export function MatchRow({ match }: MatchRowProps) {
           align="end"
           dimmed={isOff}
           side={match.away}
-          won={result?.homeWon === false}
+          won={shownResult?.homeWon === false}
         />
 
         <span className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#5f5747] md:justify-end">
@@ -166,7 +169,7 @@ export function MatchRow({ match }: MatchRowProps) {
             <span className="text-[#8a8071]">{t("schedule.casterOpen")}</span>
           )}
 
-          {hasGames ? (
+          {canShowGames ? (
             // Stretched over the whole row, so clicking anywhere on it opens the games.
             <button
               aria-controls={panelId}
@@ -191,7 +194,7 @@ export function MatchRow({ match }: MatchRowProps) {
         </span>
       </div>
 
-      {hasGames ? (
+      {canShowGames ? (
         <div
           className="border-t border-stone-900/15 px-4 pb-4 pt-3"
           hidden={!isOpen}

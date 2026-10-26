@@ -1,10 +1,11 @@
 import clsx from "clsx";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Eye, EyeOff, Menu } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getOffseasonUrl, signupStatus, siteConfig } from "../../config.ts";
 import { getObsidianNotes } from "../../obsidian/notes.ts";
+import { setSpoilersHidden, useSpoilersHidden } from "../../spoilers/spoilers.ts";
 import { useStreamStatus } from "../../streaming/StreamStatus.tsx";
 
 const languages = [
@@ -77,6 +78,7 @@ export const TopBar = () => {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLElement>(null);
   const { featuredChannel, isLive, liveChannels } = useStreamStatus();
+  const spoilersHidden = useSpoilersHidden();
   const activeLanguage = i18n.resolvedLanguage ?? i18n.language;
   const allPages = getObsidianNotes(activeLanguage).filter((page) => page.slug);
   const pages = allPages.filter((page) => !page.section);
@@ -202,6 +204,45 @@ export const TopBar = () => {
         ? "border-[#e5bb5f] bg-[#dcae47] [&_svg]:saturate-100"
         : "border-stone-600 bg-stone-800/60 [&_svg]:opacity-75 [&_svg]:saturate-[0.7] hover:-translate-y-px hover:border-stone-400 hover:bg-stone-800 hover:[&_svg]:opacity-100 hover:[&_svg]:saturate-100",
     );
+
+  // Below md the bar has no room beside a long Finnish signup badge, so the
+  // toggle sits in the menu there instead.
+  const spoilerButtonClass = clsx(
+    "hidden",
+    "md:flex",
+    "items-center",
+    "gap-1.5",
+    "cursor-pointer",
+    "rounded-sm",
+    "border",
+    "px-1",
+    "py-0.5",
+    "sm:px-1.5",
+    "sm:py-1",
+    "font-mono",
+    "text-[9px]",
+    "font-bold",
+    "uppercase",
+    "tracking-wide",
+    "shadow-sm",
+    "transition-[background-color,border-color,transform]",
+    "focus-visible:outline-2",
+    "focus-visible:outline-offset-2",
+    "focus-visible:outline-[#e5bb5f]",
+    spoilersHidden
+      ? "border-[#e5bb5f] bg-[#dcae47] text-[#1c1d19]"
+      : "border-stone-600 bg-stone-800/60 text-stone-300 hover:-translate-y-px hover:border-stone-400 hover:bg-stone-800",
+  );
+
+  const spoilerIconClass = clsx("h-3.5", "w-3.5", "sm:h-4", "sm:w-4");
+
+  const spoilerIcon = spoilersHidden ? (
+    <EyeOff aria-hidden className={spoilerIconClass} />
+  ) : (
+    <Eye aria-hidden className={spoilerIconClass} />
+  );
+
+  const spoilerLabel = t(spoilersHidden ? "spoilers.hidden" : "spoilers.visible");
 
   const menuIconHolderClass = clsx(
     "h-9",
@@ -374,6 +415,15 @@ export const TopBar = () => {
                 {signupStatusBadge}
               </span>
             )}
+            <button
+              className={spoilerButtonClass}
+              onClick={() => setSpoilersHidden(!spoilersHidden)}
+              title={spoilerLabel}
+              type="button"
+            >
+              {spoilerIcon}
+              <span className="sr-only lg:not-sr-only">{spoilerLabel}</span>
+            </button>
             <div className={languageToggleClass}>
               {languages.map(({ code, label }) => (
                 <button
@@ -537,6 +587,19 @@ export const TopBar = () => {
             >
               <YouTubeLogo />
             </a>
+            <button
+              className={clsx(
+                "ml-auto flex h-9 cursor-pointer items-center gap-1.5 border px-2.5 font-mono text-[10px] font-bold uppercase tracking-wide text-[#1c1d19] transition hover:-translate-y-px md:hidden",
+                spoilersHidden
+                  ? "border-[#e5bb5f] bg-[#dcae47]"
+                  : "border-stone-500/50 bg-[#dcd3c0] hover:border-stone-600 hover:bg-[#d3cab8]",
+              )}
+              onClick={() => setSpoilersHidden(!spoilersHidden)}
+              type="button"
+            >
+              {spoilerIcon}
+              {spoilerLabel}
+            </button>
           </footer>
         </aside>
       </div>
