@@ -39,6 +39,10 @@ their ids to the fixture's `matchIds` in `notes/schedule/season-<n>.csv`. The
 time, commits any new results to `main` and redeploys. It is not part of `npm run build`, so builds
 work offline.
 
+The standings at `/standings` are calculated from those same results when the
+site is built, one point per game won. `notes/schedule/README.md` explains the
+rules.
+
 ## Markdown notes
 
 Main navigation notes live in:

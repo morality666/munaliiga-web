@@ -6,6 +6,7 @@ import { STREAMERS } from "../streaming/streamers.ts";
 import { TwitchStream } from "../streaming/TwitchStream.tsx";
 import { RecentMatches } from "../matches/RecentMatches.tsx";
 import { NextUp } from "../schedule/NextUp.tsx";
+import { StandingsSummary } from "../standings/StandingsSummary.tsx";
 
 export const Route = createFileRoute("/")({
   component: MainView,
@@ -215,6 +216,8 @@ function MainView() {
       </section>
 
       <NextUp />
+
+      <StandingsSummary />
 
       <RecentMatches />
 

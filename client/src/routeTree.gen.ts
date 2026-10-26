@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StandingsRouteImport } from './routes/standings'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as SlugRouteImport } from './routes/$slug'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TeamsIndexRouteImport } from './routes/teams.index'
 import { Route as TeamsSlugRouteImport } from './routes/teams.$slug'
 
+const StandingsRoute = StandingsRouteImport.update({
+  id: '/standings',
+  path: '/standings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScheduleRoute = ScheduleRouteImport.update({
   id: '/schedule',
   path: '/schedule',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/schedule': typeof ScheduleRoute
+  '/standings': typeof StandingsRoute
   '/teams/$slug': typeof TeamsSlugRoute
   '/teams/': typeof TeamsIndexRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/schedule': typeof ScheduleRoute
+  '/standings': typeof StandingsRoute
   '/teams/$slug': typeof TeamsSlugRoute
   '/teams': typeof TeamsIndexRoute
 }
@@ -60,27 +68,49 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/schedule': typeof ScheduleRoute
+  '/standings': typeof StandingsRoute
   '/teams/$slug': typeof TeamsSlugRoute
   '/teams/': typeof TeamsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$slug' | '/schedule' | '/teams/$slug' | '/teams/'
+  fullPaths:
+    | '/'
+    | '/$slug'
+    | '/schedule'
+    | '/standings'
+    | '/teams/$slug'
+    | '/teams/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$slug' | '/schedule' | '/teams/$slug' | '/teams'
-  id: '__root__' | '/' | '/$slug' | '/schedule' | '/teams/$slug' | '/teams/'
+  to: '/' | '/$slug' | '/schedule' | '/standings' | '/teams/$slug' | '/teams'
+  id:
+    | '__root__'
+    | '/'
+    | '/$slug'
+    | '/schedule'
+    | '/standings'
+    | '/teams/$slug'
+    | '/teams/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SlugRoute: typeof SlugRoute
   ScheduleRoute: typeof ScheduleRoute
+  StandingsRoute: typeof StandingsRoute
   TeamsSlugRoute: typeof TeamsSlugRoute
   TeamsIndexRoute: typeof TeamsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/standings': {
+      id: '/standings'
+      path: '/standings'
+      fullPath: '/standings'
+      preLoaderRoute: typeof StandingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/schedule': {
       id: '/schedule'
       path: '/schedule'
@@ -123,6 +153,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SlugRoute: SlugRoute,
   ScheduleRoute: ScheduleRoute,
+  StandingsRoute: StandingsRoute,
   TeamsSlugRoute: TeamsSlugRoute,
   TeamsIndexRoute: TeamsIndexRoute,
 }
