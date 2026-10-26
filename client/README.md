@@ -24,10 +24,20 @@ uncommitted `.env.local` only when you need local overrides.
 | `VITE_SIGNUP_CLOSES_AT` | ISO date and time the season gets underway; after it the off-season form replaces the signup links |
 | `VITE_SIGNUP_URL` | Registration form |
 | `VITE_OFFSEASON_FORM_URL_FI` / `VITE_OFFSEASON_FORM_URL_EN` | Off-season interest forms for the next season, per language |
+| `VITE_DOTA_LEAGUE_ID` | The season's Valve league ticket that match results are fetched for |
 | `VITE_TWITCH_CHANNELS` | Comma-separated caster channels the homepage stream always offers; `morality666` is checked first, except while a match is on and its casters from the schedule come first |
 
 The application reads these values through `src/config.ts`. All `VITE_`
 variables are bundled into the public site, so they must never contain secrets.
+
+## Match results
+
+`npm run fetch:matches` reads the games of `VITE_DOTA_LEAGUE_ID` from OpenDota,
+which needs no API key. It adds new games to `src/matches/matches.json` and
+their ids to the fixture's `matchIds` in `notes/schedule/season-<n>.csv`. The
+`Fetch league match results` workflow runs it every night at midnight Finnish
+time, commits any new results to `main` and redeploys. It is not part of `npm run build`, so builds
+work offline.
 
 ## Markdown notes
 

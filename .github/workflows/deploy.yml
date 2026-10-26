@@ -3,6 +3,8 @@ name: Build and Deploy Vite App to Pages
 on:
   push:
     branches: ["main"]
+  # Started by the fetch-matches workflow: its own push does not trigger this one.
+  workflow_dispatch:
 
 permissions:
   contents: read

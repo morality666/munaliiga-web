@@ -81,9 +81,20 @@ the new date falls in a later week.
 
 ## When the match has been played
 
-Paste the Dota match ids into `matchIds`. The series score is worked out for
-you from which team won each game, matched through the `aliases` in
-`notes/teams/`.
+Games played on the league ticket fill in `matchIds` by themselves at
+midnight, Finnish time. A game still running then is picked up the next night.
+The series score is worked out for you from
+which team won each game, matched through the `aliases` in `notes/teams/`.
+
+Fill `matchIds` in by hand only when a game is missing after that:
+
+- **A team name the site does not know.** Add the name the game shows to that
+  team's `aliases`, then paste the match id into `matchIds`. The workflow's run
+  page in the Actions tab names the game.
+- **A game played without the league ticket.** It cannot be fetched at all,
+  so it also needs its result added to `client/src/matches/matches.json`.
+
+An id you remove from `matchIds` is not added back.
 
 ## Checklist
 
