@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import { siteConfig } from "../config.ts";
+import { useSpoilersHidden } from "../spoilers/spoilers.ts";
+import { standingFor } from "../standings/standings.ts";
 import { TeamBadge } from "./TeamBadge.tsx";
 import { TeamRoster } from "./TeamRoster.tsx";
 import type { Team } from "./teams.ts";
@@ -12,6 +14,8 @@ type TeamPageProps = {
 
 export function TeamPage({ team }: TeamPageProps) {
   const { t } = useTranslation();
+  const spoilersHidden = useSpoilersHidden();
+  const standing = standingFor(team.slug);
 
   return (
     <main className="obsidian-page paper-field min-h-[calc(100svh-var(--spacing-card-height))] bg-[#e8e0ce] text-[#1c1d19]">
@@ -55,6 +59,38 @@ export function TeamPage({ team }: TeamPageProps) {
                     {team.coach}
                   </span>
                 </p>
+              ) : null}
+
+              {standing && !spoilersHidden ? (
+                <Link
+                  className="mt-4 inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-[3px] border border-[#dcae47]/60 bg-[#dcae47]/12 px-3 py-1.5 font-mono text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#f1eadc] transition-colors hover:border-[#dcae47] hover:bg-[#dcae47]/20"
+                  to="/standings"
+                >
+                  <span className="text-[#dcae47]">
+                    {t("standings.place", {
+                      count: standing.rank,
+                      ordinal: true,
+                    })}
+                  </span>
+                  <span aria-hidden className="text-stone-500">
+                    ·
+                  </span>
+                  <span>
+                    {t("standings.wonCount", { count: standing.won })}
+                  </span>
+                  <span aria-hidden className="text-stone-500">
+                    ·
+                  </span>
+                  <span>
+                    {t("standings.lostCount", { count: standing.lost })}
+                  </span>
+                  <span aria-hidden className="text-stone-500">
+                    ·
+                  </span>
+                  <span>
+                    {t("standings.pointsCount", { count: standing.points })}
+                  </span>
+                </Link>
               ) : null}
             </div>
           </div>

@@ -99,5 +99,37 @@
     "cancelled": "Cancelled",
     "bye": "Bye week",
     "intro": "Matches are played within their week. The exact time is agreed between the teams, sometimes only on the day."
+  },
+  "standings": {
+    "title": "Standings",
+    "homeTitle": "Season so far",
+    "seeAll": "Full standings",
+    "empty": "The table appears once the season's matches are published.",
+    "rank": "Place",
+    "team": "Team",
+    "columns": {
+      "played": "P",
+      "won": "W",
+      "lost": "L",
+      "diff": "+/−",
+      "points": "Pts"
+    },
+    "columnsLong": {
+      "played": "games played",
+      "won": "won",
+      "lost": "lost",
+      "diff": "won minus lost",
+      "points": "points"
+    },
+    "hiddenTitle": "Results hidden",
+    "hiddenBody": "Spoilers are hidden, so places and points aren't shown.",
+    "place_ordinal_one": "{{count}}st",
+    "place_ordinal_two": "{{count}}nd",
+    "place_ordinal_few": "{{count}}rd",
+    "place_ordinal_other": "{{count}}th",
+    "wonCount": "{{count}} W",
+    "lostCount": "{{count}} L",
+    "pointsCount_one": "{{count}} pt",
+    "pointsCount_other": "{{count}} pts"
   }
 }
