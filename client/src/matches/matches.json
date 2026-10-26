@@ -3,6 +3,438 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Red Mango Devils",
+      "direPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Ogre Magi",
+          "name": "ogre_magi"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        }
+      ],
+      "direScore": 16,
+      "durationSeconds": 2689,
+      "matchId": 9061969485,
+      "radiantName": "March of the Munas",
+      "radiantPicks": [
+        {
+          "localizedName": "Weaver",
+          "name": "weaver"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Warlock",
+          "name": "warlock"
+        },
+        {
+          "localizedName": "Bloodseeker",
+          "name": "bloodseeker"
+        },
+        {
+          "localizedName": "Primal Beast",
+          "name": "primal_beast"
+        }
+      ],
+      "radiantScore": 37,
+      "radiantWin": true,
+      "startTime": 1792956428
+    },
+    {
+      "direName": "Red Mango Devils",
+      "direPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Skywrath Mage",
+          "name": "skywrath_mage"
+        },
+        {
+          "localizedName": "Weaver",
+          "name": "weaver"
+        },
+        {
+          "localizedName": "Kunkka",
+          "name": "kunkka"
+        }
+      ],
+      "direScore": 28,
+      "durationSeconds": 3106,
+      "matchId": 9061836958,
+      "radiantName": "March of the Munas",
+      "radiantPicks": [
+        {
+          "localizedName": "Techies",
+          "name": "techies"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        },
+        {
+          "localizedName": "Bloodseeker",
+          "name": "bloodseeker"
+        },
+        {
+          "localizedName": "Sand King",
+          "name": "sand_king"
+        }
+      ],
+      "radiantScore": 47,
+      "radiantWin": true,
+      "startTime": 1792951439
+    },
+    {
+      "direName": "Muffalonit",
+      "direPicks": [
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Faceless Void",
+          "name": "faceless_void"
+        }
+      ],
+      "direScore": 36,
+      "durationSeconds": 2767,
+      "matchId": 9058369064,
+      "radiantName": "Perhanan Perunat",
+      "radiantPicks": [
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Ogre Magi",
+          "name": "ogre_magi"
+        },
+        {
+          "localizedName": "Queen of Pain",
+          "name": "queenofpain"
+        },
+        {
+          "localizedName": "Luna",
+          "name": "luna"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        }
+      ],
+      "radiantScore": 20,
+      "radiantWin": false,
+      "startTime": 1792776549
+    },
+    {
+      "direName": "Perhanan Perunat",
+      "direPicks": [
+        {
+          "localizedName": "Marci",
+          "name": "marci"
+        },
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Ursa",
+          "name": "ursa"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Centaur Warrunner",
+          "name": "centaur"
+        }
+      ],
+      "direScore": 21,
+      "durationSeconds": 2683,
+      "matchId": 9058229317,
+      "radiantName": "Muffalonit",
+      "radiantPicks": [
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Lina",
+          "name": "lina"
+        },
+        {
+          "localizedName": "Riki",
+          "name": "riki"
+        }
+      ],
+      "radiantScore": 31,
+      "radiantWin": true,
+      "startTime": 1792771844
+    },
+    {
+      "direName": "Asiakaspalautukset",
+      "direPicks": [
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Centaur Warrunner",
+          "name": "centaur"
+        },
+        {
+          "localizedName": "Phoenix",
+          "name": "phoenix"
+        },
+        {
+          "localizedName": "Spectre",
+          "name": "spectre"
+        }
+      ],
+      "direScore": 54,
+      "durationSeconds": 3740,
+      "matchId": 9054347076,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Bristleback",
+          "name": "bristleback"
+        },
+        {
+          "localizedName": "Tiny",
+          "name": "tiny"
+        },
+        {
+          "localizedName": "Slark",
+          "name": "slark"
+        },
+        {
+          "localizedName": "Marci",
+          "name": "marci"
+        }
+      ],
+      "radiantScore": 55,
+      "radiantWin": false,
+      "startTime": 1792523473
+    },
+    {
+      "direName": "Asiakaspalautukset",
+      "direPicks": [
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Jakiro",
+          "name": "jakiro"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Viper",
+          "name": "viper"
+        },
+        {
+          "localizedName": "Dark Willow",
+          "name": "dark_willow"
+        }
+      ],
+      "direScore": 29,
+      "durationSeconds": 2737,
+      "matchId": 9054248014,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Clockwerk",
+          "name": "rattletrap"
+        },
+        {
+          "localizedName": "Outworld Devourer",
+          "name": "obsidian_destroyer"
+        },
+        {
+          "localizedName": "Faceless Void",
+          "name": "faceless_void"
+        }
+      ],
+      "radiantScore": 55,
+      "radiantWin": true,
+      "startTime": 1792519268
+    },
+    {
+      "direName": "Asiakaspalautukset",
+      "direPicks": [
+        {
+          "localizedName": "Necrophos",
+          "name": "necrolyte"
+        },
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Luna",
+          "name": "luna"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        }
+      ],
+      "direScore": 17,
+      "durationSeconds": 3043,
+      "matchId": 9052819816,
+      "radiantName": "Where Halo Lobby",
+      "radiantPicks": [
+        {
+          "localizedName": "Spirit Breaker",
+          "name": "spirit_breaker"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Night Stalker",
+          "name": "night_stalker"
+        },
+        {
+          "localizedName": "Riki",
+          "name": "riki"
+        }
+      ],
+      "radiantScore": 51,
+      "radiantWin": true,
+      "startTime": 1792430650
+    },
+    {
+      "direName": "Where Halo Lobby",
+      "direPicks": [
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Spirit Breaker",
+          "name": "spirit_breaker"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Kez",
+          "name": "kez"
+        },
+        {
+          "localizedName": "Night Stalker",
+          "name": "night_stalker"
+        }
+      ],
+      "direScore": 56,
+      "durationSeconds": 2664,
+      "matchId": 9052713023,
+      "radiantName": "Asiakaspalautukset",
+      "radiantPicks": [
+        {
+          "localizedName": "Winter Wyvern",
+          "name": "winter_wyvern"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Disruptor",
+          "name": "disruptor"
+        },
+        {
+          "localizedName": "Pangolier",
+          "name": "pangolier"
+        },
+        {
+          "localizedName": "Ursa",
+          "name": "ursa"
+        }
+      ],
+      "radiantScore": 17,
+      "radiantWin": false,
+      "startTime": 1792426533
+    },
+    {
       "direName": "March of the Munas",
       "direPicks": [
         {
@@ -543,5 +975,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-10-14T05:56:02Z"
+  "updatedAt": "2026-10-26T07:39:53Z"
 }
