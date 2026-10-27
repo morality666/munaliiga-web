@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Where Halo Lobby",
+      "direPicks": [
+        {
+          "localizedName": "Spirit Breaker",
+          "name": "spirit_breaker"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        },
+        {
+          "localizedName": "Anti-Mage",
+          "name": "antimage"
+        }
+      ],
+      "direScore": 17,
+      "durationSeconds": 2646,
+      "matchId": 9063372852,
+      "radiantName": "Red Mango Devils",
+      "radiantPicks": [
+        {
+          "localizedName": "Viper",
+          "name": "viper"
+        },
+        {
+          "localizedName": "Sven",
+          "name": "sven"
+        },
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Warlock",
+          "name": "warlock"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        }
+      ],
+      "radiantScore": 35,
+      "radiantWin": true,
+      "startTime": 1793041890
+    },
+    {
+      "direName": "Red Mango Devils",
+      "direPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        }
+      ],
+      "direScore": 21,
+      "durationSeconds": 2717,
+      "matchId": 9063269349,
+      "radiantName": "Where Halo Lobby",
+      "radiantPicks": [
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        },
+        {
+          "localizedName": "Earthshaker",
+          "name": "earthshaker"
+        },
+        {
+          "localizedName": "Sven",
+          "name": "sven"
+        }
+      ],
+      "radiantScore": 47,
+      "radiantWin": true,
+      "startTime": 1793037454
+    },
+    {
       "direName": "Red Mango Devils",
       "direPicks": [
         {
@@ -975,5 +1083,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-10-26T07:39:53Z"
+  "updatedAt": "2026-10-27T01:17:55Z"
 }
