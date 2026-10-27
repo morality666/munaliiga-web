@@ -115,9 +115,9 @@
       "points": "Pts"
     },
     "columnsLong": {
-      "played": "games played",
-      "won": "won",
-      "lost": "lost",
+      "played": "matches played",
+      "won": "games won",
+      "lost": "games lost",
       "diff": "won minus lost",
       "points": "points"
     },

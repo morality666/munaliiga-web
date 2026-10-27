@@ -99,8 +99,9 @@ An id you remove from `matchIds` is not added back.
 ## Standings
 
 The `/standings` page is worked out from the same games, so there is nothing
-to fill in for it. It counts games, not matches: every game a team wins is a
-point, so a 2–0 gives the winner 2 points and a 1–1 gives both teams 1.
+to fill in for it. The played column counts matches, which is how many
+opponents a team has faced. Everything else counts games: every game a team
+wins is a point, so a 2–0 gives the winner 2 points and a 1–1 gives both teams 1.
 
 Teams level on points are ordered by games won minus games lost, then by the
 games they won against each other. Teams still level share the place.
