@@ -12,7 +12,7 @@ export type StandingsRow = {
 
 type TeamRecord = Omit<StandingsRow, "rank">;
 
-type Tally = { lost: number; side: TeamRef; won: number };
+type Tally = { lost: number; matches: number; side: TeamRef; won: number };
 
 const tallies = new Map<string, Tally>();
 
@@ -23,7 +23,7 @@ const tallyFor = (side: TeamRef) => {
     return existing;
   }
 
-  const tally = { lost: 0, side, won: 0 };
+  const tally = { lost: 0, matches: 0, side, won: 0 };
   tallies.set(side.slug, tally);
 
   return tally;
@@ -39,6 +39,8 @@ for (const match of SCHEDULE) {
     continue;
   }
 
+  home.matches += 1;
+  away.matches += 1;
   home.won += result.homeScore;
   home.lost += result.awayScore;
   away.won += result.awayScore;
@@ -54,13 +56,14 @@ for (const match of SCHEDULE) {
 }
 
 /**
- * Every game counts on its own, however the match ended: a point for each game
- * won, so a 2–0 is two points and a 1–1 one point each.
+ * Played counts matches, so it tells how many opponents a team has faced. The
+ * rest counts every game on its own, however the match ended: a point for each
+ * game won, so a 2–0 is two points and a 1–1 one point each.
  */
-const toRecord = ({ lost, side, won }: Tally): TeamRecord => ({
+const toRecord = ({ lost, matches, side, won }: Tally): TeamRecord => ({
   diff: won - lost,
   lost,
-  played: won + lost,
+  played: matches,
   points: won,
   side,
   won,

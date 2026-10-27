@@ -108,16 +108,16 @@
     "rank": "Sija",
     "team": "Joukkue",
     "columns": {
-      "played": "Pelit",
+      "played": "O",
       "won": "V",
       "lost": "H",
       "diff": "+/−",
       "points": "P"
     },
     "columnsLong": {
-      "played": "pelatut pelit",
-      "won": "voitetut",
-      "lost": "hävityt",
+      "played": "pelatut ottelut",
+      "won": "voitetut pelit",
+      "lost": "hävityt pelit",
       "diff": "voitetut miinus hävityt",
       "points": "pisteet"
     },
