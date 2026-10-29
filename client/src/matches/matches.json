@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Asiakaspalautukset",
+      "direPicks": [
+        {
+          "localizedName": "Dark Willow",
+          "name": "dark_willow"
+        },
+        {
+          "localizedName": "Magnus",
+          "name": "magnataur"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Necrophos",
+          "name": "necrolyte"
+        },
+        {
+          "localizedName": "Juggernaut",
+          "name": "juggernaut"
+        }
+      ],
+      "direScore": 32,
+      "durationSeconds": 3767,
+      "matchId": 9066018863,
+      "radiantName": "Muffalonit",
+      "radiantPicks": [
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Tusk",
+          "name": "tusk"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Bloodseeker",
+          "name": "bloodseeker"
+        }
+      ],
+      "radiantScore": 44,
+      "radiantWin": true,
+      "startTime": 1793208173
+    },
+    {
+      "direName": "Muffalonit",
+      "direPicks": [
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Phantom Assassin",
+          "name": "phantom_assassin"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        }
+      ],
+      "direScore": 34,
+      "durationSeconds": 2971,
+      "matchId": 9065901042,
+      "radiantName": "Asiakaspalautukset",
+      "radiantPicks": [
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Bounty Hunter",
+          "name": "bounty_hunter"
+        },
+        {
+          "localizedName": "Huskar",
+          "name": "huskar"
+        },
+        {
+          "localizedName": "Medusa",
+          "name": "medusa"
+        }
+      ],
+      "radiantScore": 16,
+      "radiantWin": false,
+      "startTime": 1793203357
+    },
+    {
       "direName": "Where Halo Lobby",
       "direPicks": [
         {
@@ -1083,5 +1191,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-10-27T01:17:55Z"
+  "updatedAt": "2026-10-29T01:39:08Z"
 }
