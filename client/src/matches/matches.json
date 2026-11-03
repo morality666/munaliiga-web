@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Red Mango Devils",
+      "direPicks": [
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Weaver",
+          "name": "weaver"
+        }
+      ],
+      "direScore": 13,
+      "durationSeconds": 2847,
+      "matchId": 9073471914,
+      "radiantName": "Perhanan Perunat",
+      "radiantPicks": [
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Juggernaut",
+          "name": "juggernaut"
+        },
+        {
+          "localizedName": "Ember Spirit",
+          "name": "ember_spirit"
+        }
+      ],
+      "radiantScore": 45,
+      "radiantWin": true,
+      "startTime": 1793641131
+    },
+    {
+      "direName": "Perhanan Perunat",
+      "direPicks": [
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Juggernaut",
+          "name": "juggernaut"
+        },
+        {
+          "localizedName": "Lina",
+          "name": "lina"
+        }
+      ],
+      "direScore": 52,
+      "durationSeconds": 3345,
+      "matchId": 9073341078,
+      "radiantName": "Red Mango Devils",
+      "radiantPicks": [
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Outworld Devourer",
+          "name": "obsidian_destroyer"
+        }
+      ],
+      "radiantScore": 26,
+      "radiantWin": false,
+      "startTime": 1793635870
+    },
+    {
       "direName": "Asiakaspalautukset",
       "direPicks": [
         {
@@ -1191,5 +1299,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-10-29T01:39:08Z"
+  "updatedAt": "2026-11-03T03:23:34Z"
 }
