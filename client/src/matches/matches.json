@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Asiakaspalautukset",
+      "direPicks": [
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Enchantress",
+          "name": "enchantress"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Sven",
+          "name": "sven"
+        },
+        {
+          "localizedName": "Necrophos",
+          "name": "necrolyte"
+        }
+      ],
+      "direScore": 31,
+      "durationSeconds": 2700,
+      "matchId": 9076343933,
+      "radiantName": "Perhanan Perunat",
+      "radiantPicks": [
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        },
+        {
+          "localizedName": "Gyrocopter",
+          "name": "gyrocopter"
+        },
+        {
+          "localizedName": "Queen of Pain",
+          "name": "queenofpain"
+        }
+      ],
+      "radiantScore": 17,
+      "radiantWin": false,
+      "startTime": 1793816612
+    },
+    {
+      "direName": "Perhanan Perunat",
+      "direPicks": [
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Sven",
+          "name": "sven"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        }
+      ],
+      "direScore": 47,
+      "durationSeconds": 2548,
+      "matchId": 9076240705,
+      "radiantName": "Asiakaspalautukset",
+      "radiantPicks": [
+        {
+          "localizedName": "Winter Wyvern",
+          "name": "winter_wyvern"
+        },
+        {
+          "localizedName": "Hoodwink",
+          "name": "hoodwink"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Earthshaker",
+          "name": "earthshaker"
+        }
+      ],
+      "radiantScore": 15,
+      "radiantWin": false,
+      "startTime": 1793812228
+    },
+    {
       "direName": "Red Mango Devils",
       "direPicks": [
         {
@@ -1299,5 +1407,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-03T03:23:34Z"
+  "updatedAt": "2026-11-05T02:03:38Z"
 }
