@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Red Mango Devils",
+      "direPicks": [
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Tiny",
+          "name": "tiny"
+        },
+        {
+          "localizedName": "Kunkka",
+          "name": "kunkka"
+        }
+      ],
+      "direScore": 15,
+      "durationSeconds": 2536,
+      "matchId": 9077540344,
+      "radiantName": "Muffalonit",
+      "radiantPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Lina",
+          "name": "lina"
+        },
+        {
+          "localizedName": "Winter Wyvern",
+          "name": "winter_wyvern"
+        },
+        {
+          "localizedName": "Troll Warlord",
+          "name": "troll_warlord"
+        }
+      ],
+      "radiantScore": 39,
+      "radiantWin": true,
+      "startTime": 1793899625
+    },
+    {
+      "direName": "Muffalonit",
+      "direPicks": [
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        },
+        {
+          "localizedName": "Tusk",
+          "name": "tusk"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Luna",
+          "name": "luna"
+        }
+      ],
+      "direScore": 45,
+      "durationSeconds": 2734,
+      "matchId": 9077423418,
+      "radiantName": "Red Mango Devils",
+      "radiantPicks": [
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Warlock",
+          "name": "warlock"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Huskar",
+          "name": "huskar"
+        },
+        {
+          "localizedName": "Tiny",
+          "name": "tiny"
+        }
+      ],
+      "radiantScore": 16,
+      "radiantWin": false,
+      "startTime": 1793894575
+    },
+    {
       "direName": "Asiakaspalautukset",
       "direPicks": [
         {
@@ -1407,5 +1515,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-05T02:03:38Z"
+  "updatedAt": "2026-11-06T02:05:34Z"
 }
