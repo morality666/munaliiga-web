@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Where Halo Lobby",
+      "direPicks": [
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Winter Wyvern",
+          "name": "winter_wyvern"
+        },
+        {
+          "localizedName": "Kez",
+          "name": "kez"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        }
+      ],
+      "direScore": 42,
+      "durationSeconds": 2966,
+      "matchId": 9078934571,
+      "radiantName": "Perhanan Perunat",
+      "radiantPicks": [
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Lina",
+          "name": "lina"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Ogre Magi",
+          "name": "ogre_magi"
+        }
+      ],
+      "radiantScore": 29,
+      "radiantWin": false,
+      "startTime": 1793988786
+    },
+    {
+      "direName": "Perhanan Perunat",
+      "direPicks": [
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        },
+        {
+          "localizedName": "Juggernaut",
+          "name": "juggernaut"
+        },
+        {
+          "localizedName": "Storm Spirit",
+          "name": "storm_spirit"
+        }
+      ],
+      "direScore": 15,
+      "durationSeconds": 2320,
+      "matchId": 9078834316,
+      "radiantName": "Where Halo Lobby",
+      "radiantPicks": [
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Winter Wyvern",
+          "name": "winter_wyvern"
+        },
+        {
+          "localizedName": "Legion Commander",
+          "name": "legion_commander"
+        }
+      ],
+      "radiantScore": 31,
+      "radiantWin": true,
+      "startTime": 1793984774
+    },
+    {
       "direName": "Red Mango Devils",
       "direPicks": [
         {
@@ -1515,5 +1623,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-06T02:05:34Z"
+  "updatedAt": "2026-11-07T01:43:39Z"
 }
