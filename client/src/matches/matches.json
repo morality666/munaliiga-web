@@ -6,6 +6,114 @@
       "direName": "Where Halo Lobby",
       "direPicks": [
         {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Viper",
+          "name": "viper"
+        },
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Sven",
+          "name": "sven"
+        },
+        {
+          "localizedName": "Night Stalker",
+          "name": "night_stalker"
+        }
+      ],
+      "direScore": 45,
+      "durationSeconds": 3072,
+      "matchId": 9083363705,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Legion Commander",
+          "name": "legion_commander"
+        },
+        {
+          "localizedName": "Pudge",
+          "name": "pudge"
+        },
+        {
+          "localizedName": "Outworld Devourer",
+          "name": "obsidian_destroyer"
+        }
+      ],
+      "radiantScore": 46,
+      "radiantWin": true,
+      "startTime": 1794243648
+    },
+    {
+      "direName": "Where Halo Lobby",
+      "direPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Jakiro",
+          "name": "jakiro"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        },
+        {
+          "localizedName": "Mars",
+          "name": "mars"
+        }
+      ],
+      "direScore": 17,
+      "durationSeconds": 2220,
+      "matchId": 9083281774,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Underlord",
+          "name": "abyssal_underlord"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Phantom Assassin",
+          "name": "phantom_assassin"
+        }
+      ],
+      "radiantScore": 34,
+      "radiantWin": true,
+      "startTime": 1794240074
+    },
+    {
+      "direName": "Where Halo Lobby",
+      "direPicks": [
+        {
           "localizedName": "Sniper",
           "name": "sniper"
         },
@@ -1623,5 +1731,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-07T01:43:39Z"
+  "updatedAt": "2026-11-10T04:00:06Z"
 }
