@@ -55,6 +55,13 @@ week,home,away,date,time,bestOf,casters,status,matchIds,note
 
 Fill in `date` and `time` on that row. Nothing else changes.
 
+## Matches on the homepage
+
+The homepage shows the next three matches that have no `matchIds` yet:
+those with a `date` first, earliest first, then the rest by week. A match
+stays there until its `matchIds` are filled in, even after its time or its
+week has passed.
+
 ## Casters and the homepage stream
 
 The homepage stream follows the `casters` column. While a match is on, its
