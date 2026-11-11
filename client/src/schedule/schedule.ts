@@ -43,7 +43,8 @@ export type ScheduledMatch = {
   home: TeamRef;
   /** False when only the week is known, which is the normal case until the teams agree a time. */
   isDated: boolean;
-  isPast: boolean;
+  /** True once `matchIds` is filled in. Neither the kickoff nor the week ending makes a match played. */
+  isPlayed: boolean;
   key: string;
   note: string;
   result: MatchResult | null;
@@ -80,8 +81,7 @@ const helsinkiFormat = new Intl.DateTimeFormat("sv-SE", {
 const helsinkiClock = (moment: number) =>
   helsinkiFormat.format(new Date(moment)).replace(",", "");
 
-const NOW = helsinkiClock(Date.now());
-const TODAY = NOW.slice(0, 10);
+const TODAY = helsinkiClock(Date.now()).slice(0, 10);
 
 const cell = (row: Record<string, string | undefined>, key: string) =>
   (row[key] ?? "").trim();
@@ -179,11 +179,6 @@ const WEEKS: Map<string, { bye: TeamRef[]; ends: string; starts: string }> =
     ),
   );
 
-/**
- * A fixture whose time is not agreed yet is past once its week has ended —
- * there is no kickoff to compare against, only the window it belonged to.
- * A postponed one is never past: it is still to be played, whenever that is.
- */
 const toMatch = (
   row: Record<string, string | undefined>,
 ): ScheduledMatch | null => {
@@ -205,7 +200,6 @@ const toMatch = (
   const matchIds = semicolonList(cell(row, "matchIds"))
     .map((id) => Number.parseInt(id, 10))
     .filter((id) => Number.isFinite(id));
-  const weekEnd = WEEKS.get(week)?.ends ?? "";
 
   return {
     away: awayRef,
@@ -214,11 +208,7 @@ const toMatch = (
     date,
     home: homeRef,
     isDated,
-    isPast:
-      status !== "postponed" &&
-      (isDated
-        ? `${date} ${time || "23:59"}` < NOW
-        : Boolean(weekEnd) && weekEnd < TODAY),
+    isPlayed: matchIds.length > 0,
     key: `${week}-${home}-${away}-${date}`,
     note: cell(row, "note"),
     result: resultFor(matchIds, homeRef, awayRef),
@@ -235,21 +225,28 @@ const ALL_MATCHES: ScheduledMatch[] = Object.entries(fixtureFiles).flatMap(
       .filter((match): match is ScheduledMatch => match !== null),
 );
 
-/** Dated fixtures first in time order, then the ones still being agreed. */
+const weekNumber = (week: string) => {
+  const parsed = Number.parseInt(week, 10);
+
+  return Number.isFinite(parsed) ? parsed : Number.MAX_SAFE_INTEGER;
+};
+
+/**
+ * Dated fixtures first in time order, then the ones still being agreed, the
+ * earliest week first.
+ */
 const byKickoff = (first: ScheduledMatch, second: ScheduledMatch) => {
   if (first.isDated !== second.isDated) {
     return first.isDated ? -1 : 1;
   }
 
+  if (!first.isDated) {
+    return weekNumber(first.week) - weekNumber(second.week);
+  }
+
   return `${first.date} ${first.time}`.localeCompare(
     `${second.date} ${second.time}`,
   );
-};
-
-const weekNumber = (week: string) => {
-  const parsed = Number.parseInt(week, 10);
-
-  return Number.isFinite(parsed) ? parsed : Number.MAX_SAFE_INTEGER;
 };
 
 const buildWeek = (week: string): ScheduleWeek => {
@@ -280,12 +277,14 @@ export const SCHEDULE_WEEKS: ScheduleWeek[] = [
 export const SCHEDULE = [...ALL_MATCHES].sort(byKickoff);
 
 /**
- * The homepage's next matches. Postponed and cancelled ones are left to the
+ * The homepage's next matches: every one not played yet, including those whose
+ * kickoff or week has gone by. Postponed and cancelled ones are left to the
  * calendar: a postponed match returns here once its status is emptied.
  */
 export const UPCOMING = ALL_MATCHES.filter(
   (match) =>
-    match.status === "live" || (match.status === "scheduled" && !match.isPast),
+    match.status === "live" ||
+    (match.status === "scheduled" && !match.isPlayed),
 ).sort((first, second) => {
   if ((first.status === "live") !== (second.status === "live")) {
     return first.status === "live" ? -1 : 1;
