@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Hells kitchen",
+      "direPicks": [
+        {
+          "localizedName": "Crystal Maiden",
+          "name": "crystal_maiden"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Windranger",
+          "name": "windrunner"
+        },
+        {
+          "localizedName": "Magnus",
+          "name": "magnataur"
+        },
+        {
+          "localizedName": "Faceless Void",
+          "name": "faceless_void"
+        }
+      ],
+      "direScore": 8,
+      "durationSeconds": 2351,
+      "matchId": 9085943755,
+      "radiantName": "Muffalonit",
+      "radiantPicks": [
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Tusk",
+          "name": "tusk"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Riki",
+          "name": "riki"
+        }
+      ],
+      "radiantScore": 40,
+      "radiantWin": true,
+      "startTime": 1794417291
+    },
+    {
+      "direName": "Muffalonit",
+      "direPicks": [
+        {
+          "localizedName": "Lion",
+          "name": "lion"
+        },
+        {
+          "localizedName": "Outworld Devourer",
+          "name": "obsidian_destroyer"
+        },
+        {
+          "localizedName": "Mirana",
+          "name": "mirana"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Bloodseeker",
+          "name": "bloodseeker"
+        }
+      ],
+      "direScore": 47,
+      "durationSeconds": 2851,
+      "matchId": 9085837445,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Io",
+          "name": "wisp"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        },
+        {
+          "localizedName": "Slark",
+          "name": "slark"
+        }
+      ],
+      "radiantScore": 18,
+      "radiantWin": false,
+      "startTime": 1794412800
+    },
+    {
       "direName": "Where Halo Lobby",
       "direPicks": [
         {
@@ -1731,5 +1839,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-10T04:00:06Z"
+  "updatedAt": "2026-11-12T02:45:59Z"
 }
