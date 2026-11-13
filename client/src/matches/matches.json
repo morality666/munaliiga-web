@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "March of the Munas",
+      "direPicks": [
+        {
+          "localizedName": "Axe",
+          "name": "axe"
+        },
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Warlock",
+          "name": "warlock"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Phantom Assassin",
+          "name": "phantom_assassin"
+        }
+      ],
+      "direScore": 31,
+      "durationSeconds": 3376,
+      "matchId": 9087333652,
+      "radiantName": "Perhanan Perunat",
+      "radiantPicks": [
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Razor",
+          "name": "razor"
+        },
+        {
+          "localizedName": "Sven",
+          "name": "sven"
+        },
+        {
+          "localizedName": "Largo",
+          "name": "largo"
+        }
+      ],
+      "radiantScore": 56,
+      "radiantWin": true,
+      "startTime": 1794508022
+    },
+    {
+      "direName": "Perhanan Perunat",
+      "direPicks": [
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Centaur Warrunner",
+          "name": "centaur"
+        },
+        {
+          "localizedName": "Ursa",
+          "name": "ursa"
+        },
+        {
+          "localizedName": "Viper",
+          "name": "viper"
+        }
+      ],
+      "direScore": 29,
+      "durationSeconds": 2611,
+      "matchId": 9087223564,
+      "radiantName": "March of the Munas",
+      "radiantPicks": [
+        {
+          "localizedName": "Warlock",
+          "name": "warlock"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Riki",
+          "name": "riki"
+        }
+      ],
+      "radiantScore": 52,
+      "radiantWin": true,
+      "startTime": 1794503222
+    },
+    {
       "direName": "Hells kitchen",
       "direPicks": [
         {
@@ -1839,5 +1947,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-12T02:45:59Z"
+  "updatedAt": "2026-11-13T02:29:26Z"
 }
