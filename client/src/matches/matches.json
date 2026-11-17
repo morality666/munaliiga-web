@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Where Halo Lobby",
+      "direPicks": [
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Slardar",
+          "name": "slardar"
+        },
+        {
+          "localizedName": "Earthshaker",
+          "name": "earthshaker"
+        },
+        {
+          "localizedName": "Luna",
+          "name": "luna"
+        }
+      ],
+      "direScore": 50,
+      "durationSeconds": 2603,
+      "matchId": 9093289774,
+      "radiantName": "March of the Munas",
+      "radiantPicks": [
+        {
+          "localizedName": "Techies",
+          "name": "techies"
+        },
+        {
+          "localizedName": "Warlock",
+          "name": "warlock"
+        },
+        {
+          "localizedName": "Necrophos",
+          "name": "necrolyte"
+        },
+        {
+          "localizedName": "Phantom Lancer",
+          "name": "phantom_lancer"
+        },
+        {
+          "localizedName": "Primal Beast",
+          "name": "primal_beast"
+        }
+      ],
+      "radiantScore": 28,
+      "radiantWin": false,
+      "startTime": 1794856980
+    },
+    {
+      "direName": "March of the Munas",
+      "direPicks": [
+        {
+          "localizedName": "Techies",
+          "name": "techies"
+        },
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Warlock",
+          "name": "warlock"
+        },
+        {
+          "localizedName": "Riki",
+          "name": "riki"
+        },
+        {
+          "localizedName": "Phantom Lancer",
+          "name": "phantom_lancer"
+        }
+      ],
+      "direScore": 34,
+      "durationSeconds": 2936,
+      "matchId": 9093189022,
+      "radiantName": "Where Halo Lobby",
+      "radiantPicks": [
+        {
+          "localizedName": "Death Prophet",
+          "name": "death_prophet"
+        },
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Winter Wyvern",
+          "name": "winter_wyvern"
+        },
+        {
+          "localizedName": "Anti-Mage",
+          "name": "antimage"
+        },
+        {
+          "localizedName": "Legion Commander",
+          "name": "legion_commander"
+        }
+      ],
+      "radiantScore": 30,
+      "radiantWin": false,
+      "startTime": 1794852409
+    },
+    {
       "direName": "March of the Munas",
       "direPicks": [
         {
@@ -1947,5 +2055,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-13T02:29:26Z"
+  "updatedAt": "2026-11-17T04:23:05Z"
 }
