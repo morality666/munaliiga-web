@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Red Mango Devils",
+      "direPicks": [
+        {
+          "localizedName": "Witch Doctor",
+          "name": "witch_doctor"
+        },
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Lina",
+          "name": "lina"
+        },
+        {
+          "localizedName": "Underlord",
+          "name": "abyssal_underlord"
+        },
+        {
+          "localizedName": "Silencer",
+          "name": "silencer"
+        }
+      ],
+      "direScore": 77,
+      "durationSeconds": 5293,
+      "matchId": 9097159996,
+      "radiantName": "Asiakaspalautukset",
+      "radiantPicks": [
+        {
+          "localizedName": "Vengeful Spirit",
+          "name": "vengefulspirit"
+        },
+        {
+          "localizedName": "Snapfire",
+          "name": "snapfire"
+        },
+        {
+          "localizedName": "Bristleback",
+          "name": "bristleback"
+        },
+        {
+          "localizedName": "Faceless Void",
+          "name": "faceless_void"
+        },
+        {
+          "localizedName": "Windranger",
+          "name": "windrunner"
+        }
+      ],
+      "radiantScore": 62,
+      "radiantWin": false,
+      "startTime": 1795115955
+    },
+    {
+      "direName": "Asiakaspalautukset",
+      "direPicks": [
+        {
+          "localizedName": "Marci",
+          "name": "marci"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Oracle",
+          "name": "oracle"
+        },
+        {
+          "localizedName": "Spectre",
+          "name": "spectre"
+        },
+        {
+          "localizedName": "Juggernaut",
+          "name": "juggernaut"
+        }
+      ],
+      "direScore": 11,
+      "durationSeconds": 2359,
+      "matchId": 9097074184,
+      "radiantName": "Red Mango Devils",
+      "radiantPicks": [
+        {
+          "localizedName": "Venomancer",
+          "name": "venomancer"
+        },
+        {
+          "localizedName": "Underlord",
+          "name": "abyssal_underlord"
+        },
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Tiny",
+          "name": "tiny"
+        },
+        {
+          "localizedName": "Kunkka",
+          "name": "kunkka"
+        }
+      ],
+      "radiantScore": 41,
+      "radiantWin": true,
+      "startTime": 1795111850
+    },
+    {
       "direName": "Where Halo Lobby",
       "direPicks": [
         {
@@ -2055,5 +2163,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-17T04:23:05Z"
+  "updatedAt": "2026-11-20T02:53:51Z"
 }
