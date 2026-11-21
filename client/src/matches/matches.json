@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "Perhanan Perunat",
+      "direPicks": [
+        {
+          "localizedName": "Chaos Knight",
+          "name": "chaos_knight"
+        },
+        {
+          "localizedName": "Spirit Breaker",
+          "name": "spirit_breaker"
+        },
+        {
+          "localizedName": "Silencer",
+          "name": "silencer"
+        },
+        {
+          "localizedName": "Phantom Assassin",
+          "name": "phantom_assassin"
+        },
+        {
+          "localizedName": "Leshrac",
+          "name": "leshrac"
+        }
+      ],
+      "direScore": 16,
+      "durationSeconds": 1982,
+      "matchId": 9098400517,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Jakiro",
+          "name": "jakiro"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Lycan",
+          "name": "lycan"
+        },
+        {
+          "localizedName": "Kunkka",
+          "name": "kunkka"
+        },
+        {
+          "localizedName": "Kez",
+          "name": "kez"
+        }
+      ],
+      "radiantScore": 45,
+      "radiantWin": true,
+      "startTime": 1795198248
+    },
+    {
+      "direName": "Hells kitchen",
+      "direPicks": [
+        {
+          "localizedName": "Lich",
+          "name": "lich"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Bristleback",
+          "name": "bristleback"
+        },
+        {
+          "localizedName": "Phantom Lancer",
+          "name": "phantom_lancer"
+        },
+        {
+          "localizedName": "Earth Spirit",
+          "name": "earth_spirit"
+        }
+      ],
+      "direScore": 15,
+      "durationSeconds": 2353,
+      "matchId": 9098303908,
+      "radiantName": "Perhanan Perunat",
+      "radiantPicks": [
+        {
+          "localizedName": "Spirit Breaker",
+          "name": "spirit_breaker"
+        },
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        },
+        {
+          "localizedName": "Enigma",
+          "name": "enigma"
+        },
+        {
+          "localizedName": "Viper",
+          "name": "viper"
+        }
+      ],
+      "radiantScore": 45,
+      "radiantWin": true,
+      "startTime": 1795194184
+    },
+    {
       "direName": "Red Mango Devils",
       "direPicks": [
         {
@@ -2163,5 +2271,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-20T02:53:51Z"
+  "updatedAt": "2026-11-21T03:02:18Z"
 }
