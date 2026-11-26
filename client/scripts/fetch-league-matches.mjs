@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Refreshes src/matches/matches.json from OpenDota and links each new game to its fixture in
- * notes/schedule/season-<n>.csv, the way an admin would by pasting the id into `matchIds`.
+ * notes/schedule/season-<n>.csv or notes/schedule/playoffs.csv, the way an admin would by
+ * pasting the id into `matchIds`.
  *
  * Run it with `npm run fetch:matches`. It is deliberately NOT part of `npm run build`, so a
  * build never needs network access. The fetch-matches workflow runs it on a schedule and
@@ -33,8 +34,9 @@ const RADIANT_TEAM = 0;
 const DIRE_TEAM = 1;
 
 /** The whole season, not just the 5 the widget shows: /schedule looks results up by the
- * matchIds in the season CSV, so a pruned game loses its fixture's score. A season is
- * 21 fixtures x Bo2 = 42 games; the rest is headroom for remakes. ~1.2 kB each in the bundle. */
+ * matchIds in the schedule CSVs, so a pruned game loses its fixture's score. A season is
+ * 21 fixtures x Bo2 = 42 games plus at most 9 playoff games; the rest is headroom for
+ * remakes. ~1.2 kB each in the bundle. */
 const MAX_STORED_MATCHES = 60;
 /** Match lookups per run, so a first run against a finished season cannot spiral. */
 const MAX_DETAIL_FETCHES = 12;
@@ -61,7 +63,9 @@ const schedulePath = resolve(
   "schedule",
   `season-${seasonNumber}.csv`,
 );
-const scheduleLabel = relative(clientDirectory, schedulePath);
+const playoffsPath = resolve(clientDirectory, "notes", "schedule", "playoffs.csv");
+/** In playing order, as in src/schedule/playoffs.ts. */
+const PLAYOFF_ROUNDS = ["semifinal", "final"];
 
 const log = (message) => console.log(`[fetch:matches] ${message}`);
 // In GitHub Actions a warning also shows up on the run's summary page.
@@ -260,51 +264,171 @@ const semicolonList = (value) =>
     .map((part) => part.trim())
     .filter(Boolean);
 
+const parseLine = (line) => Papa.parse(line.replace(/\r$/, "")).data[0] ?? [];
+
 /**
- * Adds each new game's id to `matchIds` on the one fixture between its two teams. Only games
- * fetched in this run are linked, so an id an admin removes stays removed. Anything that
- * cannot be placed with certainty is left for the admin with a warning.
- *
- * Rows are edited one line at a time, so every other line keeps its exact bytes.
+ * One schedule CSV, kept as lines so a row can be rewritten without touching the others.
+ * Returns null, after a warning, when the file cannot be used. The playoffs file is optional.
  */
-const linkToSchedule = (newMatches) => {
+const readSheet = (path, { isPlayoffs }) => {
+  const label = relative(clientDirectory, path);
   let source;
 
   try {
-    source = readFileSync(schedulePath, "utf8");
+    source = readFileSync(path, "utf8");
   } catch (error) {
-    warn(
-      `Could not read ${scheduleLabel} (${error.message}), no games linked to fixtures.`,
-    );
+    if (!(isPlayoffs && error.code === "ENOENT")) {
+      warn(`Could not read ${label} (${error.message}), no games linked to it.`);
+    }
 
-    return;
+    return null;
   }
 
   const lines = source.split("\n");
-  const parseLine = (line) => Papa.parse(line.replace(/\r$/, "")).data[0] ?? [];
   const header = parseLine(lines[0]).map((column) => column.trim());
-  const [home, away, matchIds] = ["home", "away", "matchIds"].map((column) =>
-    header.indexOf(column),
+  const columns = Object.fromEntries(
+    ["home", "away", "matchIds", "bestOf", "round"].map((column) => [
+      column,
+      header.indexOf(column),
+    ]),
   );
 
-  if ([home, away, matchIds].includes(-1)) {
+  if ([columns.home, columns.away, columns.matchIds].includes(-1)) {
     warn(
-      `${scheduleLabel} has no home, away or matchIds column, no games linked to fixtures.`,
+      `${label} has no home, away or matchIds column, no games linked to it.`,
     );
 
+    return null;
+  }
+
+  const sheet = { columns, isPlayoffs, label, lines, linked: 0, path };
+
+  sheet.fixtures = lines.flatMap((line, index) => {
+    const cells = index > 0 && line.trim() ? parseLine(line) : [];
+
+    return cells.length === header.length
+      ? [{ cells, feeders: [], index, sheet }]
+      : [];
+  });
+
+  if (isPlayoffs && columns.round !== -1) {
+    // Each match is fed by two of the round before, in file order, as in
+    // src/schedule/playoffs.ts: the first two semifinals feed the first final.
+    const rounds = PLAYOFF_ROUNDS.map((round) =>
+      sheet.fixtures.filter(
+        ({ cells }) => cells[columns.round].trim().toLowerCase() === round,
+      ),
+    );
+
+    rounds.forEach((fixtures, roundIndex) =>
+      fixtures.forEach((fixture, index) => {
+        const previous = rounds[roundIndex - 1] ?? [];
+
+        fixture.feeders = [previous[index * 2], previous[index * 2 + 1]];
+      }),
+    );
+  }
+
+  return sheet;
+};
+
+/**
+ * Adds each new game's id to `matchIds` on the one fixture between its two teams that still
+ * expects games, in the season CSV or the playoffs CSV. A league fixture is complete once it
+ * has bestOf games, a playoff match once it has a winner, which keeps playoff games between
+ * teams that already met in the league off the league fixture. A playoff place left empty
+ * counts as the winner of the match feeding it.
+ *
+ * Only games fetched in this run are linked, so an id an admin removes stays removed.
+ * Anything that cannot be placed with certainty is left for the admin with a warning.
+ * Rows are edited one line at a time, so every other line keeps its exact bytes.
+ */
+const linkToSchedule = (newMatches, knownMatches) => {
+  const sheets = [
+    readSheet(schedulePath, { isPlayoffs: false }),
+    readSheet(playoffsPath, { isPlayoffs: true }),
+  ].filter(Boolean);
+
+  if (sheets.length === 0) {
     return;
   }
 
-  const fixtures = lines.flatMap((line, index) => {
-    const cells = index > 0 && line.trim() ? parseLine(line) : [];
-
-    return cells.length === header.length ? [{ cells, index }] : [];
-  });
+  const fixtures = sheets.flatMap((sheet) => sheet.fixtures);
+  const fileLabels = sheets.map((sheet) => sheet.label).join(" or ");
   const teamSlugs = readTeamSlugs();
   const slugFor = (name) => teamSlugs.get(name.trim().toLowerCase());
-  let linked = 0;
+  const winnerSlugs = new Map(
+    knownMatches.map((match) => [
+      match.matchId,
+      slugFor(match.radiantWin ? match.radiantName : match.direName),
+    ]),
+  );
 
-  // Oldest first, so a series reads game 1;game 2.
+  const column = (fixture, name) =>
+    fixture.sheet.columns[name] === -1
+      ? ""
+      : (fixture.cells[fixture.sheet.columns[name]] ?? "").trim();
+  const idsOf = (fixture) => semicolonList(column(fixture, "matchIds"));
+  const bestOfOf = (fixture) => {
+    const bestOf = Number.parseInt(column(fixture, "bestOf"), 10);
+
+    return Number.isFinite(bestOf) && bestOf > 0 ? bestOf : null;
+  };
+
+  /** The slug in a place: as written, or the winner of the playoff match feeding it. */
+  const sideOf = (fixture, place) => {
+    const written = column(fixture, place);
+    const feeder = fixture.feeders[place === "home" ? 0 : 1];
+
+    return written || (feeder ? winnerOf(feeder) : "");
+  };
+
+  /** Two games of a best of three, as in src/schedule/playoffs.ts. Without a bestOf, any lead. */
+  const winnerOf = (fixture) => {
+    const [home, away] = [sideOf(fixture, "home"), sideOf(fixture, "away")];
+
+    if (!home || !away) {
+      return "";
+    }
+
+    const wins = new Map([
+      [home, 0],
+      [away, 0],
+    ]);
+
+    for (const id of idsOf(fixture)) {
+      const winner = winnerSlugs.get(Number(id));
+
+      if (wins.has(winner)) {
+        wins.set(winner, wins.get(winner) + 1);
+      }
+    }
+
+    const bestOf = bestOfOf(fixture);
+    const needed = bestOf ? Math.floor(bestOf / 2) + 1 : 1;
+    const [homeWins, awayWins] = [wins.get(home), wins.get(away)];
+
+    if (homeWins > awayWins && homeWins >= needed) {
+      return home;
+    }
+
+    return awayWins > homeWins && awayWins >= needed ? away : "";
+  };
+
+  const isComplete = (fixture) => {
+    const played = idsOf(fixture).length;
+    const bestOf = bestOfOf(fixture);
+
+    if (fixture.sheet.isPlayoffs) {
+      return Boolean(winnerOf(fixture)) || (bestOf !== null && played >= bestOf);
+    }
+
+    // League matches are best of two unless the row says otherwise.
+    return played >= (bestOf ?? 2);
+  };
+
+  // Oldest first, so a series reads game 1;game 2, and a semifinal is decided before the
+  // final it feeds is looked for.
   const oldestFirst = [...newMatches].sort(
     (first, second) => first.startTime - second.startTime,
   );
@@ -315,28 +439,31 @@ const linkToSchedule = (newMatches) => {
 
     if (!pair[0] || !pair[1]) {
       warn(
-        `No team in notes/teams has the name of every side in ${label}. Add the name to that team's aliases, then the id to ${scheduleLabel} by hand.`,
+        `No team in notes/teams has the name of every side in ${label}. Add the name to that team's aliases, then the id to ${fileLabels} by hand.`,
       );
 
       continue;
     }
 
-    const candidates = fixtures.filter(
-      ({ cells }) =>
-        [cells[home].trim(), cells[away].trim()].sort().join() ===
-        [...pair].sort().join(),
+    const pairKey = [...pair].sort().join();
+    const between = fixtures.filter(
+      (fixture) =>
+        [sideOf(fixture, "home"), sideOf(fixture, "away")].sort().join() ===
+        pairKey,
     );
+    const open = between.filter((fixture) => !isComplete(fixture));
 
-    if (candidates.length !== 1) {
+    if (open.length !== 1) {
       warn(
-        `${scheduleLabel} has ${candidates.length} fixtures between ${pair.join(" and ")}, so ${label} needs its id added by hand.`,
+        `${fileLabels} has ${between.length} fixture(s) between ${pair.join(" and ")}, ${open.length} of them still expecting games, so ${label} needs its id added by hand.`,
       );
 
       continue;
     }
 
-    const [fixture] = candidates;
-    const ids = semicolonList(fixture.cells[matchIds]);
+    const [fixture] = open;
+    const { columns, lines } = fixture.sheet;
+    const ids = idsOf(fixture);
 
     if (ids.includes(String(match.matchId))) {
       continue;
@@ -344,15 +471,15 @@ const linkToSchedule = (newMatches) => {
 
     const lineEnd = lines[fixture.index].endsWith("\r") ? "\r" : "";
 
-    fixture.cells[matchIds] = [...ids, match.matchId].join(";");
+    fixture.cells[columns.matchIds] = [...ids, match.matchId].join(";");
     lines[fixture.index] =
       Papa.unparse([fixture.cells], { newline: "" }) + lineEnd;
-    linked += 1;
+    fixture.sheet.linked += 1;
   }
 
-  if (linked > 0) {
-    writeFileSync(schedulePath, lines.join("\n"));
-    log(`Linked ${linked} game(s) to their fixtures in ${scheduleLabel}.`);
+  for (const sheet of sheets.filter((entry) => entry.linked > 0)) {
+    writeFileSync(sheet.path, sheet.lines.join("\n"));
+    log(`Linked ${sheet.linked} game(s) to their fixtures in ${sheet.label}.`);
   }
 };
 
@@ -456,7 +583,7 @@ const main = async () => {
     `Wrote ${matches.length} matches (${fetched.length} new) to ${outputLabel}.`,
   );
 
-  linkToSchedule(fetched);
+  linkToSchedule(fetched, matches);
 };
 
 try {

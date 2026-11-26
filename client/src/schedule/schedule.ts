@@ -83,8 +83,9 @@ const helsinkiClock = (moment: number) =>
 
 const TODAY = helsinkiClock(Date.now()).slice(0, 10);
 
-const cell = (row: Record<string, string | undefined>, key: string) =>
-  (row[key] ?? "").trim();
+export type CsvRow = Record<string, string | undefined>;
+
+export const cell = (row: CsvRow, key: string) => (row[key] ?? "").trim();
 
 const semicolonList = (value: string) =>
   value
@@ -95,14 +96,14 @@ const semicolonList = (value: string) =>
 const isStatus = (value: string): value is MatchStatus =>
   (MATCH_STATUSES as readonly string[]).includes(value);
 
-const teamRef = (slug: string): TeamRef => {
+export const teamRef = (slug: string): TeamRef => {
   const team = getTeam(slug);
 
   return { name: team?.name ?? slug, slug, team };
 };
 
-const readCsv = (source: string, path: string) => {
-  const parsed = Papa.parse<Record<string, string | undefined>>(source, {
+export const readCsv = (source: string, path: string) => {
+  const parsed = Papa.parse<CsvRow>(source, {
     header: true,
     skipEmptyLines: true,
     transformHeader: (header) => header.trim(),
@@ -179,9 +180,43 @@ const WEEKS: Map<string, { bye: TeamRef[]; ends: string; starts: string }> =
     ),
   );
 
-const toMatch = (
-  row: Record<string, string | undefined>,
-): ScheduledMatch | null => {
+type FixtureIdentity = {
+  away: TeamRef;
+  home: TeamRef;
+  key: string;
+  week: string;
+};
+
+/** The columns a league fixture and a playoff match share. */
+export const fixtureFrom = (
+  row: CsvRow,
+  { away, home, key, week }: FixtureIdentity,
+): ScheduledMatch => {
+  const date = cell(row, "date");
+  const status = cell(row, "status").toLowerCase();
+  const bestOf = Number.parseInt(cell(row, "bestOf"), 10);
+  const matchIds = semicolonList(cell(row, "matchIds"))
+    .map((id) => Number.parseInt(id, 10))
+    .filter((id) => Number.isFinite(id));
+
+  return {
+    away,
+    bestOf: Number.isFinite(bestOf) ? bestOf : null,
+    casters: semicolonList(cell(row, "casters")),
+    date,
+    home,
+    isDated: Boolean(date),
+    isPlayed: matchIds.length > 0,
+    key,
+    note: cell(row, "note"),
+    result: resultFor(matchIds, home, away),
+    status: isStatus(status) ? status : "scheduled",
+    time: cell(row, "time"),
+    week,
+  };
+};
+
+const toMatch = (row: CsvRow): ScheduledMatch | null => {
   const home = cell(row, "home");
   const away = cell(row, "away");
 
@@ -190,32 +225,13 @@ const toMatch = (
   }
 
   const week = cell(row, "week");
-  const date = cell(row, "date");
-  const time = cell(row, "time");
-  const isDated = Boolean(date);
-  const status = cell(row, "status").toLowerCase();
-  const bestOf = Number.parseInt(cell(row, "bestOf"), 10);
-  const homeRef = teamRef(home);
-  const awayRef = teamRef(away);
-  const matchIds = semicolonList(cell(row, "matchIds"))
-    .map((id) => Number.parseInt(id, 10))
-    .filter((id) => Number.isFinite(id));
 
-  return {
-    away: awayRef,
-    bestOf: Number.isFinite(bestOf) ? bestOf : null,
-    casters: semicolonList(cell(row, "casters")),
-    date,
-    home: homeRef,
-    isDated,
-    isPlayed: matchIds.length > 0,
-    key: `${week}-${home}-${away}-${date}`,
-    note: cell(row, "note"),
-    result: resultFor(matchIds, homeRef, awayRef),
-    status: isStatus(status) ? status : "scheduled",
-    time,
+  return fixtureFrom(row, {
+    away: teamRef(away),
+    home: teamRef(home),
+    key: `${week}-${home}-${away}-${cell(row, "date")}`,
     week,
-  };
+  });
 };
 
 const ALL_MATCHES: ScheduledMatch[] = Object.entries(fixtureFiles).flatMap(
@@ -298,13 +314,13 @@ export const CURRENT_WEEK = SCHEDULE_WEEKS.find((week) => week.isCurrent);
 const MINUTE = 60_000;
 
 /**
- * Casters of the match being played now, for the homepage stream. A match is
- * on air from half an hour before kickoff until an hour per game plus one
- * more after it, and for as long as it is marked live. Read on every call
- * rather than at load, so a page left open moves on to the next match.
- * Shifting now, not the kickoff, keeps the comparison in wall clock.
+ * Casters of the match being played now among `matches`, for the homepage
+ * stream. A match is on air from half an hour before kickoff until an hour per
+ * game plus one more after it, and for as long as it is marked live. Read on
+ * every call rather than at load, so a page left open moves on to the next
+ * match. Shifting now, not the kickoff, keeps the comparison in wall clock.
  */
-export const onAirCasters = () => {
+export const onAirCasters = (matches: ScheduledMatch[]) => {
   const moment = Date.now();
   const opensBy = helsinkiClock(moment + 30 * MINUTE);
   const isOnAir = (match: ScheduledMatch) => {
@@ -327,7 +343,8 @@ export const onAirCasters = () => {
 
   return [
     ...new Set(
-      SCHEDULE.filter(isOnAir)
+      matches
+        .filter(isOnAir)
         .sort(
           (first, second) =>
             Number(second.status === "live") - Number(first.status === "live"),
@@ -365,7 +382,10 @@ const shortDay = (date: string, language: string) => {
   );
 };
 
-export const formatWeekSpan = (week: ScheduleWeek, language: string) =>
-  week.starts && week.ends
-    ? `${shortDay(week.starts, language)} – ${shortDay(week.ends, language)}`
+export const formatDaySpan = (starts: string, ends: string, language: string) =>
+  starts && ends
+    ? `${shortDay(starts, language)} – ${shortDay(ends, language)}`
     : "";
+
+export const formatWeekSpan = (week: ScheduleWeek, language: string) =>
+  formatDaySpan(week.starts, week.ends, language);

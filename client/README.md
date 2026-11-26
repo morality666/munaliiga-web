@@ -34,14 +34,16 @@ variables are bundled into the public site, so they must never contain secrets.
 
 `npm run fetch:matches` reads the games of `VITE_DOTA_LEAGUE_ID` from OpenDota,
 which needs no API key. It adds new games to `src/matches/matches.json` and
-their ids to the fixture's `matchIds` in `notes/schedule/season-<n>.csv`. The
+their ids to the fixture's `matchIds` in `notes/schedule/season-<n>.csv` or
+`notes/schedule/playoffs.csv`. The
 `Fetch league match results` workflow runs it every night at midnight Finnish
 time, commits any new results to `main` and redeploys. It is not part of `npm run build`, so builds
 work offline.
 
 The standings at `/standings` are calculated from those same results when the
-site is built, one point per game won. `notes/schedule/README.md` explains the
-rules.
+site is built, one point per game won, leaving out the playoffs. The homepage
+playoff bracket fills the final from the semifinal winners.
+`notes/schedule/README.md` explains the rules.
 
 ## Markdown notes
 

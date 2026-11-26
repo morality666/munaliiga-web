@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { siteConfig } from "../config.ts";
+import { PlayoffCalendar } from "../playoffs/PlayoffCalendar.tsx";
 import { MatchRow } from "./MatchRow.tsx";
 import { SCHEDULE_WEEKS, formatWeekSpan, type ScheduleWeek } from "./schedule.ts";
 
@@ -97,6 +98,8 @@ export function SchedulePage() {
                 </div>
               </div>
             ))}
+
+            <PlayoffCalendar />
           </div>
         )}
       </section>

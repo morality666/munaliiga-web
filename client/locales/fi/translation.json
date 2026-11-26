@@ -128,5 +128,26 @@
     "lostCount": "{{count}} H",
     "pointsCount_one": "{{count}} p",
     "pointsCount_other": "{{count}} p"
+  },
+  "playoffs": {
+    "title": "Pudotuspelit",
+    "intro": "Runkosarjan neljä parasta pelaavat mestaruudesta. Välierien voittajat kohtaavat finaalissa.",
+    "match": {
+      "semifinal": "Välierä {{number}}",
+      "final": "Finaali"
+    },
+    "rounds": {
+      "semifinal": "Välierät",
+      "final": "Finaali"
+    },
+    "winnerOf": {
+      "semifinal": "Välierän {{number}} voittaja",
+      "final": "Finaalin voittaja"
+    },
+    "teamOpen": "Ratkeaa myöhemmin",
+    "timeOpen": "Kellonaika auki",
+    "leaguePlace": "Runkosarjan {{place}}",
+    "champion": "Kauden {{season}} mestari",
+    "championPending": "Ratkeaa finaalissa"
   }
 }
