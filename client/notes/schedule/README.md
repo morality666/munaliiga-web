@@ -1,12 +1,14 @@
 # Schedule
 
-Two files:
+Three files:
 
 - **`weeks.csv`** — one row per match week: when it runs and who has a bye.
   Set up once at the start of the season.
 - **`season-3.csv`** — one row per match. Who plays whom, and in which week.
   The exact day and time are **optional**: fill them in when the teams agree,
   even on the day itself.
+- **`playoffs.csv`** — one row per playoff match, see
+  [Playoffs](#playoffs).
 
 GitHub shows both as sortable tables when you open them, and lets you edit them
 as text with the pencil icon.
@@ -103,10 +105,41 @@ Fill `matchIds` in by hand only when a game is missing after that:
 
 An id you remove from `matchIds` is not added back.
 
+## Playoffs
+
+`playoffs.csv` holds the playoff bracket. It has the same columns as the
+season file, except `round` in place of `week`:
+
+```
+round,home,away,date,time,bestOf,casters,status,matchIds,note
+semifinal,hells-kitchen,march-of-the-munas,2026-11-27,19:00,3,,,,
+semifinal,muffalonit,where-halo-lobby,2026-11-28,21:00,3,,,,
+final,,,2026-11-29,,3,,,,
+```
+
+| Column | Meaning |
+| --- | --- |
+| `round` | `semifinal` or `final`. |
+| `home`, `away` | As in the season file. **Leave them empty on the final**: the winner of the first semifinal row becomes the final's `home`, the winner of the second its `away`. |
+| `bestOf` | `3` for a best of three. A team wins the match once it has won more than half of the games. |
+
+The other columns work as in the season file: `casters` switches the homepage
+stream, `status` marks a match live or postponed, and `matchIds` fills in by
+itself at midnight. A playoff game between two teams that already met in the
+league goes to the playoff match, because their league match already has its
+games.
+
+The order of the rows matters: the first `semifinal` row is semifinal 1.
+
+While the file has matches, the homepage shows the bracket and `/schedule`
+lists them after the last week. Once the final has a winner, the bracket names
+the champion. When the next season starts, delete the rows but keep the header
+row, and the bracket disappears.
+
 ## Standings
 
 The `/standings` page is worked out from the same games, so there is nothing
-to fill in for it. The played column counts matches, which is how many
+to fill in for it. Playoff games do not count in it. The played column counts matches, which is how many
 opponents a team has faced. Everything else counts games: every game a team
 wins is a point, so a 2–0 gives the winner 2 points and a 1–1 gives both teams 1.
 

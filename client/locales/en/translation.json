@@ -69,6 +69,7 @@
     "coach": "Coach",
     "captain": "Captain",
     "roster": "Roster",
+    "replaced": "Replaced <previous>{{previous}}</previous>",
     "logo": "Logo",
     "logoAlt": "{{team}} logo",
     "roles": {
@@ -131,5 +132,26 @@
     "lostCount": "{{count}} L",
     "pointsCount_one": "{{count}} pt",
     "pointsCount_other": "{{count}} pts"
+  },
+  "playoffs": {
+    "title": "Playoffs",
+    "intro": "The top four of the regular season play for the title. The semifinal winners meet in the final.",
+    "match": {
+      "semifinal": "Semifinal {{number}}",
+      "final": "Final"
+    },
+    "rounds": {
+      "semifinal": "Semifinals",
+      "final": "Final"
+    },
+    "winnerOf": {
+      "semifinal": "Winner of semifinal {{number}}",
+      "final": "Winner of the final"
+    },
+    "teamOpen": "To be decided",
+    "timeOpen": "Time TBA",
+    "leaguePlace": "{{place}} in the regular season",
+    "champion": "Season {{season}} champion",
+    "championPending": "Decided in the final"
   }
 }

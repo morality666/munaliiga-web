@@ -22,6 +22,8 @@ export type TeamRole = (typeof TEAM_ROLES)[number];
 
 export type TeamPlayer = {
   name: string;
+  /** The player this one took over from mid-season, kept so the change stays visible. */
+  replaces: string | null;
   role: TeamRole | null;
 };
 
@@ -68,7 +70,11 @@ const playersFrom = (value: unknown): TeamPlayer[] => {
     .map((entry) => {
       const role = str(entry.role).toLowerCase();
 
-      return { name: str(entry.name), role: isRole(role) ? role : null };
+      return {
+        name: str(entry.name),
+        replaces: str(entry.replaces) || null,
+        role: isRole(role) ? role : null,
+      };
     });
 };
 

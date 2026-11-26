@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import type { TeamPlayer, TeamRole } from "./teams.ts";
 
 const ROLE_KEYS: Record<TeamRole, string> = {
@@ -42,7 +42,20 @@ export function TeamRoster({ captain, players }: TeamRosterProps) {
               {player.role ? t(ROLE_KEYS[player.role]) : ""}
             </span>
           ) : null}
-          <span className="player-name">{player.name}</span>
+          <span className="player-name">
+            {player.name}
+            {player.replaces ? (
+              <span className="block text-[0.75rem] font-semibold leading-snug text-[#7a6f5a]">
+                <Trans
+                  components={{
+                    previous: <span className="text-[#5f5747]" />,
+                  }}
+                  i18nKey="teams.replaced"
+                  values={{ previous: player.replaces }}
+                />
+              </span>
+            ) : null}
+          </span>
           <span>
             {captain && player.name === captain ? (
               <span className="rounded-[3px] border border-stone-900/30 px-1.5 py-0.5 font-mono text-[0.56rem] font-black uppercase tracking-[0.12em] text-[#7f473d]">

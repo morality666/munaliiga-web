@@ -5,6 +5,7 @@ import { useStreamStatus } from "../streaming/StreamStatus.tsx";
 import { STREAMERS } from "../streaming/streamers.ts";
 import { TwitchStream } from "../streaming/TwitchStream.tsx";
 import { RecentMatches } from "../matches/RecentMatches.tsx";
+import { PlayoffBracket } from "../playoffs/PlayoffBracket.tsx";
 import { NextUp } from "../schedule/NextUp.tsx";
 import { StandingsSummary } from "../standings/StandingsSummary.tsx";
 
@@ -214,6 +215,8 @@ function MainView() {
           </div>
         </div>
       </section>
+
+      <PlayoffBracket />
 
       <NextUp />
 

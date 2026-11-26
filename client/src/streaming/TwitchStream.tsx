@@ -2,7 +2,8 @@ import clsx from "clsx";
 import { useEffect, useId, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { siteConfig } from "../config.ts";
-import { onAirCasters } from "../schedule/schedule.ts";
+import { PLAYOFF_MATCHES } from "../playoffs/playoffs.ts";
+import { onAirCasters, SCHEDULE } from "../schedule/schedule.ts";
 import { useStreamStatus } from "./StreamStatus.tsx";
 import { STREAMER_CHECK_ORDER } from "./streamers.ts";
 
@@ -53,7 +54,7 @@ const SWITCH_DELAY = 1_200;
  */
 const channelOrder = () => [
   ...new Set([
-    ...onAirCasters(),
+    ...onAirCasters([...SCHEDULE, ...PLAYOFF_MATCHES]),
     ...STREAMER_CHECK_ORDER.map((streamer) => streamer.channel),
   ]),
 ];

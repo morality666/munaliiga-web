@@ -12,7 +12,8 @@ aliases:
   - Hells kitchen
 players:
   - name: Voitelija
-  - name: Seiralyn
+  - name: Kiisu
+    replaces: Seiralyn
   - name: Maija
   - name: Kaapeli
   - name: Linne
