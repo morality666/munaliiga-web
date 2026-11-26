@@ -69,6 +69,7 @@
     "coach": "Valmentaja",
     "captain": "Kapteeni",
     "roster": "Kokoonpano",
+    "replaced": "Pelaajan <previous>{{previous}}</previous> tilalle",
     "logo": "Logo",
     "logoAlt": "Joukkueen {{team}} logo",
     "roles": {

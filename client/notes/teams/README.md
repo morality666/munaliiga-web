@@ -48,7 +48,7 @@ players:
 | `captain` | no | Captain's name. Must match a player's `name` exactly to get the captain badge. |
 | `logo` | no | Image file name in `notes/attachments/`. Without a logo the `tag` tile is shown — that is the normal look, not a fallback. |
 | `aliases` | no | Names this team appears under in Valve's match data, so played matches can be linked back to it. |
-| `players` | no | Each with a `name`, and a `role` if you want one. |
+| `players` | no | Each with a `name`, a `role` if you want one, and `replaces` for a [player replacement](#player-replacements). |
 
 ## Roles
 
@@ -60,6 +60,22 @@ If you do give a role, write it **exactly** like this, in lower case:
 `carry` · `mid` · `offlane` · `soft-support` · `hard-support`
 
 An unrecognised role is simply not shown.
+
+## Player replacements
+
+When a player leaves mid-season, put the new player in their place in the list
+and write the old player's name under `replaces`:
+
+```
+players:
+  - name: Voitelija
+  - name: Kiisu
+    replaces: Seiralyn
+  - name: Maija
+```
+
+The roster shows Kiisu with "Replaced Seiralyn" under the name, so the change
+stays visible. Indent `replaces` to line up with `name`.
 
 ## Checklist
 

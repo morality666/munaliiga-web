@@ -69,6 +69,7 @@
     "coach": "Coach",
     "captain": "Captain",
     "roster": "Roster",
+    "replaced": "Replaced <previous>{{previous}}</previous>",
     "logo": "Logo",
     "logoAlt": "{{team}} logo",
     "roles": {

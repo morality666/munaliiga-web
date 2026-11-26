@@ -9,7 +9,8 @@ captain:
 aliases:
   - Perhanan Perunat
 players:
-  - name: Mustakaapu
+  - name: Tab
+    replaces: Mustakaapu
   - name: Kukistaja
   - name: Zabre
   - name: jouni
