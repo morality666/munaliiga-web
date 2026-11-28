@@ -3,6 +3,114 @@
   "leagueName": "Munaliiga Season 3",
   "matches": [
     {
+      "direName": "March of the Munas",
+      "direPicks": [
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Techies",
+          "name": "techies"
+        },
+        {
+          "localizedName": "Primal Beast",
+          "name": "primal_beast"
+        },
+        {
+          "localizedName": "Clinkz",
+          "name": "clinkz"
+        }
+      ],
+      "direScore": 21,
+      "durationSeconds": 1942,
+      "matchId": 9107941957,
+      "radiantName": "Hells kitchen",
+      "radiantPicks": [
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Lifestealer",
+          "name": "life_stealer"
+        },
+        {
+          "localizedName": "Dawnbreaker",
+          "name": "dawnbreaker"
+        },
+        {
+          "localizedName": "Dragon Knight",
+          "name": "dragon_knight"
+        }
+      ],
+      "radiantScore": 33,
+      "radiantWin": true,
+      "startTime": 1795803146
+    },
+    {
+      "direName": "Hells kitchen",
+      "direPicks": [
+        {
+          "localizedName": "Undying",
+          "name": "undying"
+        },
+        {
+          "localizedName": "Abaddon",
+          "name": "abaddon"
+        },
+        {
+          "localizedName": "Phantom Assassin",
+          "name": "phantom_assassin"
+        },
+        {
+          "localizedName": "Shadow Shaman",
+          "name": "shadow_shaman"
+        },
+        {
+          "localizedName": "Queen of Pain",
+          "name": "queenofpain"
+        }
+      ],
+      "direScore": 43,
+      "durationSeconds": 2559,
+      "matchId": 9107845555,
+      "radiantName": "March of the Munas",
+      "radiantPicks": [
+        {
+          "localizedName": "Tidehunter",
+          "name": "tidehunter"
+        },
+        {
+          "localizedName": "Sniper",
+          "name": "sniper"
+        },
+        {
+          "localizedName": "Dazzle",
+          "name": "dazzle"
+        },
+        {
+          "localizedName": "Wraith King",
+          "name": "skeleton_king"
+        },
+        {
+          "localizedName": "Riki",
+          "name": "riki"
+        }
+      ],
+      "radiantScore": 21,
+      "radiantWin": false,
+      "startTime": 1795799071
+    },
+    {
       "direName": "Perhanan Perunat",
       "direPicks": [
         {
@@ -2271,5 +2379,5 @@
       "startTime": 1790868600
     }
   ],
-  "updatedAt": "2026-11-21T03:02:18Z"
+  "updatedAt": "2026-11-28T03:47:59Z"
 }
